@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lišák Alan | Katedra Informatiky, Univerzita Palackeho v Olomouci</title>
+
+  <link rel="stylesheet" href="./css/alan.css">
+
+  <!-- knihovna Blocky -->
+  <script src="./blocky/blockly.js"></script>
+  <script src="./blocky/javascript.js"></script>
+  <script src="./blocky/alan_blocks.js"></script>
+  <script src="./blocky/alan_generators.js"></script>
+
+  <meta name="author" content="Martin Trnecka, Marketa Trneckova">
+</head>
+
+<body>
+
+  <main>
+
+    <canvas id="deska" width="1180" height="700"></canvas>
+
+    <img id="grass1" src="./assets/grass1.svg">
+    <img id="fox1" src="./assets/fox4.svg">
+    <img id="fox2" src="./assets/fox2.svg">
+    <img id="fox3" src="./assets/fox1.svg">
+    <img id="fox4" src="./assets/fox3.svg">
+    <img id="chicken1" src="./assets/chicken1.svg">
+    <img id="chicken2" src="./assets/chicken2.svg">
+  </main>
+
+  <script>
+
+  // TODO: uchovavat pozici lisky a smer lisky v promenne
+  // Alan the fox
+  var hra = {
+    hra_prodleva: 2000, // udava prodlevu ve volani zakladnich procedur
+    deska: [
+            [301,  0,  0,  0,  0,  0,  0,  0,  0,301],
+            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
+            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
+            [  1,  1,  1,  1, 11,  1,  1,  0,  0,  1],
+            [  1,  1,  1,  1,  1,  1,  1,  0,  0,  1],
+            [  1,  0,  1,  0,201,  1,  1,302,  0,  1],
+            [  1,  0,  1,  1,  1,  1,  1,  1,  1,  1],
+            [  1,  0,  0,  0,  1,  1,  1,  1,  1,  1],
+            [  1,  0,  0,  0,  0,301,  1,  1,  1,  1],
+            [301,  1,  0,  0,  0,  0,  1,  1,  1,301]
+          ],
+
+    deska_original: [
+            [301,  0,  0,  0,  0,  0,  0,  0,  0,301],
+            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
+            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
+            [  1,  1,  1,  1, 11,  1,  1,  0,  0,  1],
+            [  1,  1,  1,  1,  1,  1,  1,  0,  0,  1],
+            [  1,  0,  1,  0,  1,  1,  1,302,  0,  1],
+            [  1,  0,  1,  1,  1,  1,  1,  1,  1,  1],
+            [  1,  0,  0,  0,  1,  1,  1,  1,  1,  1],
+            [  1,  0,  0,  0,  0,301,  1,  1,  1,  1],
+            [301,  1,  0,  0,  0,  0,  1,  1,  1,301]
+          ],
+
+    proved: function(instrukce) {
+        //TODO: pausa
+        try {
+          eval(instrukce);
+        } catch (e) {
+        alert(e);
+      }
+      this.nakresli_mapu();
+    },
+
+    krok: function() {
+      console.log('krok vpřed');
+
+      var zakazane = [0]; // seznam zakazanych policek
+
+      // TODO: výjimky
+      var [x, y] = this.najdi_alana();
+      if(this.deska[x][y]==201) if(y<10) this.deska[x][y+1]=this.deska[x][y];
+      if(this.deska[x][y]==202) if(x<10) this.deska[x+1][y]=this.deska[x][y];
+      if(this.deska[x][y]==203) if(y>0) this.deska[x][y-1]=this.deska[x][y];
+      if(this.deska[x][y]==204) if(x>0) this.deska[x-1][y]=this.deska[x][y];
+
+      //console.log(JSON.stringify(this.deska));
+
+      this.deska[x][y] = this.deska_original[x][y] ;
+    },
+
+    seber_slepici: function() {
+      console.log('seber slepici');
+      var [x, y] = this.najdi_alana();
+
+      if (this.deska_original[x][y]>300 && this.deska_original[x][y]<305) {
+        this.deska_original[x][y] = 1;
+      }
+    },
+
+    otoc_vlevo: function() {
+      console.log('otoc vlevo');
+      for (var x = 0; x < 10; x++) {
+        for (var y = 0; y < 10; y++) {
+          if (this.deska[x][y]>200 && this.deska[x][y]<300)
+          {
+           this.deska[x][y] = this.deska[x][y] + 1;
+           if(this.deska[x][y]==205) this.deska[x][y] = 201;
+           return;
+          }
+        }
+      }
+    },
+
+    // najde lišku
+    najdi_alana: function() {
+      for (var x = 0; x < 10; x++) {
+        for (var y = 0; y < 10; y++) {
+          if (this.deska[x][y]>200 && this.deska[x][y]<300)
+          {
+            return [x,y];
+          }
+        }
+      }
+    },
+
+    nakresli_mapu: function() {
+      var elem = document.getElementById('deska');
+      var context = elem.getContext('2d');
+
+      var scale = 0.9;
+
+      for (var x = 0; x < 10; x++) {
+        for (var y = 0; y < 10; y++) {
+
+          // prázdné políčko
+          if (this.deska[x][y] == 1 || this.deska[x][y] > 200) {
+              tile = document.getElementById("grass1");
+              var move_x = tile.width*scale;
+              var move_y = tile.height*scale - 5*0.9;
+              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
+          }
+
+
+          // slepice
+          if (this.deska[x][y] == 301) {
+              tile = document.getElementById("chicken1");
+              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+          }
+
+          // slepice
+          if (this.deska[x][y] == 302) {
+              tile = document.getElementById("chicken2");
+              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+        }
+
+
+
+          // TODO: zjednodusit
+          // lišák Alan
+          if (this.deska[x][y] == 201) {
+              tile = document.getElementById("fox1");
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+          }
+
+          if (this.deska[x][y] == 202) {
+              tile = document.getElementById("fox2");
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+          }
+
+          if (this.deska[x][y] == 203) {
+              tile = document.getElementById("fox3");
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+          }
+
+          if (this.deska[x][y] == 204) {
+              tile = document.getElementById("fox4");
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+          }
+
+
+
+        }
+      }
+    }
+  }
+
+
+hra.nakresli_mapu();
+  </script>
+
+
+
+
+
+
+<div id="blocklyDiv" style="height: 480px; width: 600px; float: left;"></div>
+
+
+<textarea id="textarea" style="height: 480px; width: 600px;"></textarea>
+<button onclick="run();">RUN</button>
+
+<xml id="toolbox" style="display: none">
+  <block type="krok"></block>
+  <block type="seber_slepici"></block>
+  <block type="otoc_vlevo"></block>
+  <block type="opakuj"></block>
+</xml>
+
+<script>
+Blockly.JavaScript.addReservedWords('code');
+
+var workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+
+var code = Blockly.JavaScript.workspaceToCode(workspace)
+
+function myUpdateFunction(event) {
+  var code = Blockly.JavaScript.workspaceToCode(workspace);
+  document.getElementById('textarea').value = code;
+}
+
+workspace.addChangeListener(myUpdateFunction);
+
+
+// Fox on run :-)
+function run() {
+  var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+  try {
+    eval(code);
+  } catch (e) {
+  alert(e);
+}
+}
+</script>
+
+</body>
+</html>
