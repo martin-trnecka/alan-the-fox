@@ -26,10 +26,10 @@
     <img id="grass3" src="./assets/grass3.svg">       <!-- 3 -->
     <img id="hill1" src="./assets/hill1.svg">         <!-- 4 -->
     <img id="hill2" src="./assets/hill2.svg">         <!-- 5 -->
-    <img id="fox1" src="./assets/fox4.svg">
-    <img id="fox2" src="./assets/fox2.svg">
-    <img id="fox3" src="./assets/fox1.svg">
-    <img id="fox4" src="./assets/fox3.svg">
+    <img id="fox1" src="./assets/fox4.svg">           <!-- 201, na kytce 211 -->
+    <img id="fox2" src="./assets/fox2.svg">           <!-- 202, na kytce 212 -->
+    <img id="fox3" src="./assets/fox1.svg">           <!-- 203, na kytce 213 -->
+    <img id="fox4" src="./assets/fox3.svg">           <!-- 204, na kytce 214 -->
     <img id="chicken1" src="./assets/chicken1.svg">
     <img id="chicken2" src="./assets/chicken2.svg">
     <img id="tree1" src="./assets/tree1.svg">         <!-- 11 -->
@@ -59,7 +59,7 @@
             [  1,  1,  1,  1,  1,  1,  1,  1, 31,  1],
             [  1,  3,  2,  1, 11, 12, 13,  1,  1,  1],
             [  1,  1,  1,  1,  1,  1,  1,  1,404,  1],
-            [  1, 41,  1,  1,201,  1,  1,302,  1,  1],
+            [  1, 41,  1,  1,211,  1,  1,302,  1,  1],
             [  1,  1,  1,  1,  1,  1,  1,  1,  1, 42],
             [  1,401,  1,402,  1,  1,  1,403,  1,  1],
             [  1,  1,  1,  1,  1,301,  1,  1,  1,  1],
@@ -165,7 +165,7 @@
           }
           
           // trava3
-          if (this.deska[x][y] == 3) {
+          if (this.deska[x][y] == 3 || (this.deska[x][y] >= 211 && this.deska[x][y] >= 214)) {
               tile = document.getElementById("grass3");
               if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 - 1*scale, x*move_y/2 + y*move_y/2+50+0.4*scale, tile.width*scale, tile.height*scale);
           }
@@ -274,27 +274,27 @@
 
           // TODO: zjednodusit
           // lišák Alan
-          if (this.deska[x][y] == 201) {
+          if (this.deska[x][y] == 201 || this.deska[x][y] == 211) {
               tile = document.getElementById("fox1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
 
-          if (this.deska[x][y] == 202) {
+          if (this.deska[x][y] == 202 || this.deska[x][y] == 212) {
               tile = document.getElementById("fox2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
 
-          if (this.deska[x][y] == 203) {
+          if (this.deska[x][y] == 203|| this.deska[x][y] == 213) {
               tile = document.getElementById("fox3");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
 
-          if (this.deska[x][y] == 204) {
+          if (this.deska[x][y] == 204|| this.deska[x][y] == 214) {
               tile = document.getElementById("fox4");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
 
-
+          
 
         }
       }
