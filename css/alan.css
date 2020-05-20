@@ -2,3 +2,7 @@
   margin: auto;
   outline: 1px dashed gray;
 }
+
+.hidden {
+  display: none;
+}

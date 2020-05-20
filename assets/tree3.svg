@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="119px" height="181px" viewBox="0 0 119 181" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 12</title>
+<svg width="118px" height="181px" viewBox="0 0 118 181" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 6</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="28_R2FtZV9jaGlrZW4tMDE" transform="translate(-817.000000, -839.000000)">
-            <g id="Group-12" transform="translate(817.534000, 839.000000)">
-                <polyline id="Fill-1039" fill="#85BC0C" points="117.669 141.574 117.656 146.602 59.019 180.68 59.034 175.65 117.669 141.574"></polyline>
-                <polyline id="Fill-1040" fill="#5C8308" points="59.034 175.65 59.019 180.68 5.68434189e-14 146.602 0.014 141.574 59.034 175.65"></polyline>
-                <polyline id="Fill-1041" fill="#99D20D" points="117.669 141.574 59.034 175.65 0.014 141.574 58.65 107.499 117.669 141.574"></polyline>
-                <polyline id="Fill-1590" fill="#77A413" points="57.694 156.01 32.059 144.213 59.5 129.221 85.135 141.018 57.694 156.01"></polyline>
-                <polyline id="Fill-1591" fill="#403425" points="58.41 146.624 52.326 143.087 52.218 105.242 58.304 108.778 58.41 146.624"></polyline>
-                <polyline id="Fill-1592" fill="#66543B" points="58.304 108.778 52.218 105.242 58.786 101.45 64.871 104.986 58.304 108.778"></polyline>
-                <polyline id="Fill-1593" fill="#5C4C35" points="64.871 104.986 64.979 142.831 58.41 146.624 58.304 108.778 64.871 104.986"></polyline>
-                <polyline id="Fill-1594" fill="#46730A" points="48.502 124.792 15.466 105.593 28.948 14.992 54.582 26.789 48.502 124.792"></polyline>
-                <polyline id="Fill-1595" fill="#6AB00F" points="54.582 26.789 28.948 14.992 56.389 -1.77635684e-15 82.024 11.797 54.582 26.789"></polyline>
-                <polyline id="Fill-1596" fill="#5F9E0E" points="82.024 11.797 99.261 95.486 48.502 124.792 54.582 26.789 82.024 11.797"></polyline>
+        <g id="28_R2FtZV9jaGlrZW4tMDE" transform="translate(-891.000000, -956.000000)">
+            <g id="Group-6" transform="translate(891.000000, 956.000000)">
+                <g id="Group" transform="translate(0.000000, 107.000000)">
+                    <polyline id="Fill-750" fill="#85BC0C" points="58.65 0.13 58.635 5.16 -1.42108547e-14 39.23 0.014 34.2 58.65 0.13"></polyline>
+                    <polyline id="Fill-1042" fill="#85BC0C" points="117.833 34.08 117.819 39.11 59.182 73.18 59.197 68.15 117.833 34.08"></polyline>
+                    <polyline id="Fill-1043" fill="#5C8308" points="59.197 68.15 59.182 73.18 0.163 39.11 0.177 34.08 59.197 68.15"></polyline>
+                    <polyline id="Fill-1044" fill="#99D20D" points="117.833 34.08 59.197 68.15 0.177 34.08 58.813 4.26325641e-14 117.833 34.08"></polyline>
+                </g>
+                <polyline id="Fill-1583" fill="#77A413" points="58.23 156.009 32.592 144.212 60.03 129.22 85.67 141.018 58.23 156.009"></polyline>
+                <polyline id="Fill-1584" fill="#403425" points="58.94 146.624 52.859 143.087 52.752 105.241 58.84 108.778 58.94 146.624"></polyline>
+                <polyline id="Fill-1585" fill="#66543B" points="58.84 108.778 52.752 105.241 59.32 101.449 65.41 104.985 58.84 108.778"></polyline>
+                <polyline id="Fill-1586" fill="#5C4C35" points="65.41 104.985 65.51 142.831 58.94 146.624 58.84 108.778 65.41 104.985"></polyline>
+                <polyline id="Fill-1587" fill="#46730A" points="49.037 124.791 16 105.593 29.481 14.992 55.116 26.789 49.037 124.791"></polyline>
+                <polyline id="Fill-1588" fill="#6AB00F" points="55.116 26.789 29.481 14.992 56.92 0 82.56 11.797 55.116 26.789"></polyline>
+                <polyline id="Fill-1589" fill="#5F9E0E" points="82.56 11.797 99.79 95.486 49.037 124.791 55.116 26.789 82.56 11.797"></polyline>
             </g>
         </g>
     </g>

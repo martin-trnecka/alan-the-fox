@@ -19,32 +19,32 @@
 
   <main>
 
-    <canvas id="deska" width="1180" height="700"></canvas>
+    <canvas id="deska" width="1105" height="700"></canvas>
 
-    <img id="grass1" src="./assets/grass1.svg" style="display: none;">       <!-- 1 -->
-    <img id="grass2" src="./assets/grass2.svg" style="display: none;">       <!-- 2 -->
-    <img id="grass3" src="./assets/grass3.svg" style="display: none;">       <!-- 3 -->
-    <img id="hill1" src="./assets/hill1.svg" style="display: none;">         <!-- 4 -->
-    <img id="hill2" src="./assets/hill2.svg" style="display: none;">         <!-- 5 -->
-    <img id="fox1" src="./assets/fox4.svg" style="display: none;">           <!-- 201, na kytce 211 -->
-    <img id="fox2" src="./assets/fox2.svg" style="display: none;">           <!-- 202, na kytce 212 -->
-    <img id="fox3" src="./assets/fox1.svg" style="display: none;">           <!-- 203, na kytce 213 -->
-    <img id="fox4" src="./assets/fox3.svg" style="display: none;">           <!-- 204, na kytce 214 -->
-    <img id="chicken1" src="./assets/chicken1.svg" style="display: none;">   <!-- 301 -->
-    <img id="chicken2" src="./assets/chicken2.svg" style="display: none;">   <!-- 302 -->
-    <img id="tree1" src="./assets/tree1.svg" style="display: none;">         <!-- 11 -->
-    <img id="tree2" src="./assets/tree2.svg" style="display: none;">         <!-- 12 -->
-    <img id="tree3" src="./assets/tree3.svg" style="display: none;">         <!-- 13 -->
-    <img id="water1" src="./assets/water1.svg" style="display: none;">       <!-- 31 -->
-    <img id="water2" src="./assets/water2.svg" style="display: none;">       <!-- 32 -->
-    <img id="water3" src="./assets/water3.svg" style="display: none;">       <!-- 33 -->
-    <img id="water4" src="./assets/water4.svg" style="display: none;">       <!-- 34 -->
-    <img id="doghouse" src="./assets/dog-house.svg" style="display: none;">  <!-- 41 -->
-    <img id="barn" src="./assets/barn.svg" style="display: none;">           <!-- 42 -->
-    <img id="dog1" src="./assets/dog3.svg" style="display: none;">           <!-- 401 -->
-    <img id="dog2" src="./assets/dog1.svg" style="display: none;">           <!-- 402 -->
-    <img id="dog3" src="./assets/dog4.svg" style="display: none;">           <!-- 403 -->
-    <img id="dog4" src="./assets/dog2.svg" style="display: none;">           <!-- 404 -->
+    <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
+    <img id="grass2" src="./assets/grass2.svg" class="hidden">       <!-- 2 -->
+    <img id="grass3" src="./assets/grass3.svg" class="hidden">       <!-- 3 -->
+    <img id="hill1" src="./assets/hill1.svg" class="hidden">         <!-- 4 -->
+    <img id="hill2" src="./assets/hill2.svg" class="hidden">         <!-- 5 -->
+    <img id="fox1" src="./assets/fox4.svg" class="hidden">           <!-- 201, na kytce 211 -->
+    <img id="fox2" src="./assets/fox2.svg" class="hidden">           <!-- 202, na kytce 212 -->
+    <img id="fox3" src="./assets/fox1.svg" class="hidden">           <!-- 203, na kytce 213 -->
+    <img id="fox4" src="./assets/fox3.svg" class="hidden">           <!-- 204, na kytce 214 -->
+    <img id="chicken1" src="./assets/chicken1.svg" class="hidden">   <!-- 301 -->
+    <img id="chicken2" src="./assets/chicken2.svg" class="hidden">   <!-- 302 -->
+    <img id="tree1" src="./assets/tree1.svg" class="hidden">         <!-- 11 -->
+    <img id="tree2" src="./assets/tree2.svg" class="hidden">         <!-- 12 -->
+    <img id="tree3" src="./assets/tree3.svg" class="hidden">         <!-- 13 -->
+    <img id="water1" src="./assets/water1.svg" class="hidden">       <!-- 31 -->
+    <img id="water2" src="./assets/water2.svg" class="hidden">       <!-- 32 -->
+    <img id="water3" src="./assets/water3.svg" class="hidden">       <!-- 33 -->
+    <img id="water4" src="./assets/water4.svg" class="hidden">       <!-- 34 -->
+    <img id="doghouse" src="./assets/dog-house.svg" class="hidden">  <!-- 41 -->
+    <img id="barn" src="./assets/barn.svg" class="hidden">           <!-- 42 -->
+    <img id="dog1" src="./assets/dog3.svg" class="hidden">           <!-- 401 -->
+    <img id="dog2" src="./assets/dog1.svg" class="hidden">           <!-- 402 -->
+    <img id="dog3" src="./assets/dog4.svg" class="hidden">           <!-- 403 -->
+    <img id="dog4" src="./assets/dog2.svg" class="hidden">           <!-- 404 -->
   </main>
 
   <script>
@@ -115,25 +115,25 @@
       console.log('otoc vpravo');
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] + 1;
-      if(this.deska[x][y]==205) this.deska[x][y] = 201;           
+      if(this.deska[x][y]==205) this.deska[x][y] = 201;
     },
-    
+
     otoc_vlevo: function() {
       console.log('otoc vlevo');
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] - 1;
       if(this.deska[x][y]==200) this.deska[x][y] = 204;
     },
-    
+
     podminka_1: function() {
       console.log('over podminku');
       var [x, y] = this.najdi_alana();
       if(this.deska[x][y]>210 && this.deska[x][y]<215)
       {
-        alert(0); 
+        alert(0);
         return false;
       }
-      alert(1); 
+      alert(1);
       return true;
     },
 
@@ -166,79 +166,79 @@
               tile = document.getElementById("grass1");
               if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
           }
-          
+
           // trava2
           if (this.deska[x][y] == 2) {
               tile = document.getElementById("grass2");
               if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 - 0.5*scale, x*move_y/2 + y*move_y/2+50+0.2*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // trava3
           if (this.deska[x][y] == 3 || (this.deska[x][y] >= 211 && this.deska[x][y] >= 214)) {
               tile = document.getElementById("grass3");
               if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 - 1*scale, x*move_y/2 + y*move_y/2+50+0.4*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // hill1
           if (this.deska[x][y] == 4) {
               tile = document.getElementById("hill1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+ 1*scale, x*move_y/2 + y*move_y/2+50-24*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // hill2
           if (this.deska[x][y] == 5) {
               tile = document.getElementById("hill2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+ 1*scale, x*move_y/2 + y*move_y/2+50-24*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // strom1
           if (this.deska[x][y] == 11) {
               tile = document.getElementById("tree1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-58*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // strom2
           if (this.deska[x][y] == 12) {
               tile = document.getElementById("tree2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-19*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // strom3
           if (this.deska[x][y] == 13) {
               tile = document.getElementById("tree3");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-107*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // water1
           if (this.deska[x][y] == 31) {
               tile = document.getElementById("water1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
           }
-          
+
           // water2
           if (this.deska[x][y] == 32) {
               tile = document.getElementById("water2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
           }
-          
+
           // water3
           if (this.deska[x][y] == 33) {
               tile = document.getElementById("water3");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-63*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // water3
           if (this.deska[x][y] == 34) {
               tile = document.getElementById("water4");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // dog house
           if (this.deska[x][y] == 41) {
               tile = document.getElementById("doghouse");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50-20*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // dog house
           if (this.deska[x][y] == 42) {
               tile = document.getElementById("barn");
@@ -257,23 +257,23 @@
               tile = document.getElementById("chicken2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
           }
-          
-          // pes          
+
+          // pes
           if (this.deska[x][y] == 401) {
               tile = document.getElementById("dog1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+15*scale, x*move_y/2 + y*move_y/2+50-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
-          
+
           if (this.deska[x][y] == 402) {
               tile = document.getElementById("dog2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+5*scale, x*move_y/2 + y*move_y/2+50-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
-          
+
           if (this.deska[x][y] == 403) {
               tile = document.getElementById("dog3");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500-1*scale, x*move_y/2 + y*move_y/2+50-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
-          
+
           if (this.deska[x][y] == 404) {
               tile = document.getElementById("dog4");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+20*scale, x*move_y/2 + y*move_y/2+50-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
@@ -303,7 +303,7 @@
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
 
-          
+
 
         }
       }

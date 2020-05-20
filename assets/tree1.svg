@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="119px" height="134px" viewBox="0 0 119 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 12</title>
+<svg width="118px" height="132px" viewBox="0 0 118 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 6</title>
     <defs>
         <polygon id="path-1" points="44.343 51.95 0.509 26.64 44.063 0.62 87.896 26.64"></polygon>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="28_R2FtZV9jaGlrZW4tMDE" transform="translate(-700.000000, -956.000000)">
-            <g id="Group-12" transform="translate(700.748000, 956.367000)">
-                <polyline id="Fill-1633" fill="#5C8308" points="117.526 92.833 117.511 97.853 58.492 63.783 58.505 58.753 117.526 92.833"></polyline>
-                <polyline id="Fill-1635" fill="#85BC0C" points="117.67 93.023 117.657 98.053 59.02 132.133 59.035 127.103 117.67 93.023"></polyline>
-                <polyline id="Fill-1636" fill="#5C8308" points="59.035 127.103 59.02 132.133 -5.68434189e-14 98.053 0.015 93.023 59.035 127.103"></polyline>
-                <polyline id="Fill-1637" fill="#99D20D" points="117.67 93.023 59.034 127.103 0.015 93.023 58.651 58.953 117.67 93.023"></polyline>
-                <g id="Group-1640" transform="translate(16.252000, 65.633000)">
+        <g id="28_R2FtZV9jaGlrZW4tMDE" transform="translate(-891.000000, -1005.000000)">
+            <g id="Group-6" transform="translate(891.000000, 1005.000000)">
+                <g id="Group" transform="translate(0.000000, 58.000000)">
+                    <polyline id="Fill-750" fill="#85BC0C" points="58.65 0.13 58.635 5.16 -1.42108547e-14 39.23 0.014 34.2 58.65 0.13"></polyline>
+                    <polyline id="Fill-1042" fill="#85BC0C" points="117.833 34.08 117.819 39.11 59.182 73.18 59.197 68.15 117.833 34.08"></polyline>
+                    <polyline id="Fill-1043" fill="#5C8308" points="59.197 68.15 59.182 73.18 0.163 39.11 0.177 34.08 59.197 68.15"></polyline>
+                    <polyline id="Fill-1044" fill="#99D20D" points="117.833 34.08 59.197 68.15 0.177 34.08 58.813 4.26325641e-14 117.833 34.08"></polyline>
+                </g>
+                <g id="Group-1640" transform="translate(14.000000, 65.633000)">
                     <mask id="mask-2" fill="white">
                         <use xlink:href="#path-1"></use>
                     </mask>
                     <g id="Clip-1639"></g>
                     <polygon id="Fill-1638" fill="#74A60D" mask="url(#mask-2)" points="0.509 51.95 87.896 51.95 87.896 0.62 0.509 0.62"></polygon>
                 </g>
-                <polyline id="Fill-1641" fill="#447701" points="60.595 110.253 60.315 32.83 16.761 84.943 60.595 110.253"></polyline>
-                <polyline id="Fill-1642" fill="#58960F" points="60.315 32.83 60.595 110.253 104.148 84.933 60.315 32.83"></polyline>
-                <polyline id="Fill-1643" fill="#346603" points="31.831 66.913 60.497 83.463 60.442 67.773 40.656 56.353 31.831 66.913"></polyline>
-                <polyline id="Fill-1644" fill="#447701" points="80.202 56.473 60.595 67.863 60.595 83.513 89.045 66.983 80.202 56.473"></polyline>
-                <polyline id="Fill-1645" fill="#447701" points="60.56 73.033 60.35 14.906 27.652 54.033 60.56 73.033"></polyline>
-                <polyline id="Fill-1646" fill="#58960F" points="60.35 14.906 60.56 73.033 93.258 54.023 60.35 14.906"></polyline>
-                <polyline id="Fill-1647" fill="#346603" points="38.965 40.492 60.487 52.923 60.445 41.142 45.59 32.566 38.965 40.492"></polyline>
-                <polyline id="Fill-1648" fill="#447701" points="75.28 32.654 60.56 41.208 60.56 52.963 81.919 40.547 75.28 32.654"></polyline>
-                <polyline id="Fill-1649" fill="#447701" points="60.533 43.253 60.376 -3.19744231e-14 36.043 29.114 60.533 43.253"></polyline>
-                <polyline id="Fill-1650" fill="#58960F" points="60.376 -3.19744231e-14 60.533 43.253 84.866 29.113 60.376 -3.19744231e-14"></polyline>
+                <polyline id="Fill-1641" fill="#447701" points="58.343 110.253 58.063 32.83 14.509 84.943 58.343 110.253"></polyline>
+                <polyline id="Fill-1642" fill="#58960F" points="58.063 32.83 58.343 110.253 101.896 84.933 58.063 32.83"></polyline>
+                <polyline id="Fill-1643" fill="#346603" points="29.579 66.913 58.245 83.463 58.19 67.773 38.404 56.353 29.579 66.913"></polyline>
+                <polyline id="Fill-1644" fill="#447701" points="77.95 56.473 58.343 67.863 58.343 83.513 86.793 66.983 77.95 56.473"></polyline>
+                <polyline id="Fill-1645" fill="#447701" points="58.308 73.033 58.098 14.906 25.4 54.033 58.308 73.033"></polyline>
+                <polyline id="Fill-1646" fill="#58960F" points="58.098 14.906 58.308 73.033 91.006 54.023 58.098 14.906"></polyline>
+                <polyline id="Fill-1647" fill="#346603" points="36.713 40.492 58.235 52.923 58.193 41.142 43.338 32.566 36.713 40.492"></polyline>
+                <polyline id="Fill-1648" fill="#447701" points="73.028 32.654 58.308 41.208 58.308 52.963 79.667 40.547 73.028 32.654"></polyline>
+                <polyline id="Fill-1649" fill="#447701" points="58.281 43.253 58.124 -2.84217094e-14 33.791 29.114 58.281 43.253"></polyline>
+                <polyline id="Fill-1650" fill="#58960F" points="58.124 -2.84217094e-14 58.281 43.253 82.614 29.113 58.124 -2.84217094e-14"></polyline>
             </g>
         </g>
     </g>
