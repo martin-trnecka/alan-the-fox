@@ -15,7 +15,7 @@ Blockly.Blocks['krok'] = {
 Blockly.Blocks['opakuj'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Opakuj")
+        .appendField("opakuj")
         .appendField(new Blockly.FieldNumber(0, 0), "i");
     this.appendStatementInput("NAME")
         .setCheck(null);
@@ -30,7 +30,7 @@ Blockly.Blocks['opakuj'] = {
 Blockly.Blocks['opakuj_p1'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Opakuj dokud není")
+        .appendField("opakuj dokud není")
         .appendField(new Blockly.FieldImage("./assets/grass3.svg", 32, 32));
     this.appendStatementInput("NAME")
         .setCheck(null);
