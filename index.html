@@ -21,30 +21,30 @@
 
     <canvas id="deska" width="1180" height="700"></canvas>
 
-    <img id="grass1" src="./assets/grass1.svg">       <!-- 1 -->
-    <img id="grass2" src="./assets/grass2.svg">       <!-- 2 -->
-    <img id="grass3" src="./assets/grass3.svg">       <!-- 3 -->
-    <img id="hill1" src="./assets/hill1.svg">         <!-- 4 -->
-    <img id="hill2" src="./assets/hill2.svg">         <!-- 5 -->
-    <img id="fox1" src="./assets/fox4.svg">           <!-- 201, na kytce 211 -->
-    <img id="fox2" src="./assets/fox2.svg">           <!-- 202, na kytce 212 -->
-    <img id="fox3" src="./assets/fox1.svg">           <!-- 203, na kytce 213 -->
-    <img id="fox4" src="./assets/fox3.svg">           <!-- 204, na kytce 214 -->
-    <img id="chicken1" src="./assets/chicken1.svg">   <!-- 301 -->
-    <img id="chicken2" src="./assets/chicken2.svg">   <!-- 302 -->
-    <img id="tree1" src="./assets/tree1.svg">         <!-- 11 -->
-    <img id="tree2" src="./assets/tree2.svg">         <!-- 12 -->
-    <img id="tree3" src="./assets/tree3.svg">         <!-- 13 -->
-    <img id="water1" src="./assets/water1.svg">       <!-- 31 -->
-    <img id="water2" src="./assets/water2.svg">       <!-- 32 -->
-    <img id="water3" src="./assets/water3.svg">       <!-- 33 -->
-    <img id="water4" src="./assets/water4.svg">       <!-- 34 -->
-    <img id="doghouse" src="./assets/dog-house.svg">  <!-- 41 -->
-    <img id="barn" src="./assets/barn.svg">           <!-- 42 -->
-    <img id="dog1" src="./assets/dog3.svg">           <!-- 401 -->
-    <img id="dog2" src="./assets/dog1.svg">           <!-- 402 -->
-    <img id="dog3" src="./assets/dog4.svg">           <!-- 403 -->
-    <img id="dog4" src="./assets/dog2.svg">           <!-- 404 -->
+    <img id="grass1" src="./assets/grass1.svg" style="display: none;">       <!-- 1 -->
+    <img id="grass2" src="./assets/grass2.svg" style="display: none;">       <!-- 2 -->
+    <img id="grass3" src="./assets/grass3.svg" style="display: none;">       <!-- 3 -->
+    <img id="hill1" src="./assets/hill1.svg" style="display: none;">         <!-- 4 -->
+    <img id="hill2" src="./assets/hill2.svg" style="display: none;">         <!-- 5 -->
+    <img id="fox1" src="./assets/fox4.svg" style="display: none;">           <!-- 201, na kytce 211 -->
+    <img id="fox2" src="./assets/fox2.svg" style="display: none;">           <!-- 202, na kytce 212 -->
+    <img id="fox3" src="./assets/fox1.svg" style="display: none;">           <!-- 203, na kytce 213 -->
+    <img id="fox4" src="./assets/fox3.svg" style="display: none;">           <!-- 204, na kytce 214 -->
+    <img id="chicken1" src="./assets/chicken1.svg" style="display: none;">   <!-- 301 -->
+    <img id="chicken2" src="./assets/chicken2.svg" style="display: none;">   <!-- 302 -->
+    <img id="tree1" src="./assets/tree1.svg" style="display: none;">         <!-- 11 -->
+    <img id="tree2" src="./assets/tree2.svg" style="display: none;">         <!-- 12 -->
+    <img id="tree3" src="./assets/tree3.svg" style="display: none;">         <!-- 13 -->
+    <img id="water1" src="./assets/water1.svg" style="display: none;">       <!-- 31 -->
+    <img id="water2" src="./assets/water2.svg" style="display: none;">       <!-- 32 -->
+    <img id="water3" src="./assets/water3.svg" style="display: none;">       <!-- 33 -->
+    <img id="water4" src="./assets/water4.svg" style="display: none;">       <!-- 34 -->
+    <img id="doghouse" src="./assets/dog-house.svg" style="display: none;">  <!-- 41 -->
+    <img id="barn" src="./assets/barn.svg" style="display: none;">           <!-- 42 -->
+    <img id="dog1" src="./assets/dog3.svg" style="display: none;">           <!-- 401 -->
+    <img id="dog2" src="./assets/dog1.svg" style="display: none;">           <!-- 402 -->
+    <img id="dog3" src="./assets/dog4.svg" style="display: none;">           <!-- 403 -->
+    <img id="dog4" src="./assets/dog2.svg" style="display: none;">           <!-- 404 -->
   </main>
 
   <script>
@@ -53,31 +53,27 @@
   // Alan the fox
   var hra = {
     hra_prodleva: 2000, // udava prodlevu ve volani zakladnich procedur
-    deska: [
-            [ 31, 31, 31, 31,  1,  1,  1,  1, 34, 31],
-            [ 32,  1,  1,  1,  2,  1,  1,  1, 33, 33],
-            [  2,  1,  1,  1,202,  2,  1,  1, 31, 31],
-            [  1,  1,  1,  1,  1,  1,  1,  1,  1,  1],
-            [  1,  1,  1,  2,  2,  1,  2,  1,  2,  2],
-            [ 41,401,  1,  1,  1,  1,  2,  1,  1, 41],
-            [  1,  1,  1,  1,  2,  1,  2,  1,  2,  1],
-            [  1,  2,  1,  2,302,  1,  1, 31, 31, 31],
-            [ 31,  2,  2,  2,  1,  1, 31, 31, 31, 31],
-            [ 31, 33, 31,  1,  1,  1, 31, 31, 33, 31]
-          ],
+    deska:  [[302,  1,  1, 11, 12, 11, 11,  1,  1,302],
+             [  1, 31,  1,  2,  1,  1,  1,  1, 31,  1],
+             [  2,  1, 32, 32, 31, 31, 31, 31,202,  1],
+             [ 11,  1, 31, 31, 31, 31, 31, 31,  1, 11],
+             [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
+             [ 12,  1, 31, 31, 41,  1, 31, 31,  1, 12],
+             [ 11,  1, 31, 31, 31, 31, 31, 34,  1, 12],
+             [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
+             [  1, 32,  1,  2,  1,  1,  1,  1, 33,  1],
+             [301,  1,  1, 12, 12, 12, 13,  1,  1,301]],
 
-    deska_original: [
-            [301,  0,  0,  0,  0,  0,  0,  0,  0,301],
-            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
-            [  1,  1,  0,  0,  0,  0,  0,  0,  0,  1],
-            [  1,  1,  1,  1, 11,  1,  1,  0,  0,  1],
-            [  1,  1,  1,  1,  1,  1,  1,  0,  0,  1],
-            [  1,  0,  1,  0,  1,  1,  1,302,  0,  1],
-            [  1,  0,  1,  1,  1,  1,  1,  1,  1,  1],
-            [  1,  0,  0,  0,  1,  1,  1,  1,  1,  1],
-            [  1,  0,  0,  0,  0,301,  1,  1,  1,  1],
-            [301,  1,  0,  0,  0,  0,  4,  5,  1,301]
-          ],
+    deska_original: [[302,  1,  1, 11, 12, 11, 11,  1,  1,302],
+                     [  1, 31,  1,  2,  1,  1,  1,  1, 31,  1],
+                     [  2,  1, 32, 32, 31, 31, 31, 31,  2,  1],
+                     [ 11,  1, 31, 31, 31, 31, 31, 31,  1, 11],
+                     [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
+                     [ 12,  1, 31, 31, 41,  1, 31, 31,  1, 12],
+                     [ 11,  1, 31, 31, 31, 31, 31, 34,  1, 12],
+                     [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
+                     [  1, 32,  1,  2,  1,  1,  1,  1, 33,  1],
+                     [301,  1,  1, 12, 12, 12, 13,  1,  1,301]],
 
     proved: function(instrukce) {
         //TODO: pausa
@@ -115,18 +111,18 @@
       }
     },
 
+    otoc_vpravo: function() {
+      console.log('otoc vpravo');
+      var [x, y] = this.najdi_alana();
+      this.deska[x][y] = this.deska[x][y] + 1;
+      if(this.deska[x][y]==205) this.deska[x][y] = 201;           
+    },
+    
     otoc_vlevo: function() {
       console.log('otoc vlevo');
-      for (var x = 0; x < 10; x++) {
-        for (var y = 0; y < 10; y++) {
-          if (this.deska[x][y]>200 && this.deska[x][y]<300)
-          {
-           this.deska[x][y] = this.deska[x][y] + 1;
-           if(this.deska[x][y]==205) this.deska[x][y] = 201;
-           return;
-          }
-        }
-      }
+      var [x, y] = this.najdi_alana();
+      this.deska[x][y] = this.deska[x][y] - 1;
+      if(this.deska[x][y]==200) this.deska[x][y] = 204;
     },
 
     // najde lišku
@@ -162,7 +158,7 @@
           // trava2
           if (this.deska[x][y] == 2) {
               tile = document.getElementById("grass2");
-              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 - 1*scale, x*move_y/2 + y*move_y/2+50+0.5*scale, tile.width*scale, tile.height*scale);
+              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 - 0.5*scale, x*move_y/2 + y*move_y/2+50+0.2*scale, tile.width*scale, tile.height*scale);
           }
           
           // trava3
@@ -321,6 +317,7 @@ hra.nakresli_mapu();
   <block type="krok"></block>
   <block type="seber_slepici"></block>
   <block type="otoc_vlevo"></block>
+  <block type="otoc_vpravo"></block>
   <block type="opakuj"></block>
 </xml>
 

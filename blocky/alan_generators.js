@@ -23,3 +23,8 @@ Blockly.JavaScript['otoc_vlevo'] = function(block) {
   var code = 'hra.proved("hra.otoc_vlevo()");\n';
   return code;
 };
+
+Blockly.JavaScript['otoc_vpravo'] = function(block) {
+  var code = 'hra.proved("hra.otoc_vpravo()");\n';
+  return code;
+};
