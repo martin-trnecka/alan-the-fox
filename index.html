@@ -30,8 +30,8 @@
     <img id="fox2" src="./assets/fox2.svg">           <!-- 202, na kytce 212 -->
     <img id="fox3" src="./assets/fox1.svg">           <!-- 203, na kytce 213 -->
     <img id="fox4" src="./assets/fox3.svg">           <!-- 204, na kytce 214 -->
-    <img id="chicken1" src="./assets/chicken1.svg">
-    <img id="chicken2" src="./assets/chicken2.svg">
+    <img id="chicken1" src="./assets/chicken1.svg">   <!-- 301 -->
+    <img id="chicken2" src="./assets/chicken2.svg">   <!-- 302 -->
     <img id="tree1" src="./assets/tree1.svg">         <!-- 11 -->
     <img id="tree2" src="./assets/tree2.svg">         <!-- 12 -->
     <img id="tree3" src="./assets/tree3.svg">         <!-- 13 -->
@@ -54,16 +54,16 @@
   var hra = {
     hra_prodleva: 2000, // udava prodlevu ve volani zakladnich procedur
     deska: [
-            [301, 31, 31, 31, 31, 31, 31,  1,  1,301],
-            [  1,  1, 31, 32, 33, 34, 31, 31, 31,  1],
-            [  1,  1,  1,  1,  1,  1,  1,  1, 31,  1],
-            [  1,  3,  2,  1, 11, 12, 13,  1,  1,  1],
-            [  1,  1,  1,  1,  1,  1,  1,  1,404,  1],
-            [  1, 41,  1,  1,211,  1,  1,302,  1,  1],
-            [  1,  1,  1,  1,  1,  1,  1,  1,  1, 42],
-            [  1,401,  1,402,  1,  1,  1,403,  1,  1],
-            [  1,  1,  1,  1,  1,301,  1,  1,  1,  1],
-            [301,  1,  1,  1,  4,  4,  1,  5,  1,301]
+            [ 31, 31, 31, 31,  1,  1,  1,  1, 34, 31],
+            [ 32,  1,  1,  1,  2,  1,  1,  1, 33, 33],
+            [  2,  1,  1,  1,202,  2,  1,  1, 31, 31],
+            [  1,  1,  1,  1,  1,  1,  1,  1,  1,  1],
+            [  1,  1,  1,  2,  2,  1,  2,  1,  2,  2],
+            [ 41,401,  1,  1,  1,  1,  2,  1,  1, 41],
+            [  1,  1,  1,  1,  2,  1,  2,  1,  2,  1],
+            [  1,  2,  1,  2,302,  1,  1, 31, 31, 31],
+            [ 31,  2,  2,  2,  1,  1, 31, 31, 31, 31],
+            [ 31, 33, 31,  1,  1,  1, 31, 31, 33, 31]
           ],
 
     deska_original: [
@@ -146,6 +146,9 @@
       var context = elem.getContext('2d');
 
       var scale = 0.9;
+      tile1 = document.getElementById("grass1");
+      var move_x = tile1.width*scale;
+      var move_y = tile1.height*scale - 5*0.9;
 
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
@@ -153,8 +156,6 @@
           // prázdné políčko
           if (this.deska[x][y] == 1 || this.deska[x][y] > 200) {
               tile = document.getElementById("grass1");
-              var move_x = tile.width*scale;
-              var move_y = tile.height*scale - 5*0.9;
               if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
           }
           
