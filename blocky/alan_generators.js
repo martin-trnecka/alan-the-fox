@@ -14,6 +14,16 @@ Blockly.JavaScript['opakuj'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['opakuj_p1'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+
+  var code = '{\n';
+  code += 'while(hra.proved("hra.podminka_1()")) {\n';
+  code += statements_name;
+  code += '}}\n';
+  return code;
+};
+
 Blockly.JavaScript['seber_slepici'] = function(block) {
   var code = 'hra.proved("hra.seber_slepici()");\n';
   return code;

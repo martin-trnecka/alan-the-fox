@@ -27,6 +27,21 @@ Blockly.Blocks['opakuj'] = {
   }
 };
 
+Blockly.Blocks['opakuj_p1'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Opakuj dokud není")
+        .appendField(new Blockly.FieldImage("./assets/grass3.svg", 32, 32));
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#25b8bf");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 
 Blockly.Blocks['seber_slepici'] = {
   init: function() {

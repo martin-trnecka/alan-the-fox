@@ -124,6 +124,18 @@
       this.deska[x][y] = this.deska[x][y] - 1;
       if(this.deska[x][y]==200) this.deska[x][y] = 204;
     },
+    
+    podminka_1: function() {
+      console.log('over podminku');
+      var [x, y] = this.najdi_alana();
+      if(this.deska[x][y]>210 && this.deska[x][y]<215)
+      {
+        alert(0); 
+        return false;
+      }
+      alert(1); 
+      return true;
+    },
 
     // najde lišku
     najdi_alana: function() {
@@ -237,13 +249,13 @@
           // slepice
           if (this.deska[x][y] == 301) {
               tile = document.getElementById("chicken1");
-              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
           }
 
           // slepice
           if (this.deska[x][y] == 302) {
               tile = document.getElementById("chicken2");
-              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
           }
           
           // pes          
@@ -319,6 +331,7 @@ hra.nakresli_mapu();
   <block type="otoc_vlevo"></block>
   <block type="otoc_vpravo"></block>
   <block type="opakuj"></block>
+  <block type="opakuj_p1"></block>
 </xml>
 
 <script>
