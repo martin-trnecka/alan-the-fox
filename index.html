@@ -19,7 +19,12 @@
 
   <main>
 
-    <canvas id="deska" width="1105" height="700"></canvas>
+    <div style="display: flex">
+      <canvas id="deska" width="1105" height="700"></canvas>
+      <div id="blocklyDiv" style="height: 480px; width: 600px; float: left;"></div>
+      <textarea id="textarea" style="height: 480px; width: 200px; float: left;"></textarea>
+      <button onclick="run();">RUN</button>
+    </div>
 
     <!-- assets -->
     <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
@@ -500,27 +505,31 @@ function smycka() {
 
         if(hra.prikazy[hra.instrukce]=='KROK') {
           hra.krok();
+          hra.nakresli_mapu();
         }
 
         if(hra.prikazy[hra.instrukce]=='SEBER_SLEPICI') {
           hra.seber_slepici();
+          hra.nakresli_mapu();
         }
 
         if(hra.prikazy[hra.instrukce]=='OTOC_VLEVO') {
           hra.otoc_vlevo();
+          hra.nakresli_mapu();
         }
 
         if(hra.prikazy[hra.instrukce]=='OTOC_VPRAVO') {
           hra.otoc_vpravo();
+          hra.nakresli_mapu();
         }
     }
     catch (e) {
       alert(e);
     }
 
-    hra.nakresli_mapu();
+
     hra.instrukce += 1;
-    setTimeout(function(){window.requestAnimationFrame(smycka)}, 500);
+    setTimeout(function(){window.requestAnimationFrame(smycka)}, 60);
   }
 
 
@@ -534,11 +543,7 @@ hra.nakresli_mapu();
 
 
 
-<div id="blocklyDiv" style="height: 480px; width: 600px; float: left;"></div>
 
-
-<textarea id="textarea" style="height: 480px; width: 600px;"></textarea>
-<button onclick="run();">RUN</button>
 
 <xml id="toolbox" style="display: none">
   <block type="krok"></block>
