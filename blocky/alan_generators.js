@@ -17,10 +17,10 @@ Blockly.JavaScript['opakuj'] = function(block) {
 Blockly.JavaScript['opakuj_p1'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
 
-  var code = '{\n';
-  code += 'while(hra.proved("hra.podminka_1()")) {\n';
+  var code = '{let i=5;\n';
+  code += 'while(hra.podminka_1() && i>0) {\n';
   code += statements_name;
-  code += '}}\n';
+  code += 'i--;}}\n';
   return code;
 };
 

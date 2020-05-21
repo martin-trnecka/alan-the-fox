@@ -31,7 +31,7 @@ Blockly.Blocks['opakuj_p1'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("opakuj dokud není")
-        .appendField(new Blockly.FieldImage("./assets/grass3.svg", 32, 32));
+        .appendField(new Blockly.FieldImage("./assets/flower1.svg", 32, 32));
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(true, null);
