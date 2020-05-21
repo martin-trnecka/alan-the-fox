@@ -21,6 +21,7 @@
 
     <canvas id="deska" width="1105" height="700"></canvas>
 
+    <!-- assets -->
     <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
     <img id="grass2" src="./assets/grass2.svg" class="hidden">       <!-- 2 -->
     <img id="grass3" src="./assets/grass3.svg" class="hidden">       <!-- 3 -->
@@ -62,6 +63,7 @@
 
   <script>
 
+
   // TODO: uchovavat pozici lisky a smer lisky v promenne
   // Alan the fox
   var hra = {
@@ -88,15 +90,6 @@
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
 
-    proved: function(instrukce) {
-        //TODO: pausa
-        try {
-          eval(instrukce);
-        } catch (e) {
-        alert(e);
-      }
-      this.nakresli_mapu();
-    },
 
     krok: function() {
       console.log('krok vpřed');
@@ -105,23 +98,19 @@
 
       // TODO: výjimky
       var [x, y] = this.najdi_alana();
-      if(this.deska[x][y]==201 || this.deska[x][y]==211 || this.deska[x][y]==221 || this.deska[x][y]==231)
-      {
+      if(this.deska[x][y]==201 || this.deska[x][y]==211 || this.deska[x][y]==221 || this.deska[x][y]==231) {
         new_x = x;
-        new_y = y+1;      
-      } 
-      if(this.deska[x][y]==202 || this.deska[x][y]==212 || this.deska[x][y]==222 || this.deska[x][y]==232)
-      {
+        new_y = y+1;
+      }
+      if(this.deska[x][y]==202 || this.deska[x][y]==212 || this.deska[x][y]==222 || this.deska[x][y]==232) {
         new_x = x+1;
         new_y = y;
       }
-      if(this.deska[x][y]==203 || this.deska[x][y]==213 || this.deska[x][y]==223 || this.deska[x][y]==233)
-      {
+      if(this.deska[x][y]==203 || this.deska[x][y]==213 || this.deska[x][y]==223 || this.deska[x][y]==233) {
         new_x = x;
         new_y = y-1;
       }
-      if(this.deska[x][y]==204 || this.deska[x][y]==214 || this.deska[x][y]==224 || this.deska[x][y]==234)
-      {
+      if(this.deska[x][y]==204 || this.deska[x][y]==214 || this.deska[x][y]==224 || this.deska[x][y]==234) {
         new_x = x-1;
         new_y = y;
       }
@@ -130,35 +119,33 @@
       {
         alert("Lisak pres palubu");
       }
-      
+
       if(zakazane.includes(this.deska[new_x][new_y]))
       {
         alert("Au");
       }
-      
-      if(this.deska[x][y] > 210 && this.deska[x][y] < 215)   //odstraneni podminkz u lisky
-        this.deska[x][y]=this.deska[x][y]-10;
-        
+
+      if(this.deska[x][y] > 210 && this.deska[x][y] < 215)   //odstraneni podminky u lisky
+        this.deska[x][y] -=10;
+
       if(this.deska[x][y] > 220 && this.deska[x][y] < 225)
-        this.deska[x][y]=this.deska[x][y]-20;
-      
+        this.deska[x][y] -=20;
+
       if(this.deska[x][y] > 230 && this.deska[x][y] < 235)
-        this.deska[x][y]=this.deska[x][y]-30;
-        
-      
+        this.deska[x][y] -=30;
+
       this.deska[new_x][new_y]=this.deska[x][y];
-      
+
       if(this.deska_original[new_x][new_y]==501)            //podminka
-        this.deska[new_x][new_y] = this.deska[new_x][new_y] +10;
-        
+        this.deska[new_x][new_y] += 10;
+
       if(this.deska_original[new_x][new_y]==502)            //podminka
-        this.deska[new_x][new_y] = this.deska[new_x][new_y] +20;
-        
+        this.deska[new_x][new_y] += 20;
+
       if(this.deska_original[new_x][new_y]==503)            //podminka
-        this.deska[new_x][new_y] = this.deska[new_x][new_y] +30;
+        this.deska[new_x][new_y] += 30;
 
       //console.log(JSON.stringify(this.deska));
-
       this.deska[x][y] = this.deska_original[x][y] ;
     },
 
@@ -185,7 +172,7 @@
       if(this.deska[x][y]==200) this.deska[x][y] = 204;
     },
 
-    podminka_1: function() {
+    podminka_P1: function() {
       console.log('over podminku');
       var [x, y] = this.najdi_alana();
       if(this.deska[x][y]>210 && this.deska[x][y]<215)
@@ -208,8 +195,11 @@
     },
 
     nakresli_mapu: function() {
+      console.log('map rendering...');
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
+
+      context.clearRect(0, 0, elem.width, elem.height);
 
       var scale = 0.9;
       tile1 = document.getElementById("grass1");
@@ -218,7 +208,6 @@
 
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
-
           // prázdné políčko
           if (this.deska[x][y] == 1 || this.deska[x][y] > 200) {
               tile = document.getElementById("grass1");
@@ -250,14 +239,14 @@
               tile = document.getElementById("hill2");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+ 1*scale, x*move_y/2 + y*move_y/2+50-24*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // trava4
           if (this.deska[x][y] == 6) {
               tile = document.getElementById("grass4");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // trava5
           if (this.deska[x][y] == 7) {
               tile = document.getElementById("grass5");
@@ -285,7 +274,7 @@
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // strom4
           if (this.deska[x][y] == 14) {
               tile = document.getElementById("tree4");
@@ -320,21 +309,21 @@
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // water5
           if (this.deska[x][y] == 35) {
               tile = document.getElementById("water5");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // water6
           if (this.deska[x][y] == 36) {
               tile = document.getElementById("water6");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // water7
           if (this.deska[x][y] == 37) {
               tile = document.getElementById("water7");
@@ -355,28 +344,28 @@
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // carrot
           if (this.deska[x][y] == 43) {
               tile = document.getElementById("carrot");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // fence1
           if (this.deska[x][y] == 51) {
               tile = document.getElementById("fence1");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // fence2
           if (this.deska[x][y] == 52) {
               tile = document.getElementById("fence2");
               var dif_y = tile1.height - tile.height;
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           // fence3
           if (this.deska[x][y] == 53) {
               tile = document.getElementById("fence3");
@@ -441,7 +430,7 @@
               tile = document.getElementById("fox4");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
           }
-          
+
           if (this.deska[x][y] == 501|| (this.deska[x][y] > 210 && this.deska[x][y] < 215 )) {
               tile = document.getElementById("flower1");
               context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 + 2*tile.width*scale, x*move_y/2 + y*move_y/2+50 + tile.width*scale/2, tile.width*scale, tile.height*scale);
@@ -459,12 +448,86 @@
 
         }
       }
+    },
+
+
+    // vykonavani herni smycky
+    proved: function(instrukce) {
+
+      // implementuje zasobnikove vyhodnocovani
+      this.prikazy = instrukce.split(/ |\n/);
+      this.instrukce = 0;
+      this.zasobnik = [];
+
+      window.requestAnimationFrame(smycka);
+    },
+  }
+
+
+function smycka() {
+    try {
+        if(hra.instrukce>=hra.prikazy.length) return;
+
+        if(hra.prikazy[hra.instrukce]=='OPAKUJ') {
+          hra.zasobnik.push(['OPAKUJ', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a cislo
+          hra.instrukce += 2; // nasledujici instrukce
+        }
+
+        if(hra.prikazy[hra.instrukce]=='WHILE') {
+          hra.zasobnik.push(['WHILE', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a typ podminky
+          hra.instrukce += 2; // nasledujici instrukce
+        }
+
+        if(hra.prikazy[hra.instrukce]=='END') {
+          vrchol = hra.zasobnik.pop();
+
+          if (vrchol[0]=='OPAKUJ') {
+            if(vrchol[2] > 1) {
+              vrchol[2] -= 1;
+              hra.instrukce = vrchol[1];
+              hra.zasobnik.push(vrchol);
+            }
+          }
+
+          if (vrchol[0]=='WHILE') {
+            if(vrchol[2]=='P1') {
+              if(hra.podminka_P1) {
+                hra.zasobnik.push(vrchol);
+              }
+            }
+          }
+        }
+
+        if(hra.prikazy[hra.instrukce]=='KROK') {
+          hra.krok();
+        }
+
+        if(hra.prikazy[hra.instrukce]=='SEBER_SLEPICI') {
+          hra.seber_slepici();
+        }
+
+        if(hra.prikazy[hra.instrukce]=='OTOC_VLEVO') {
+          hra.otoc_vlevo();
+        }
+
+        if(hra.prikazy[hra.instrukce]=='OTOC_VPRAVO') {
+          hra.otoc_vpravo();
+        }
     }
+    catch (e) {
+      alert(e);
+    }
+
+    hra.nakresli_mapu();
+    hra.instrukce += 1;
+    setTimeout(function(){window.requestAnimationFrame(smycka)}, 500);
   }
 
 
 hra.nakresli_mapu();
-  </script>
+
+
+</script>
 
 
 
@@ -505,11 +568,7 @@ workspace.addChangeListener(myUpdateFunction);
 function run() {
   var code = Blockly.JavaScript.workspaceToCode(workspace);
 
-  try {
-    eval(code);
-  } catch (e) {
-  alert(e);
-}
+  hra.proved(code);
 }
 </script>
 
