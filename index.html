@@ -120,14 +120,12 @@
         new_y = y;
       }
 
-      if(new_x < 0 || new_x>10 || new_y <0 || new_y >10)
-      {
-        alert("Lisak pres palubu");
+      if(new_x < 0 || new_x>10 || new_y <0 || new_y >10) {
+        throw "lisak pres palubu";
       }
 
-      if(zakazane.includes(this.deska[new_x][new_y]))
-      {
-        alert("Au");
+      if(zakazane.includes(this.deska[new_x][new_y])) {
+        throw "zakazane";
       }
 
       if(this.deska[x][y] > 210 && this.deska[x][y] < 215)   //odstraneni podminky u lisky
@@ -209,7 +207,7 @@
       var scale = 0.9;
       tile1 = document.getElementById("grass1");
       var move_x = tile1.width*scale;
-      var move_y = tile1.height*scale - 5*0.9;
+      var move_y = tile1.height*scale - 5*scale;
 
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
@@ -455,6 +453,30 @@
       }
     },
 
+    hlaseni: function(x, y, hlaseni) {
+      var elem = document.getElementById('deska');
+      var context = elem.getContext('2d');
+
+      //TODO doladit posun podle postavicky na policku
+      var scale = 0.9;
+      tile1 = document.getElementById("grass1");
+      var move_x = tile1.width*scale;
+      var move_y = tile1.height*scale - 5*scale;
+      var okraj = 5;
+      var font = 12;
+      context.font =  font +"pt arial";
+      var text_width = context.measureText(hlaseni).width;
+      var text_height= context.measureText(hlaseni).height;
+      context.fillStyle = "#fff";
+      context.strokeStyle = "#aaa"
+      context.lineWidth = 1;
+      context.fillRect(x*(-move_x/2) + y*move_x/2 + 500-text_width-okraj, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+      context.strokeRect(x*(-move_x/2) + y*move_x/2 + 500-text_width-okraj, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+      context.fillStyle = "black";
+      context.textAlign = "center";
+      context.textBaseline = 'middle';
+      context.fillText(hlaseni, x*(-move_x/2) + y*move_x/2 + 500-text_width/2, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale);
+    },
 
     // vykonavani herni smycky
     proved: function(instrukce) {
@@ -524,7 +546,19 @@ function smycka() {
         }
     }
     catch (e) {
-      alert(e);
+      if(e=="lisak pres palubu") {
+        var [x,y] = hra.najdi_alana();
+        hra.hlaseni(x, y, "Tam nechci.")
+      }
+
+      else if(e=="zakazane") {
+        var [x,y] = hra.najdi_alana();
+        hra.hlaseni(x, y, "Tam nemůžu.")
+      }
+
+      else {
+        alert(e);
+      }
     }
 
 
@@ -534,6 +568,9 @@ function smycka() {
 
 
 hra.nakresli_mapu();
+hra.hlaseni(3,9, "tak jdeme na to");
+
+hra.hlaseni(5,6, "haf");
 
 
 </script>
