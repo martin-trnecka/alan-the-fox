@@ -18,53 +18,92 @@
 <body>
 
   <main>
+      <div class="mapa">
+        <canvas id="deska" width="1000" height="700"></canvas>
 
-    <div style="display: flex">
-      <canvas id="deska" width="1105" height="700"></canvas>
-      <div id="blocklyDiv" style="height: 480px; width: 600px; float: left;"></div>
-      <textarea id="textarea" style="height: 480px; width: 200px; float: left;"></textarea>
-      <button onclick="run();">RUN</button>
-    </div>
+        <div class="levels">
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">2</a>
+          <a href="#" class="level">3</a>
+          <a href="#" class="level">4</a>
+          <a href="#" class="level">5</a>
+          <a href="#" class="level">6</a>
+          <a href="#" class="level">7</a>
+          <a href="#" class="level">8</a>
+          <a href="#" class="level">9</a>
+          <a href="#" class="level">10</a>
+          <a href="#" class="level">11</a>
+          <a href="#" class="level">12</a>
+          <a href="#" class="level">13</a>
+          <a href="#" class="level">14</a>
+          <a href="#" class="level">15</a>
+          <a href="#" class="level">16</a>
+          <a href="#" class="level">17</a>
+          <a href="#" class="level">18</a>
+          <a href="#" class="level">19</a>
+          <a href="#" class="level">20</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">1</a>
+          <a href="#" class="level">999</a>
+          <a href="#" class="level">111</a>
+        </div>
+      </div>
 
-    <!-- assets -->
-    <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
-    <img id="grass2" src="./assets/grass2.svg" class="hidden">       <!-- 2 -->
-    <img id="grass3" src="./assets/grass3.svg" class="hidden">       <!-- 3 -->
-    <img id="hill1" src="./assets/hill1.svg" class="hidden">         <!-- 4 -->
-    <img id="hill2" src="./assets/hill2.svg" class="hidden">         <!-- 5 -->
-    <img id="grass4" src="./assets/grass4.svg" class="hidden">       <!-- 6 -->
-    <img id="grass5" src="./assets/grass5.svg" class="hidden">       <!-- 7 -->
-    <img id="fox1" src="./assets/fox4.svg" class="hidden">           <!-- 201, na kytce 211, 221, 231 -->
-    <img id="fox2" src="./assets/fox2.svg" class="hidden">           <!-- 202, na kytce 212, 222, 232 -->
-    <img id="fox3" src="./assets/fox1.svg" class="hidden">           <!-- 203, na kytce 213, 223, 233 -->
-    <img id="fox4" src="./assets/fox3.svg" class="hidden">           <!-- 204, na kytce 214, 224, 234 -->
-    <img id="chicken1" src="./assets/chicken1.svg" class="hidden">   <!-- 301 -->
-    <img id="chicken2" src="./assets/chicken2.svg" class="hidden">   <!-- 302 -->
-    <img id="tree1" src="./assets/tree1.svg" class="hidden">         <!-- 11 -->
-    <img id="tree2" src="./assets/tree2.svg" class="hidden">         <!-- 12 -->
-    <img id="tree3" src="./assets/tree3.svg" class="hidden">         <!-- 13 -->
-    <img id="tree4" src="./assets/tree4.svg" class="hidden">         <!-- 14 -->
-    <img id="water1" src="./assets/water1.svg" class="hidden">       <!-- 31 -->
-    <img id="water2" src="./assets/water2.svg" class="hidden">       <!-- 32 -->
-    <img id="water3" src="./assets/water3.svg" class="hidden">       <!-- 33 -->
-    <img id="water4" src="./assets/water4.svg" class="hidden">       <!-- 34 -->
-    <img id="water5" src="./assets/water5.svg" class="hidden">       <!-- 35 -->
-    <img id="water6" src="./assets/water6.svg" class="hidden">       <!-- 36 -->
-    <img id="water7" src="./assets/water7.svg" class="hidden">       <!-- 37 -->
-    <img id="doghouse" src="./assets/dog-house.svg" class="hidden">  <!-- 41 -->
-    <img id="barn" src="./assets/barn.svg" class="hidden">           <!-- 42 -->
-    <img id="carrot" src="./assets/carrot.svg" class="hidden">       <!-- 43 -->
-    <img id="fence1" src="./assets/fence1.svg" class="hidden">       <!-- 51 -->
-    <img id="fence2" src="./assets/fence2.svg" class="hidden">       <!-- 52 -->
-    <img id="fence3" src="./assets/fence3.svg" class="hidden">       <!-- 53 -->
-    <img id="dog1" src="./assets/dog3.svg" class="hidden">           <!-- 401 -->
-    <img id="dog2" src="./assets/dog1.svg" class="hidden">           <!-- 402 -->
-    <img id="dog3" src="./assets/dog4.svg" class="hidden">           <!-- 403 -->
-    <img id="dog4" src="./assets/dog2.svg" class="hidden">           <!-- 404 -->
-    <img id="flower1" src="./assets/flower1.svg" class="hidden">     <!-- 501 -->
-    <img id="flower2" src="./assets/flower2.svg" class="hidden">     <!-- 502 -->
-    <img id="flower3" src="./assets/flower3.svg" class="hidden">     <!-- 503 -->
+      <div class="control">
+        <div class="tabs">
+
+          <div id="blockly"></div>
+
+          <textarea id="textarea" style="height: 650px; width: 600px;" class="hidden"></textarea>
+        </div>
+
+        <a href="#" onclick="run();">RUN</a>
+      </div>
   </main>
+
+
+      <!-- assets -->
+      <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
+      <img id="grass2" src="./assets/grass2.svg" class="hidden">       <!-- 2 -->
+      <img id="grass3" src="./assets/grass3.svg" class="hidden">       <!-- 3 -->
+      <img id="hill1" src="./assets/hill1.svg" class="hidden">         <!-- 4 -->
+      <img id="hill2" src="./assets/hill2.svg" class="hidden">         <!-- 5 -->
+      <img id="grass4" src="./assets/grass4.svg" class="hidden">       <!-- 6 -->
+      <img id="grass5" src="./assets/grass5.svg" class="hidden">       <!-- 7 -->
+      <img id="fox1" src="./assets/fox4.svg" class="hidden">           <!-- 201, na kytce 211, 221, 231 -->
+      <img id="fox2" src="./assets/fox2.svg" class="hidden">           <!-- 202, na kytce 212, 222, 232 -->
+      <img id="fox3" src="./assets/fox1.svg" class="hidden">           <!-- 203, na kytce 213, 223, 233 -->
+      <img id="fox4" src="./assets/fox3.svg" class="hidden">           <!-- 204, na kytce 214, 224, 234 -->
+      <img id="chicken1" src="./assets/chicken1.svg" class="hidden">   <!-- 301 -->
+      <img id="chicken2" src="./assets/chicken2.svg" class="hidden">   <!-- 302 -->
+      <img id="tree1" src="./assets/tree1.svg" class="hidden">         <!-- 11 -->
+      <img id="tree2" src="./assets/tree2.svg" class="hidden">         <!-- 12 -->
+      <img id="tree3" src="./assets/tree3.svg" class="hidden">         <!-- 13 -->
+      <img id="tree4" src="./assets/tree4.svg" class="hidden">         <!-- 14 -->
+      <img id="water1" src="./assets/water1.svg" class="hidden">       <!-- 31 -->
+      <img id="water2" src="./assets/water2.svg" class="hidden">       <!-- 32 -->
+      <img id="water3" src="./assets/water3.svg" class="hidden">       <!-- 33 -->
+      <img id="water4" src="./assets/water4.svg" class="hidden">       <!-- 34 -->
+      <img id="water5" src="./assets/water5.svg" class="hidden">       <!-- 35 -->
+      <img id="water6" src="./assets/water6.svg" class="hidden">       <!-- 36 -->
+      <img id="water7" src="./assets/water7.svg" class="hidden">       <!-- 37 -->
+      <img id="doghouse" src="./assets/dog-house.svg" class="hidden">  <!-- 41 -->
+      <img id="barn" src="./assets/barn.svg" class="hidden">           <!-- 42 -->
+      <img id="carrot" src="./assets/carrot.svg" class="hidden">       <!-- 43 -->
+      <img id="fence1" src="./assets/fence1.svg" class="hidden">       <!-- 51 -->
+      <img id="fence2" src="./assets/fence2.svg" class="hidden">       <!-- 52 -->
+      <img id="fence3" src="./assets/fence3.svg" class="hidden">       <!-- 53 -->
+      <img id="dog1" src="./assets/dog3.svg" class="hidden">           <!-- 401 -->
+      <img id="dog2" src="./assets/dog1.svg" class="hidden">           <!-- 402 -->
+      <img id="dog3" src="./assets/dog4.svg" class="hidden">           <!-- 403 -->
+      <img id="dog4" src="./assets/dog2.svg" class="hidden">           <!-- 404 -->
+      <img id="flower1" src="./assets/flower1.svg" class="hidden">     <!-- 501 -->
+      <img id="flower2" src="./assets/flower2.svg" class="hidden">     <!-- 502 -->
+      <img id="flower3" src="./assets/flower3.svg" class="hidden">     <!-- 503 -->
 
   <script>
 
@@ -204,7 +243,7 @@
 
       context.clearRect(0, 0, elem.width, elem.height);
 
-      var scale = 0.9;
+      var scale = 0.8;
       tile1 = document.getElementById("grass1");
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
@@ -594,7 +633,7 @@ hra.hlaseni(5,6, "haf");
 <script>
 Blockly.JavaScript.addReservedWords('code');
 
-var workspace = Blockly.inject('blocklyDiv', {toolbox: document.getElementById('toolbox')});
+var workspace = Blockly.inject('blockly', {toolbox: document.getElementById('toolbox'), toolboxPosition: "start", trashcan: "true"});
 
 var code = Blockly.JavaScript.workspaceToCode(workspace)
 

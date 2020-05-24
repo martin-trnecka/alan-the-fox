@@ -1,16 +1,78 @@
 #deska {
-  margin: auto;
-  outline: 1px dashed gray;
-}
+  outline: 1px solid #3FA2B2;
+  display: block;
+  margin: 0;
 
-.hidden {
-  display: none;
-}
+  width: 1000px;
+  height: 700px;
 
-/* vylepsení ostrosti na retina obrazovkách */
-canvas {
+  /* vylepsení ostrosti na retina obrazovkách */
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+
+  background-color: #8CC116;
+  background-color: #0BAFAF;
+}
+
+main {
+  display: flex;
+  margin: auto;
+  max-width: 1600px;
+  height: 100vh;
+  align-items: center;
+}
+
+#blockly {
+  height: 700px;
+  width: 600px;
+}
+
+.control {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid #0BAFAF;
+  align-items: flex-end;
+}
+
+.mapa {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.control a {
+  display: block;
+  border: 1px dashed gray;
+  padding: 12px;
+  width: 100px;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.levels {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: -10px;
+}
+
+.level {
+  display: block;
+  border: 1px dashed gray;
+  padding: 12px;
+  width: 20px;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+
+
+.hidden {
+  display: none;
 }
