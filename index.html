@@ -18,49 +18,56 @@
 <body>
 
   <main>
-      <div class="mapa">
-        <canvas id="deska" width="1000" height="700"></canvas>
-
-        <div class="levels">
+      <div class="level-details">
           <a href="#" class="level">1</a>
-          <a href="#" class="level">2</a>
-          <a href="#" class="level">3</a>
-          <a href="#" class="level">4</a>
-          <a href="#" class="level">5</a>
-          <a href="#" class="level">6</a>
-          <a href="#" class="level">7</a>
-          <a href="#" class="level">8</a>
-          <a href="#" class="level">9</a>
-          <a href="#" class="level">10</a>
-          <a href="#" class="level">11</a>
-          <a href="#" class="level">12</a>
-          <a href="#" class="level">13</a>
-          <a href="#" class="level">14</a>
-          <a href="#" class="level">15</a>
-          <a href="#" class="level">16</a>
-          <a href="#" class="level">17</a>
-          <a href="#" class="level">18</a>
-          <a href="#" class="level">19</a>
-          <a href="#" class="level">20</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">1</a>
-          <a href="#" class="level">999</a>
-          <a href="#" class="level">111</a>
-        </div>
+          <p>Popis levelu, co se má dělat a ja k se to má dělat.</p>
       </div>
 
-      <div class="control">
+      <div class="mapa">
+        <canvas id="deska" width="1000" height="700"></canvas>
+      </div>
+
+      <div class="levels">
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">2</a>
+        <a href="#" class="level">3</a>
+        <a href="#" class="level">4</a>
+        <a href="#" class="level">5</a>
+        <a href="#" class="level">6</a>
+        <a href="#" class="level">7</a>
+        <a href="#" class="level">8</a>
+        <a href="#" class="level">9</a>
+        <a href="#" class="level">10</a>
+        <a href="#" class="level">11</a>
+        <a href="#" class="level">12</a>
+        <a href="#" class="level">13</a>
+        <a href="#" class="level">14</a>
+        <a href="#" class="level">15</a>
+        <a href="#" class="level">16</a>
+        <a href="#" class="level">17</a>
+        <a href="#" class="level">18</a>
+        <a href="#" class="level">19</a>
+        <a href="#" class="level">20</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">1</a>
+        <a href="#" class="level">999</a>
+        <a href="#" class="level">111</a>
+      </div>
+
+      <div class="editor">
         <div class="tabs">
 
           <div id="blockly"></div>
 
           <textarea id="textarea" style="height: 650px; width: 600px;" class="hidden"></textarea>
         </div>
+      </div>
 
+      <div class="controls">
         <a href="#" onclick="run();">RUN</a>
       </div>
   </main>

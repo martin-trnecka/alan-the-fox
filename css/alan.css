@@ -1,3 +1,8 @@
+body {
+  font-size: 10pt;
+  font-family: Arial;
+}
+
 #deska {
   outline: 1px solid #3FA2B2;
   display: block;
@@ -17,11 +22,19 @@
 }
 
 main {
-  display: flex;
+  display: grid;
   margin: auto;
   max-width: 1600px;
   height: 100vh;
   align-items: center;
+
+  grid-template-columns: 1000px 600px;
+  grid-template-rows: 75px 700px auto;
+
+  grid-template-areas:
+    "level ."
+    "map editor"
+    "levels controls";
 }
 
 #blockly {
@@ -29,21 +42,24 @@ main {
   width: 600px;
 }
 
-.control {
+.editor {
   height: 700px;
-  display: flex;
-  flex-direction: column;
   outline: 1px solid #0BAFAF;
-  align-items: flex-end;
+  grid-area: editor;
 }
 
 .mapa {
   height: 700px;
-  display: flex;
-  flex-direction: column;
+  grid-area: map;
 }
 
-.control a {
+.controls {
+  grid-area: controls;
+  align-self: start;
+  justify-self: end;
+}
+
+.controls a {
   display: block;
   border: 1px dashed gray;
   padding: 12px;
@@ -54,24 +70,42 @@ main {
 }
 
 .levels {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-left: -10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  grid-area: levels;
+  align-self: start;
+}
+
+.level-details {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -10px;
+  grid-area: level;
 }
 
 .level {
   display: block;
   border: 1px dashed gray;
-  padding: 12px;
-  width: 20px;
+  flex-basis: 44px;
+  padding: 14px 0;
   text-align: center;
   margin-top: 10px;
   text-decoration: none;
   margin-left: 10px;
 }
 
-
+.level-details p {
+  margin: 0;
+  padding: 12px;
+  border: 1px dashed gray;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
 
 .hidden {
   display: none;
