@@ -17,7 +17,7 @@ body {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 
-  background-color: #8CC116;
+  background-color: #8CC116; /* zelene pozadi */
   background-color: #0BAFAF;
 }
 
@@ -62,7 +62,7 @@ main {
 .controls a {
   display: block;
   border: 1px dashed gray;
-  padding: 12px;
+  padding: 14px;
   width: 100px;
   text-align: center;
   margin-top: 10px;
@@ -98,13 +98,16 @@ main {
 
 .level-details p {
   margin: 0;
-  padding: 12px;
+  padding: 14px;
   border: 1px dashed gray;
   display: block;
   width: 100%;
   margin-left: 10px;
   margin-top: 10px;
   box-sizing: border-box;
+}
+small a {
+  color: #0BAFAF;
 }
 
 .hidden {
