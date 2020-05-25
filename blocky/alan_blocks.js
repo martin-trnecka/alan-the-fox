@@ -27,16 +27,39 @@ Blockly.Blocks['opakuj'] = {
   }
 };
 
-Blockly.Blocks['opakuj_p1'] = {
+Blockly.Blocks['opakuj_p'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("opakuj dokud není")
-        .appendField(new Blockly.FieldImage("./assets/flower1.svg", 32, 32));
+        .appendField(new Blockly.FieldDropdown([
+            [{'src': './assets/flower1.svg', 'width': 32, 'height': 32, 'alt': 'podminka 1'}, 'P1'],
+            [{'src': './assets/flower2.svg', 'width': 32, 'height': 32, 'alt': 'podminka 2'}, 'P2'],
+            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],            
+        ]), 'PODMINKA');        
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#25b8bf");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['if_p'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Pokud je")
+        .appendField(new Blockly.FieldDropdown([
+            [{'src': './assets/flower1.svg', 'width': 32, 'height': 32, 'alt': 'podminka 1'}, 'P1'],
+            [{'src': './assets/flower2.svg', 'width': 32, 'height': 32, 'alt': 'podminka 2'}, 'P2'],
+            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],            
+        ]), 'PODMINKA');        
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#19737c");
  this.setTooltip("");
  this.setHelpUrl("");
   }

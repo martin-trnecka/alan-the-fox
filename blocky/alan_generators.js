@@ -16,11 +16,23 @@ Blockly.JavaScript['opakuj'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['opakuj_p1'] = function(block) {
+Blockly.JavaScript['opakuj_p'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  var statements_podminka = block.getFieldValue('PODMINKA');
   var code = '';
 
-  var code = 'WHILE P1 \n';
+  var code = 'WHILE '+ statements_podminka +' \n';
+  code += statements_name;
+  code += 'END\n';
+  return code;
+};
+
+Blockly.JavaScript['if_p'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  var statements_podminka = block.getFieldValue('PODMINKA');
+  var code = '';
+
+  var code = 'IF '+ statements_podminka +' \n';
   code += statements_name;
   code += 'END\n';
   return code;

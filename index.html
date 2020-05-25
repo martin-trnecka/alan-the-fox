@@ -127,10 +127,10 @@
     deska:  [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
              [  2,  1, 32, 32, 34, 31, 31, 35,202,  1],
-             [ 11,  7, 31, 31, 31, 31, 31, 35,501, 11],
-             [ 12,  1, 31, 31,  2,402, 31, 31,  6, 11],
+             [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
+             [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
              [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
-             [ 11,  1, 36, 31, 31, 31, 31, 34,  7, 12],
+             [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
@@ -138,10 +138,10 @@
     deska_original: [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
              [  2,  1, 32, 32, 34, 31, 31, 35,  1,  1],
-             [ 11,  7, 31, 31, 31, 31, 31, 35,501, 11],
-             [ 12,  1, 31, 31,  2,402, 31, 31,  6, 11],
+             [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
+             [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
              [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
-             [ 11,  1, 36, 31, 31, 31, 31, 34,  7, 12],
+             [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
@@ -235,6 +235,26 @@
       }
       return true;
     },
+    
+    podminka_P2: function() {
+      console.log('over podminku');
+      var [x, y] = this.najdi_alana();
+      if(this.deska[x][y]>220 && this.deska[x][y]<225)
+      {
+        return false;
+      }
+      return true;
+    },
+    
+    podminka_P3: function() {
+      console.log('over podminku');
+      var [x, y] = this.najdi_alana();
+      if(this.deska[x][y]>230 && this.deska[x][y]<235)
+      {
+        return false;
+      }
+      return true;
+    },
 
     // najde lišku
     najdi_alana: function() {
@@ -252,6 +272,8 @@
       console.log('map rendering...');
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
+      var zarovnani_x = 450;
+      var zarovnani_y = 60;
 
       context.clearRect(0, 0, elem.width, elem.height);
 
@@ -260,205 +282,206 @@
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
 
+
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
           // prázdné políčko
           if (this.deska[x][y] == 1 || this.deska[x][y] > 200) {
               tile = document.getElementById("grass1");
-              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50, tile.width*scale, tile.height*scale);
+              if (this.deska[x][y]) context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y, tile.width*scale, tile.height*scale);
           }
 
           // trava2
           if (this.deska[x][y] == 2) {
               tile = document.getElementById("grass2");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // trava2
           if (this.deska[x][y] == 3) {
               tile = document.getElementById("grass3");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // hill1
           if (this.deska[x][y] == 4) {
               tile = document.getElementById("hill1");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+ 1*scale, x*move_y/2 + y*move_y/2+50-24*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+ 1*scale, x*move_y/2 + y*move_y/2+zarovnani_y-24*scale, tile.width*scale, tile.height*scale);
           }
 
           // hill2
           if (this.deska[x][y] == 5) {
               tile = document.getElementById("hill2");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+ 1*scale, x*move_y/2 + y*move_y/2+50-24*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+ 1*scale, x*move_y/2 + y*move_y/2+zarovnani_y-24*scale, tile.width*scale, tile.height*scale);
           }
 
           // trava4
           if (this.deska[x][y] == 6) {
               tile = document.getElementById("grass4");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // trava5
           if (this.deska[x][y] == 7) {
               tile = document.getElementById("grass5");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // strom1
           if (this.deska[x][y] == 11) {
               tile = document.getElementById("tree1");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // strom2
           if (this.deska[x][y] == 12) {
               tile = document.getElementById("tree2");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // strom3
           if (this.deska[x][y] == 13) {
               tile = document.getElementById("tree3");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // strom4
           if (this.deska[x][y] == 14) {
               tile = document.getElementById("tree4");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water1
           if (this.deska[x][y] == 31) {
               tile = document.getElementById("water1");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water2
           if (this.deska[x][y] == 32) {
               tile = document.getElementById("water2");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water3
           if (this.deska[x][y] == 33) {
               tile = document.getElementById("water3");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water4
           if (this.deska[x][y] == 34) {
               tile = document.getElementById("water4");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water5
           if (this.deska[x][y] == 35) {
               tile = document.getElementById("water5");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water6
           if (this.deska[x][y] == 36) {
               tile = document.getElementById("water6");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // water7
           if (this.deska[x][y] == 37) {
               tile = document.getElementById("water7");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // dog house
           if (this.deska[x][y] == 41) {
               tile = document.getElementById("doghouse");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // barn
           if (this.deska[x][y] == 42) {
               tile = document.getElementById("barn");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // carrot
           if (this.deska[x][y] == 43) {
               tile = document.getElementById("carrot");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // fence1
           if (this.deska[x][y] == 51) {
               tile = document.getElementById("fence1");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // fence2
           if (this.deska[x][y] == 52) {
               tile = document.getElementById("fence2");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
           // fence3
           if (this.deska[x][y] == 53) {
               tile = document.getElementById("fence3");
               var dif_y = tile1.height - tile.height;
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500, x*move_y/2 + y*move_y/2+50+ dif_y*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x, x*move_y/2 + y*move_y/2+zarovnani_y+ dif_y*scale, tile.width*scale, tile.height*scale);
           }
 
 
           // slepice
           if (this.deska[x][y] == 301) {
               tile = document.getElementById("chicken1");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+35*scale, x*move_y/2 + y*move_y/2+zarovnani_y-12*scale, tile.width*scale, tile.height*scale);
           }
 
           // slepice
           if (this.deska[x][y] == 302) {
               tile = document.getElementById("chicken2");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+35*scale, x*move_y/2 + y*move_y/2+50-12*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+35*scale, x*move_y/2 + y*move_y/2+zarovnani_y-12*scale, tile.width*scale, tile.height*scale);
           }
 
           // pes
           if (this.deska[x][y] == 401) {
               tile = document.getElementById("dog1");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+15*scale, x*move_y/2 + y*move_y/2+50-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+15*scale, x*move_y/2 + y*move_y/2+zarovnani_y-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
 
           if (this.deska[x][y] == 402) {
               tile = document.getElementById("dog2");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+5*scale, x*move_y/2 + y*move_y/2+50-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+5*scale, x*move_y/2 + y*move_y/2+zarovnani_y-48*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
 
           if (this.deska[x][y] == 403) {
               tile = document.getElementById("dog3");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500-1*scale, x*move_y/2 + y*move_y/2+50-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x-1*scale, x*move_y/2 + y*move_y/2+zarovnani_y-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
 
           if (this.deska[x][y] == 404) {
               tile = document.getElementById("dog4");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+20*scale, x*move_y/2 + y*move_y/2+50-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+20*scale, x*move_y/2 + y*move_y/2+zarovnani_y-63*scale, tile.width*scale*0.9, tile.height*scale*0.9);
           }
 
 
@@ -467,52 +490,66 @@
           // lišák Alan
           if (this.deska[x][y] == 201 || this.deska[x][y] == 211 || this.deska[x][y] == 221 || this.deska[x][y] == 231) {
               tile = document.getElementById("fox1");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+10*scale, x*move_y/2 + y*move_y/2+zarovnani_y-55*scale, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 202 || this.deska[x][y] == 212 || this.deska[x][y] == 222 || this.deska[x][y] == 232) {
               tile = document.getElementById("fox2");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+10*scale, x*move_y/2 + y*move_y/2+zarovnani_y-55*scale, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 203|| this.deska[x][y] == 213 || this.deska[x][y] == 223 || this.deska[x][y] == 233) {
               tile = document.getElementById("fox3");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+10*scale, x*move_y/2 + y*move_y/2+zarovnani_y-55*scale, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 204|| this.deska[x][y] == 214 || this.deska[x][y] == 224 || this.deska[x][y] == 234) {
               tile = document.getElementById("fox4");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500+10*scale, x*move_y/2 + y*move_y/2+50-55*scale, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x+10*scale, x*move_y/2 + y*move_y/2+zarovnani_y-55*scale, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 501|| (this.deska[x][y] > 210 && this.deska[x][y] < 215 )) {
               tile = document.getElementById("flower1");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 + 2*tile.width*scale, x*move_y/2 + y*move_y/2+50 + tile.width*scale/2, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x + 2*tile.width*scale, x*move_y/2 + y*move_y/2+zarovnani_y + tile.width*scale/2, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 502|| (this.deska[x][y] > 220 && this.deska[x][y] < 225 )) {
               tile = document.getElementById("flower2");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 + 2*tile.width*scale, x*move_y/2 + y*move_y/2+50 + tile.width*scale/2, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x + 2*tile.width*scale, x*move_y/2 + y*move_y/2+zarovnani_y + tile.width*scale/2, tile.width*scale, tile.height*scale);
           }
 
           if (this.deska[x][y] == 503|| (this.deska[x][y] > 230 && this.deska[x][y] < 235 )) {
               tile = document.getElementById("flower3");
-              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + 500 + 2*tile.width*scale, x*move_y/2 + y*move_y/2+50 + tile.width*scale/2, tile.width*scale, tile.height*scale);
+              context.drawImage(tile, x*(-move_x/2) + y*move_x/2 + zarovnani_x + 2*tile.width*scale, x*move_y/2 + y*move_y/2+zarovnani_y + tile.width*scale/2, tile.width*scale, tile.height*scale);
           }
 
         }
       }
     },
 
-    hlaseni: function(x, y, hlaseni) {
+    hlaseni: function(postava,x, y, hlaseni) {
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
 
       //TODO doladit posun podle postavicky na policku
-      var scale = 0.9;
+      var scale = 0.8;
       tile1 = document.getElementById("grass1");
+      // 1 liska, 2 pes
+      switch(postava) {
+          case 1:
+            tile = document.getElementById("fox1");
+            break;
+          case 2:
+            tile = document.getElementById("dog1");
+            break;
+          default:
+            tile = document.getElementById("grass1");
+      }
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
+      var zarovnani_x = 450;
+      var zarovnani_y = 60;
+      var odsazeni_x = -5*scale;
       var okraj = 5;
       var font = 12;
       context.font =  font +"pt arial";
@@ -521,12 +558,12 @@
       context.fillStyle = "#fff";
       context.strokeStyle = "#aaa"
       context.lineWidth = 1;
-      context.fillRect(x*(-move_x/2) + y*move_x/2 + 500-text_width-okraj, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
-      context.strokeRect(x*(-move_x/2) + y*move_x/2 + 500-text_width-okraj, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+      context.fillRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+      context.strokeRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
       context.fillStyle = "black";
       context.textAlign = "center";
       context.textBaseline = 'middle';
-      context.fillText(hlaseni, x*(-move_x/2) + y*move_x/2 + 500-text_width/2, x*move_y/2 + y*move_y/2+50 - 1.8*tile.width*scale);
+      context.fillText(hlaseni, x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width/2 + odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4);
     },
 
     // vykonavani herni smycky
@@ -574,6 +611,24 @@ function smycka() {
               }
             }
           }
+          
+          if (vrchol[0]=='WHILE') {
+            if(vrchol[2]=='P2') {
+              if(hra.podminka_P2) {
+                hra.zasobnik.push(vrchol);
+              }
+            }
+          }
+          
+          if (vrchol[0]=='WHILE') {
+            if(vrchol[2]=='P3') {
+              if(hra.podminka_P3) {
+                hra.zasobnik.push(vrchol);
+              }
+            }
+          }
+          
+          
         }
 
         if(hra.prikazy[hra.instrukce]=='KROK') {
@@ -619,9 +674,9 @@ function smycka() {
 
 
 hra.nakresli_mapu();
-hra.hlaseni(3,9, "tak jdeme na to");
+hra.hlaseni(1,3,9, "tak jdeme na to");
 
-hra.hlaseni(5,6, "haf");
+hra.hlaseni(2,5,6, "haf");
 
 
 </script>
@@ -639,7 +694,8 @@ hra.hlaseni(5,6, "haf");
   <block type="otoc_vlevo"></block>
   <block type="otoc_vpravo"></block>
   <block type="opakuj"></block>
-  <block type="opakuj_p1"></block>
+  <block type="opakuj_p"></block>
+  <block type="if_p"></block>
 </xml>
 
 <script>
