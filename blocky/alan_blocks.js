@@ -49,7 +49,7 @@ Blockly.Blocks['opakuj_p'] = {
 Blockly.Blocks['if_p'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Pokud je")
+        .appendField("pokud je")
         .appendField(new Blockly.FieldDropdown([
             [{'src': './assets/flower1.svg', 'width': 32, 'height': 32, 'alt': 'podminka 1'}, 'P1'],
             [{'src': './assets/flower2.svg', 'width': 32, 'height': 32, 'alt': 'podminka 2'}, 'P2'],

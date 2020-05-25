@@ -592,6 +592,75 @@ function smycka() {
           hra.zasobnik.push(['WHILE', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a typ podminky
           hra.instrukce += 2; // nasledujici instrukce
         }
+        
+        if(hra.prikazy[hra.instrukce]=='IF') {
+          if (hra.prikazy[hra.instrukce+1]=='P1') {
+            if(!hra.podminka_P1()) {
+              hra.instrukce += 2;
+            }   
+            else {
+              let counter = 1;
+              for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
+                if(hra.prikazy[i]=='WHILE' || hra.prikazy[i]=='IF' || hra.prikazy[i]=='OPAKUJ') {
+                  counter += 1;
+                }
+                if(hra.prikazy[i]=='END') {
+                  counter -= 1;
+                }
+                if(counter == 0) {
+                  hra.instrukce = i+1;
+                  break;
+                }                   
+              }
+            }       
+          }
+        }
+        
+        if(hra.prikazy[hra.instrukce]=='IF') {
+          if (hra.prikazy[hra.instrukce+1]=='P2') {
+            if(!hra.podminka_P2()) {
+              hra.instrukce += 2;
+            }   
+            else {
+              let counter = 1;
+              for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
+                if(hra.prikazy[i]=='WHILE' || hra.prikazy[i]=='IF' || hra.prikazy[i]=='OPAKUJ') {
+                  counter += 1;
+                }
+                if(hra.prikazy[i]=='END') {
+                  counter -= 1;
+                }
+                if(counter == 0) {
+                  hra.instrukce = i+1;
+                  break;
+                }                   
+              }
+            }       
+          }
+        }
+        
+        if(hra.prikazy[hra.instrukce]=='IF') {
+          if (hra.prikazy[hra.instrukce+1]=='P3') {
+            if(!hra.podminka_P3()) {
+              hra.instrukce += 2;
+            }   
+            else {
+              let counter = 1;
+              for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
+                if(hra.prikazy[i]=='WHILE' || hra.prikazy[i]=='IF' || hra.prikazy[i]=='OPAKUJ') {
+                  counter += 1;
+                }
+                if(hra.prikazy[i]=='END') {
+                  counter -= 1;
+                }
+                if(counter == 0) {
+                  hra.instrukce = i+1;
+                  break;
+                }                   
+              }
+            }       
+          }
+        }
 
         if(hra.prikazy[hra.instrukce]=='END') {
           vrchol = hra.zasobnik.pop();
@@ -684,8 +753,13 @@ hra.hlaseni(2,5,6, "haf");
 
 
 
-
-
+/*
+var workspace = Blockly.inject('blocklyDiv', options);
+var xml =
+  '<xml>' +
+    '<block type="start_block" deletable="false" movable="false"></block>' +
+  '</xml>';
+Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
 
 
 
@@ -702,7 +776,7 @@ hra.hlaseni(2,5,6, "haf");
 <script>
 Blockly.JavaScript.addReservedWords('code');
 
-var workspace = Blockly.inject('blockly', {toolbox: document.getElementById('toolbox'), toolboxPosition: "start", trashcan: "true"});
+var workspace = Blockly.inject('blockly', {toolbox: document.getElementById('toolbox'), toolboxPosition: "start", trashcan: "true", maxInstances:{krok:Infinity, seber_slepici:2}});
 
 var code = Blockly.JavaScript.workspaceToCode(workspace)
 
