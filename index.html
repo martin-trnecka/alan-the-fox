@@ -235,7 +235,7 @@
       }
       return true;
     },
-    
+
     podminka_P2: function() {
       console.log('over podminku');
       var [x, y] = this.najdi_alana();
@@ -245,7 +245,7 @@
       }
       return true;
     },
-    
+
     podminka_P3: function() {
       console.log('over podminku');
       var [x, y] = this.najdi_alana();
@@ -606,29 +606,30 @@ function smycka() {
 
           if (vrchol[0]=='WHILE') {
             if(vrchol[2]=='P1') {
-              if(hra.podminka_P1) {
+              if(hra.podminka_P1()) {
+                hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
               }
             }
           }
-          
+
           if (vrchol[0]=='WHILE') {
             if(vrchol[2]=='P2') {
-              if(hra.podminka_P2) {
+              if(hra.podminka_P2()) {
+                hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
               }
             }
           }
-          
+
           if (vrchol[0]=='WHILE') {
             if(vrchol[2]=='P3') {
-              if(hra.podminka_P3) {
+              if(hra.podminka_P3()) {
+                hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
               }
             }
           }
-          
-          
         }
 
         if(hra.prikazy[hra.instrukce]=='KROK') {
