@@ -106,8 +106,18 @@ main {
   margin-top: 10px;
   box-sizing: border-box;
 }
+
 small a {
   color: #0BAFAF;
+}
+
+small span {
+  float: right;
+}
+
+small img {
+  height: 1.5rem;
+  vertical-align: middle;
 }
 
 .hidden {
