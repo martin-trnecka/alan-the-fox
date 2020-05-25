@@ -1,0 +1,24 @@
+var level = {
+  popis: "Popis levelu",
+
+  kategorie: "Název kategorie",
+
+  mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,201,  1,301,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]],
+
+  pozice_lisky: [x, y],
+
+  instrukce_psa: [[x1, y1], [x2, y2]], // souřadnice pohybu, může být prázné
+
+  instrukcni_sada: [], // jake příkazy mohou být použity
+
+  omezeni: [], limitace bloků
+}
