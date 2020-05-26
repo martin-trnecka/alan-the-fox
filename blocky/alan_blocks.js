@@ -134,3 +134,18 @@ Blockly.Blocks['otoc_vpravo'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['start'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("main");
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setPreviousStatement(false, null);
+    this.setNextStatement(false, null);
+    this.setColour("#eee");
+    this.setDeletable(false);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+};

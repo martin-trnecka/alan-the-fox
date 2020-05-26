@@ -900,7 +900,10 @@ Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
   <block type="if_p"></block>
   <block type="function_1"></block>
   <block type="call_f1"></block>
-  call_f1
+</xml>
+
+<xml id="startblock" style="display: none">
+  <block type="start"></block>
 </xml>
 
 <script>
@@ -917,6 +920,9 @@ function myUpdateFunction(event) {
 }
 
 workspace.addChangeListener(myUpdateFunction);
+
+Blockly.Xml.domToWorkspace(document.getElementById('startblock'),
+                               workspace);
 
 
 // Fox on run :-)
