@@ -21,7 +21,7 @@ Blockly.Blocks['opakuj'] = {
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#25b8bf");
+    this.setColour("#0b9b97");
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -40,7 +40,7 @@ Blockly.Blocks['opakuj_p'] = {
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#25b8bf");
+    this.setColour("#0b9b97");
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -138,12 +138,12 @@ Blockly.Blocks['otoc_vpravo'] = {
 Blockly.Blocks['start'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("main");
+        .appendField("hlavní funkce");
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(false, null);
     this.setNextStatement(false, null);
-    this.setColour("#eee");
+    this.setColour("#25b8bf");
     this.setDeletable(false);
  this.setTooltip("");
  this.setHelpUrl("");

@@ -668,12 +668,14 @@
 
       // implementuje zasobnikove vyhodnocovani
       this.prikazy = instrukce.split(/ |\n/).filter(Boolean);
-      this.instrukce = 0;
       this.zasobnik = [];
       this.funkce = [];
 
+      this.funkce[0] = this.prikazy.findIndex(function(ins) {return ins=="PROGRAM";});
       this.funkce[1] = this.prikazy.findIndex(function(ins) {return ins=="F1";});
       this.funkce[2] = this.prikazy.findIndex(function(ins) {return ins=="F2";});
+
+      this.instrukce = this.funkce[0];
 
       //alert(this.prikazy);
       window.requestAnimationFrame(smycka);
@@ -930,8 +932,7 @@ function myUpdateFunction(event) {
 
 workspace.addChangeListener(myUpdateFunction);
 
-Blockly.Xml.domToWorkspace(document.getElementById('startblock'),
-                               workspace);
+Blockly.Xml.domToWorkspace(document.getElementById('startblock'), workspace);
 
 
 // Fox on run :-)
