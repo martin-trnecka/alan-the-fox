@@ -685,6 +685,11 @@ function smycka() {
     try {
         if(hra.instrukce>=hra.prikazy.length) return;
 
+        if(hra.prikazy[hra.instrukce]=='PROGRAM') {
+          hra.zasobnik.push(['PROGRAM']);
+          hra.instrukce += 1;
+        }
+
         if(hra.prikazy[hra.instrukce]=='F1()') {
           hra.zasobnik.push(['FUNKCE', hra.instrukce+1]); // skok zpět na nasledujici instrukci
           hra.instrukce == hra.funkce[1] + 1; // nasledujici instrukce ve funkci f1
@@ -771,6 +776,10 @@ function smycka() {
 
         if(hra.prikazy[hra.instrukce]=='END') {
           vrchol = hra.zasobnik.pop();
+
+          if (vrchol[0]=='PROGRAM') {
+            return;
+          }
 
           if (vrchol[0]=='FUNKCE') {
             hra.instrukce = vrchol[1];

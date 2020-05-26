@@ -55,7 +55,18 @@ Blockly.JavaScript['if_p'] = function(block) {
 Blockly.JavaScript['function_1'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
 
-  var code = 'F1 \n';
+  var code = 'F1\n';
+  code += statements_name;
+  code += 'END\n';
+
+  return code;
+};
+
+
+Blockly.JavaScript['start'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+
+  var code = 'PROGRAM\n';
   code += statements_name;
   code += 'END\n';
 
