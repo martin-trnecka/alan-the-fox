@@ -34,8 +34,8 @@ Blockly.Blocks['opakuj_p'] = {
         .appendField(new Blockly.FieldDropdown([
             [{'src': './assets/flower1.svg', 'width': 32, 'height': 32, 'alt': 'podminka 1'}, 'P1'],
             [{'src': './assets/flower2.svg', 'width': 32, 'height': 32, 'alt': 'podminka 2'}, 'P2'],
-            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],            
-        ]), 'PODMINKA');        
+            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],
+        ]), 'PODMINKA');
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(true, null);
@@ -53,8 +53,8 @@ Blockly.Blocks['if_p'] = {
         .appendField(new Blockly.FieldDropdown([
             [{'src': './assets/flower1.svg', 'width': 32, 'height': 32, 'alt': 'podminka 1'}, 'P1'],
             [{'src': './assets/flower2.svg', 'width': 32, 'height': 32, 'alt': 'podminka 2'}, 'P2'],
-            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],            
-        ]), 'PODMINKA');        
+            [{'src': './assets/flower3.svg', 'width': 32, 'height': 32, 'alt': 'podminka 3'}, 'P3'],
+        ]), 'PODMINKA');
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(true, null);
@@ -65,13 +65,10 @@ Blockly.Blocks['if_p'] = {
   }
 };
 
-Blockly.Blocks['function'] = {
+Blockly.Blocks['function_1'] = {
   init: function() {
-    var nameField = new Blockly.FieldTextInput('', Blockly.Procedures.rename);
-    nameField.setSpellcheck(false);
     this.appendDummyInput()
-        .appendField("Funkce")
-        .appendField(nameField, 'NAME');        
+        .appendField("funkce 1");
     this.appendStatementInput("NAME")
         .setCheck(null);
     this.setPreviousStatement(false, null);
@@ -80,9 +77,20 @@ Blockly.Blocks['function'] = {
  this.setTooltip("");
  this.setHelpUrl("");
   },
-  decompose: function(workspace) {
+};
+
+Blockly.Blocks['call_f1'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("zavolej funkci 1");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#e27305");
+ this.setTooltip("f1");
+ this.setHelpUrl("");
   }
-};  
+};
+
 
 
 Blockly.Blocks['seber_slepici'] = {
