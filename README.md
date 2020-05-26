@@ -11,7 +11,7 @@ TODO:
 - splashscreen
 - info o hře
 - obecné info / nápověda
-- obrázky: stopa, cyklus n-krát, 
+- obrázky: stopa, cyklus n-krát,
 - přepínání na zdrojový kód
 - přidat hlášky
 - ikonka ke spustit
@@ -20,11 +20,12 @@ TODO:
 - generátor map
 - zpomalit pohyb
 - zarovnání textu u otočené lišky a psa (zkontrolovat, zda můře být takto, nebo posunout text na druhou stranu)
+- opravit hlasky pri posunu
 
 - funkce - rozmyslet, zda je možné více funkcí a pojmenovávat si, nebo jen omezené množství funkcí (např. Funkce 1, Funkce 2...). Druhá možnost je jednodušší.
 
 DONE:
 -----
-- zarovnání textu u slepic 
+- zarovnání textu u slepic
 - ověření konce
 - pohyb psa

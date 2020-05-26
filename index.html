@@ -126,12 +126,12 @@
     hra_prodleva: 2000, // udava prodlevu ve volani zakladnich procedur
     deska:  [[  1,  1,  1, 11, 12, 11, 11,  6,  1,302],
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
-             [  2,  1, 32, 32, 34, 31, 31, 35,202,  1],
+             [  2,  1, 32, 32, 34, 31, 31, 35,2,  1],
              [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
              [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
              [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
              [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
-             [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
+             [  2,  1, 31, 31, 31, 32, 31, 33,202,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [  1,  1,  1, 12, 12, 12, 13,  1,  7,  1]],
 
@@ -145,13 +145,13 @@
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [  1,  1,  1, 12, 12, 12, 13,  1,  7,  1]],
-    
+
     pohyb_pes: [[5, 5, 2], [5, 5, 3], [5, 5, 4], [4, 5, 4], [4, 5, 1], [4, 5, 2]],
-    index_pohyb_pes: 0,                                                
+    index_pohyb_pes: 0,
 
     krok: function() {
       console.log('krok vpřed');
-      
+
       this.posun_psa();
 
       var zakazane = [0, 4, 5, 11, 12, 13, 14, 31, 32, 33, 34, 35, 36, 37, 41, 42, 43, 51, 52, 53, 401, 402, 403, 404]; // seznam zakazanych policek
@@ -217,7 +217,7 @@
       var pocet = this.pocet_slepic();
       if(pocet == 0) {
         throw "konec";
-      }        
+      }
     },
 
     otoc_vpravo: function() {
@@ -270,52 +270,54 @@
     najdi_alana: function() {
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
-          if (this.deska[x][y]>200 && this.deska[x][y]<300)
-          {
+          if (this.deska[x][y]>200 && this.deska[x][y]<300) {
             return [x,y];
           }
         }
       }
     },
-    
+
+    smer_alana: function() {
+      var [x, y] = this.najdi_alana();
+      return this.deska[x][y]-200;
+    },
+
     // najde psa
     najdi_psa: function() {
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
-          if (this.deska[x][y]>400 && this.deska[x][y]<420)
-          {
-            return [x,y];
+          if (this.deska[x][y]>400 && this.deska[x][y]<420) {
+            return [x, y];
           }
         }
       }
     },
-    
+
     posun_psa: function() {
       if(this.pohyb_pes.length > 0) {
-        var [x, y] = this.najdi_psa(); 
+        var [x, y] = this.najdi_psa();
         this.deska[x][y] = this.deska_original[x][y];
         this.deska[this.pohyb_pes[this.index_pohyb_pes][0]][this.pohyb_pes[this.index_pohyb_pes][1]]=400+this.pohyb_pes[this.index_pohyb_pes][2];
-        this.index_pohyb_pes +=1;     
+        this.index_pohyb_pes +=1;
         if(this.index_pohyb_pes >= this.pohyb_pes.length) {
           this.index_pohyb_pes =0;
         }
       }
     },
-    
+
     // pocet slepic
     pocet_slepic: function() {
       var pocet = 0;
       for (var x = 0; x < 10; x++) {
         for (var y = 0; y < 10; y++) {
-          if (this.deska_original[x][y]>300 && this.deska_original[x][y]<310)
-          {
+          if (this.deska_original[x][y]>300 && this.deska_original[x][y]<310) {
             pocet += 1;
           }
         }
       }
       return pocet;
     },
-    
+
     nakresli_mapu: function() {
       console.log('map rendering...');
       var elem = document.getElementById('deska');
@@ -590,7 +592,7 @@
               case 1:
                 tile = document.getElementById("fox1");
                 posun_x = tile.width/2;
-                break; 
+                break;
               case 2:
                 tile = document.getElementById("fox2");
                 break;
@@ -614,7 +616,7 @@
               case 1:
                 tile = document.getElementById("dog1");
                 posun_x = tile.width/2;
-                break; 
+                break;
               case 2:
                 tile = document.getElementById("dog2");
                 break;
@@ -687,12 +689,12 @@ function smycka() {
           hra.zasobnik.push(['WHILE', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a typ podminky
           hra.instrukce += 2; // nasledujici instrukce
         }
-        
+
         if(hra.prikazy[hra.instrukce]=='IF') {
           if (hra.prikazy[hra.instrukce+1]=='P1') {
             if(!hra.podminka_P1()) {
               hra.instrukce += 2;
-            }   
+            }
             else {
               let counter = 1;
               for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
@@ -705,17 +707,17 @@ function smycka() {
                 if(counter == 0) {
                   hra.instrukce = i+1;
                   break;
-                }                   
+                }
               }
-            }       
+            }
           }
         }
-        
+
         if(hra.prikazy[hra.instrukce]=='IF') {
           if (hra.prikazy[hra.instrukce+1]=='P2') {
             if(!hra.podminka_P2()) {
               hra.instrukce += 2;
-            }   
+            }
             else {
               let counter = 1;
               for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
@@ -728,17 +730,17 @@ function smycka() {
                 if(counter == 0) {
                   hra.instrukce = i+1;
                   break;
-                }                   
+                }
               }
-            }       
+            }
           }
         }
-        
+
         if(hra.prikazy[hra.instrukce]=='IF') {
           if (hra.prikazy[hra.instrukce+1]=='P3') {
             if(!hra.podminka_P3()) {
               hra.instrukce += 2;
-            }   
+            }
             else {
               let counter = 1;
               for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
@@ -751,9 +753,9 @@ function smycka() {
                 if(counter == 0) {
                   hra.instrukce = i+1;
                   break;
-                }                   
+                }
               }
-            }       
+            }
           }
         }
 
@@ -820,20 +822,23 @@ function smycka() {
       if(e=="lisak pres palubu") {
         var [x,y] = hra.najdi_alana();
         var smer = hra.smer_alana();
-        hra.hlaseni(1, smer, x, y, "Tam nechci.")
+        hra.hlaseni(1, smer, x, y, "Tam nechci.");
+        return;
       }
 
       else if(e=="zakazane") {
         var [x,y] = hra.najdi_alana();
         var smer = hra.smer_alana();
-        hra.hlaseni(1, smer, x, y, "Tam nemůžu.")
+        hra.hlaseni(1, smer, x, y, "Tam nemůžu.");
+        return;
       }
-      
+
       else if(e=="konec") {
         var [x,y] = hra.najdi_alana();
         var smer = hra.smer_alana();
         hra.hlaseni(1, smer, x, y, "A mám je všechny!")
-        hra.instrukce=hra.prikazy.length+1;
+        //hra.instrukce=hra.prikazy.length+1;
+        return;
       }
 
       else {
@@ -854,8 +859,6 @@ hra.hlaseni(1,2,3,9, "tak jdeme na to");
 hra.hlaseni(2,2,5,6, "haf");
 
 hra.hlaseni(3,1,1,10, "kvok");
-</script>
-
 
 
 /*
@@ -865,6 +868,11 @@ var xml =
     '<block type="start_block" deletable="false" movable="false"></block>' +
   '</xml>';
 Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
+</script>
+
+
+
+
 
 
 
