@@ -65,6 +65,25 @@ Blockly.Blocks['if_p'] = {
   }
 };
 
+Blockly.Blocks['function'] = {
+  init: function() {
+    var nameField = new Blockly.FieldTextInput('', Blockly.Procedures.rename);
+    nameField.setSpellcheck(false);
+    this.appendDummyInput()
+        .appendField("Funkce")
+        .appendField(nameField, 'NAME');        
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setPreviousStatement(false, null);
+    this.setNextStatement(false, null);
+    this.setColour("#e84d4d");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+  decompose: function(workspace) {
+  }
+};  
+
 
 Blockly.Blocks['seber_slepici'] = {
   init: function() {

@@ -139,16 +139,20 @@
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
              [  2,  1, 32, 32, 34, 31, 31, 35,  2,  1],
              [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
-             [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
+             [ 12,  1, 31, 31,  2,  7, 31, 31,  1, 11],
              [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
              [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
              [  1,  1,  1, 12, 12, 12, 13,  1,  7,  1]],
-
+    
+    pohyb_pes: [[5, 5, 2], [5, 5, 3], [5, 5, 4], [4, 5, 4], [4, 5, 1], [4, 5, 2]],
+    index_pohyb_pes: 0,                                                
 
     krok: function() {
       console.log('krok vpřed');
+      
+      this.posun_psa();
 
       var zakazane = [0, 4, 5, 11, 12, 13, 14, 31, 32, 33, 34, 35, 36, 37, 41, 42, 43, 51, 52, 53, 401, 402, 403, 404]; // seznam zakazanych policek
 
@@ -218,6 +222,7 @@
 
     otoc_vpravo: function() {
       console.log('otoc vpravo');
+      this.posun_psa();
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] + 1;
       if(this.deska[x][y]==205) this.deska[x][y] = 201;
@@ -225,6 +230,7 @@
 
     otoc_vlevo: function() {
       console.log('otoc vlevo');
+      this.posun_psa();
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] - 1;
       if(this.deska[x][y]==200) this.deska[x][y] = 204;
@@ -268,6 +274,30 @@
           {
             return [x,y];
           }
+        }
+      }
+    },
+    
+    // najde psa
+    najdi_psa: function() {
+      for (var x = 0; x < 10; x++) {
+        for (var y = 0; y < 10; y++) {
+          if (this.deska[x][y]>400 && this.deska[x][y]<420)
+          {
+            return [x,y];
+          }
+        }
+      }
+    },
+    
+    posun_psa: function() {
+      if(this.pohyb_pes.length > 0) {
+        var [x, y] = this.najdi_psa(); 
+        this.deska[x][y] = this.deska_original[x][y];
+        this.deska[this.pohyb_pes[this.index_pohyb_pes][0]][this.pohyb_pes[this.index_pohyb_pes][1]]=400+this.pohyb_pes[this.index_pohyb_pes][2];
+        this.index_pohyb_pes +=1;     
+        if(this.index_pohyb_pes >= this.pohyb_pes.length) {
+          this.index_pohyb_pes =0;
         }
       }
     },
@@ -846,6 +876,7 @@ Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
   <block type="opakuj"></block>
   <block type="opakuj_p"></block>
   <block type="if_p"></block>
+  <block type="function"></block>
 </xml>
 
 <script>

@@ -16,6 +16,7 @@ var level = {
 
   pozice_lisky: [3, 5, 2],      // x,y,smer
   
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
   instrukce_psa: [[6, 2, 1], [6, 3, 1], [6, 5, 1], [6, 6, 1], [6, 7, 1], [6, 8, 1], [6, 9, 1], [6, 9, 2], [6, 9, 3], [6, 8, 3], [6, 7, 3], [6, 6, 3], [6, 5, 3], [6, 4, 3], [6, 3, 3], [6, 2, 3], [6, 2, 4]], // souřadnice pohybu, může být prázné
 
   //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
