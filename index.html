@@ -124,7 +124,7 @@
   // Alan the fox
   var hra = {
     hra_prodleva: 2000, // udava prodlevu ve volani zakladnich procedur
-    deska:  [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
+    deska:  [[  1,  1,  1, 11, 12, 11, 11,  6,  1,302],
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
              [  2,  1, 32, 32, 34, 31, 31, 35,202,  1],
              [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
@@ -133,18 +133,18 @@
              [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
-             [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
+             [  1,  1,  1, 12, 12, 12, 13,  1,  7,  1]],
 
-    deska_original: [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
+    deska_original: [[  1,  1,  1, 11, 12, 11, 11,  6,  1,302],
              [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
-             [  2,  1, 32, 32, 34, 31, 31, 35,  1,  1],
+             [  2,  1, 32, 32, 34, 31, 31, 35,  2,  1],
              [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
              [ 12,  1, 31, 31,  2,402, 31, 31,  1, 11],
              [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
              [ 11,  1, 36, 31, 31, 31, 31, 34,501, 12],
              [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
              [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
-             [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
+             [  1,  1,  1, 12, 12, 12, 13,  1,  7,  1]],
 
 
     krok: function() {
@@ -210,6 +210,10 @@
       if (this.deska_original[x][y]>300 && this.deska_original[x][y]<305) {
         this.deska_original[x][y] = 1;
       }
+      var pocet = this.pocet_slepic();
+      if(pocet == 0) {
+        throw "konec";
+      }        
     },
 
     otoc_vpravo: function() {
@@ -267,7 +271,21 @@
         }
       }
     },
-
+    
+    // pocet slepic
+    pocet_slepic: function() {
+      var pocet = 0;
+      for (var x = 0; x < 10; x++) {
+        for (var y = 0; y < 10; y++) {
+          if (this.deska_original[x][y]>300 && this.deska_original[x][y]<310)
+          {
+            pocet += 1;
+          }
+        }
+      }
+      return pocet;
+    },
+    
     nakresli_mapu: function() {
       console.log('map rendering...');
       var elem = document.getElementById('deska');
@@ -527,28 +545,75 @@
       }
     },
 
-    hlaseni: function(postava,x, y, hlaseni) {
+    hlaseni: function(postava,smer,x, y, hlaseni) {
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
 
-      //TODO doladit posun podle postavicky na policku
       var scale = 0.8;
       tile1 = document.getElementById("grass1");
-      // 1 liska, 2 pes
+      // 1 liska, 2 pes, 3 slepice
       switch(postava) {
           case 1:
-            tile = document.getElementById("fox1");
+            posun_x = 0;
+            posun_y = 0;
+            switch(smer) {
+              case 1:
+                tile = document.getElementById("fox1");
+                posun_x = tile.width/2;
+                break; 
+              case 2:
+                tile = document.getElementById("fox2");
+                break;
+              case 3:
+                tile = document.getElementById("fox3");
+                posun_y = -25;
+                break;
+              case 4:
+                tile = document.getElementById("fox4");
+                posun_x = tile.width/2;
+                posun_y = -25;
+                break;
+              default:
+                tile = document.getElementById("fox1");
+            }
             break;
           case 2:
-            tile = document.getElementById("dog1");
+            posun_x = 0;
+            posun_y = 0;
+            switch(smer) {
+              case 1:
+                tile = document.getElementById("dog1");
+                posun_x = tile.width/2;
+                break; 
+              case 2:
+                tile = document.getElementById("dog2");
+                break;
+              case 3:
+                tile = document.getElementById("dog3");
+                posun_x = -10;
+                posun_y = -25;
+                break;
+              case 4:
+                tile = document.getElementById("dog4");
+                posun_x = tile.width/2;
+                posun_y = -25;
+                break;
+              default:
+                tile = document.getElementById("dog1");
+            }
+            break;
+          case 3:
+            tile = document.getElementById("chicken1");
+            posun_x = (tile1.width-tile.width)/2 - 5;
+            posun_y = -tile.height/2;
             break;
           default:
             tile = document.getElementById("grass1");
       }
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
-      var zarovnani_x = 450;
-      var zarovnani_y = 60;
+      var zarovnani_x = 450 + posun_x*scale;
+      var zarovnani_y = 60 + posun_y*scale;
       var odsazeni_x = -5*scale;
       var okraj = 5;
       var font = 12;
@@ -724,12 +789,21 @@ function smycka() {
     catch (e) {
       if(e=="lisak pres palubu") {
         var [x,y] = hra.najdi_alana();
-        hra.hlaseni(x, y, "Tam nechci.")
+        var smer = hra.smer_alana();
+        hra.hlaseni(1, smer, x, y, "Tam nechci.")
       }
 
       else if(e=="zakazane") {
         var [x,y] = hra.najdi_alana();
-        hra.hlaseni(x, y, "Tam nemůžu.")
+        var smer = hra.smer_alana();
+        hra.hlaseni(1, smer, x, y, "Tam nemůžu.")
+      }
+      
+      else if(e=="konec") {
+        var [x,y] = hra.najdi_alana();
+        var smer = hra.smer_alana();
+        hra.hlaseni(1, smer, x, y, "A mám je všechny!")
+        hra.instrukce=hra.prikazy.length+1;
       }
 
       else {
@@ -744,11 +818,12 @@ function smycka() {
 
 
 hra.nakresli_mapu();
-hra.hlaseni(1,3,9, "tak jdeme na to");
 
-hra.hlaseni(2,5,6, "haf");
+hra.hlaseni(1,2,3,9, "tak jdeme na to");
 
+hra.hlaseni(2,2,5,6, "haf");
 
+hra.hlaseni(3,1,1,10, "kvok");
 </script>
 
 
