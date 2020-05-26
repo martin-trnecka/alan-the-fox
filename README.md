@@ -11,18 +11,19 @@ TODO:
 - splashscreen
 - info o hře
 - obecné info / nápověda
-- obrázky: stopa, cyklus n-krát,
+- obrázky: stopa, cyklus n-krát, funkce
 - přepínání na zdrojový kód
-- přidat hlášky
+- přidat hlášky a situace kdy se vypíší (random)
 - ikonka ke spustit
 - reset
 - zobrazování kategorií
 - generátor map
 - zpomalit pohyb
-- zarovnání textu u otočené lišky a psa (zkontrolovat, zda můře být takto, nebo posunout text na druhou stranu)
+- zarovnání textu u otočené lišky a psa (zkontrolovat, zda může být takto, nebo posunout text na druhou stranu)
 - opravit hlasky pri posunu
-
-- funkce - rozmyslet, zda je možné více funkcí a pojmenovávat si, nebo jen omezené množství funkcí (např. Funkce 1, Funkce 2...). Druhá možnost je jednodušší.
+- nahodne kvokani slepic
+- funkce 2
+- opravir zarovnani textu
 
 DONE:
 -----

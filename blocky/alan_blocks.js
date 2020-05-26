@@ -85,7 +85,7 @@ Blockly.Blocks['call_f1'] = {
         .appendField("zavolej funkci 1");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#e27305");
+    this.setColour("#e84d4d");
  this.setTooltip("f1");
  this.setHelpUrl("");
   }
