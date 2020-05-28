@@ -131,10 +131,10 @@
 
     // nacitani jednotlivých levelů
     nacti_level: function(level) {
-      this.deska = levels[level].mapa.slice();
-      this.deska_original = levels[level].mapa.slice();
+      this.deska = JSON.parse(JSON.stringify(levels[level].mapa));
+      this.deska_original = JSON.parse(JSON.stringify(levels[level].mapa));
 
-      console.log(levels[level].mapa);
+      //console.log(levels[level].mapa);
 
       // pozice Alana
       this.deska[levels[level].pozice_lisky[0]][levels[level].pozice_lisky[1]] = 200 + levels[level].pozice_lisky[2];
