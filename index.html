@@ -22,8 +22,8 @@
 
   <main>
       <div class="level-details">
-          <a href="#" class="level">1</a>
-          <p>Popis levelu, co se má dělat a ja k se to má dělat.</p>
+          <a href="#" class="level"  id="level-id">1</a>
+          <p id="popis-levelu">Popis levelu, co se má dělat a ja k se to má dělat.</p>
       </div>
 
       <div class="mapa">
@@ -131,10 +131,9 @@
 
     // nacitani jednotlivých levelů
     nacti_level: function(level) {
+      // TODO: stringify je pomalé, bylo by lepší udělat DeepCopy jinak
       this.deska = JSON.parse(JSON.stringify(levels[level].mapa));
       this.deska_original = JSON.parse(JSON.stringify(levels[level].mapa));
-
-      //console.log(levels[level].mapa);
 
       // pozice Alana
       this.deska[levels[level].pozice_lisky[0]][levels[level].pozice_lisky[1]] = 200 + levels[level].pozice_lisky[2];
@@ -147,6 +146,10 @@
       }
 
       this.index_pohyb_pes = 0;
+
+      // zmeny v UI
+      document.getElementById('level-id').innerHTML = level;
+      document.getElementById('popis-levelu').innerHTML = levels[level].popis;
     },
 
     krok: function() {
@@ -894,6 +897,8 @@ var xml =
     '<block type="start_block" deletable="false" movable="false"></block>' +
   '</xml>';
 Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
+
+
 </script>
 
 
@@ -919,6 +924,8 @@ Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
 </xml>
 
 <script>
+
+alert(document.getElementById('toolbox'));
 Blockly.JavaScript.addReservedWords('code');
 
 var workspace = Blockly.inject('blockly', {toolbox: document.getElementById('toolbox'), toolboxPosition: "start",  zoom:
