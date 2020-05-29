@@ -22,7 +22,7 @@
 
   <main>
       <div class="level-details">
-          <a href="#" class="level"  id="level-id">1</a>
+          <a href="#" class="level" id="level-id">1</a>
           <p id="popis-levelu">Popis levelu, co se má dělat a ja k se to má dělat.</p>
       </div>
 
@@ -941,6 +941,8 @@ function smycka() {
     }
 
     hra.instrukce += 1;
+
+    //console.log(hra.stop);
     if (!hra.stop) {
       setTimeout(function(){window.requestAnimationFrame(smycka)}, 160);
     }
@@ -960,7 +962,7 @@ if(window.location.hash) {
 //hra.hlaseni(3,1,1,10, "kvok");
 
 hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
-         {startScale: 0.8}, trashcan: "true", maxInstances:hra.instrukcni_sada});
+         {startScale: 0.8}, trashcan: "true", maxInstances:hra.instrukcni_sada, CORNER_RADIUS: 0});
 
 // generování kódu
 function myUpdateFunction(event) {
@@ -973,7 +975,6 @@ hra.workspace.addChangeListener(myUpdateFunction);
 // pridani hlavniho elementu
 Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
 
-
 hra.nacti_level(level);
 hra.nakresli_mapu();
 
@@ -981,16 +982,17 @@ hra.nakresli_mapu();
 function run() {
   document.getElementById('start').style.display = "none";
   document.getElementById('stop').style.display = "block";
-  hra.reset();
+  hra.stop = 0;
   setTimeout(function(){hra.proved(Blockly.JavaScript.workspaceToCode(hra.workspace))}, 100);
 }
 
 function reset() {
-  hra.reset();
   hra.stop = 0;
+  hra.reset();
 }
 
 function stop() {
+  hra.reset();
   hra.stop = 1;
   document.getElementById('start').style.display = "block";
   document.getElementById('stop').style.display = "none";

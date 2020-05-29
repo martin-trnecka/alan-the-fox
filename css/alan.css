@@ -87,7 +87,9 @@ main {
 
 .level {
   display: block;
-  border: 1px dashed gray;
+  background-color: #E4E4E4;
+  border: 1px solid #AAAAAA;
+  color: black;
   flex-basis: 44px;
   padding: 14px 0;
   text-align: center;
@@ -96,10 +98,15 @@ main {
   margin-left: 10px;
 }
 
+.level:hover {
+  background-color: #AAAAAA;  
+}
+
 .level-details p {
   margin: 0;
   padding: 14px;
-  border: 1px dashed gray;
+  background-color: #E4E4E4;
+  border: 1px solid #AAAAAA;
   display: block;
   width: 100%;
   margin-left: 10px;
@@ -122,4 +129,22 @@ small img {
 
 .hidden {
   display: none;
+}
+
+#start, #stop {
+  background-color: #0BAFAF;
+  border: 1px solid #3FA2B2;
+  color: white;
+}
+
+#start:hover, #stop:hover {
+  background-color: #3FA2B2;
+}
+
+#stop {
+  display: none;
+}
+
+#popis-levelu {
+
 }
