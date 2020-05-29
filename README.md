@@ -6,7 +6,8 @@ programovací hra pro děti
 TODO:
 -----
 
-- načítání levelů
+- posunout main block
+- dodat levely
 - user interface
 - splashscreen
 - info o hře
@@ -27,6 +28,7 @@ TODO:
 
 DONE:
 -----
+- načítání levelů
 - zarovnání textu u slepic
 - ověření konce
 - pohyb psa

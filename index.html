@@ -31,34 +31,8 @@
       </div>
 
       <div class="levels">
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">2</a>
-        <a href="#" class="level">3</a>
-        <a href="#" class="level">4</a>
-        <a href="#" class="level">5</a>
-        <a href="#" class="level">6</a>
-        <a href="#" class="level">7</a>
-        <a href="#" class="level">8</a>
-        <a href="#" class="level">9</a>
-        <a href="#" class="level">10</a>
-        <a href="#" class="level">11</a>
-        <a href="#" class="level">12</a>
-        <a href="#" class="level">13</a>
-        <a href="#" class="level">14</a>
-        <a href="#" class="level">15</a>
-        <a href="#" class="level">16</a>
-        <a href="#" class="level">17</a>
-        <a href="#" class="level">18</a>
-        <a href="#" class="level">19</a>
-        <a href="#" class="level">20</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">1</a>
-        <a href="#" class="level">999</a>
-        <a href="#" class="level">111</a>
+        <a href="#1" onclick="hra.nacti_level(1);" class="level">1</a>
+        <a href="#2" onclick="hra.nacti_level(2);" class="level">2</a>
       </div>
 
       <div class="editor">
@@ -74,6 +48,10 @@
         <a href="#" onclick="run();">spustit</a>
       </div>
   </main>
+
+  <xml id="startblock" style="display: none">
+    <block type="start"></block>
+  </xml>
 
 <small class="credit">&copy; Lišák Alan 1.0 | Martin Trnečka a Markéta Trnečková | <a href="https://www.inf.upol.cz/">Katedra informatiky</a> | <a href="https://www.upol.cz/">Univerzita Palackého v Olomouci</a>
 
@@ -120,17 +98,65 @@
       <img id="flower3" src="./assets/flower3.svg" class="hidden">     <!-- 503 -->
 
   <script>
+  // výchozí toolbox (vse)
+  var toolbox = '<xml>' +
+      '<block type="krok"></block>' +
+      '<block type="seber_slepici"></block>' +
+      //'<block type="otoc_vlevo"></block>' +
+      //'<block type="otoc_vpravo"></block>' +
+      //'<block type="opakuj"></block>' +
+      //'<block type="opakuj_p"></block>' +
+      //'<block type="if_p"></block>' +
+      //'<block type="function_1"></block>' +
+      //'<block type="call_f1"></block>' +
+    '</xml>';
 
   // Alan the fox
   var hra = {
 
-    deska: [], // uchovává aktuálo ní desku
-    deska_original: [], // výchozí deska (bez Alana a psa)
+    deska: [],
+    deska_original: [],
     pohyb_pes: [],
     index_pohyb_pes: 0,
 
+    // nacti sandbox
+    nacti_sandbox: function(level) {
+      // level pri chybe
+
+      this.deska = [[ 31, 31, 31, 31,  31,  31,  31,  31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 201,  1,  301, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31]];
+
+      this.deska_original = [[ 31, 31, 31, 31,  31,  31,  31,  31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 1,  1,  301, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
+              [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31]],
+
+      document.getElementById('level-id').innerHTML = level;
+      document.getElementById('popis-levelu').innerHTML = "Je nám líto, ale level " + level + " neexistuje. Zkuste jiný level z nabídky níže.";
+    },
+
     // nacitani jednotlivých levelů
     nacti_level: function(level) {
+
+      if(level>=levels.length) {
+        this.nacti_sandbox(level);
+        this.nakresli_mapu();
+        return;
+      }
       // TODO: stringify je pomalé, bylo by lepší udělat DeepCopy jinak
       this.deska = JSON.parse(JSON.stringify(levels[level].mapa));
       this.deska_original = JSON.parse(JSON.stringify(levels[level].mapa));
@@ -150,6 +176,23 @@
       // zmeny v UI
       document.getElementById('level-id').innerHTML = level;
       document.getElementById('popis-levelu').innerHTML = levels[level].popis;
+
+      // dostupné instrukce
+      this.instrukcni_sada = this.update_available_instructions(levels[level].instrukcni_sada);
+
+      this.workspace.updateToolbox(this.instrukcni_sada);
+      this.nakresli_mapu();
+    },
+
+    update_available_instructions: function(instrukcni_sada) {
+
+      var toolbox =  '<xml>';
+        for (let [key, value] of Object.entries(instrukcni_sada)) {
+        toolbox += '<block type="'+key+'"></block>';
+      }
+      toolbox += '</xml>';
+
+      return toolbox
     },
 
     krok: function() {
@@ -206,7 +249,7 @@
       if(this.deska_original[new_x][new_y]==503)            //podminka
         this.deska[new_x][new_y] += 30;
 
-      console.log(JSON.stringify(this.deska));
+      //console.log(JSON.stringify(this.deska));
       this.deska[x][y] = this.deska_original[x][y] ;
     },
 
@@ -879,9 +922,12 @@ function smycka() {
     setTimeout(function(){window.requestAnimationFrame(smycka)}, 60);
   }
 
+var level = 1;
 
-hra.nacti_level(0);
-hra.nakresli_mapu();
+if(window.location.hash) {
+  level = parseInt(window.location.hash.slice(1));
+  if(isNaN(level)) level = 1;
+}
 
 //hra.hlaseni(1,2,3,9, "tak jdeme na to");
 
@@ -889,65 +935,27 @@ hra.nakresli_mapu();
 
 //hra.hlaseni(3,1,1,10, "kvok");
 
+hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
+         {startScale: 0.8}, trashcan: "true", maxInstances:hra.instrukcni_sada});
 
-/*
-var workspace = Blockly.inject('blocklyDiv', options);
-var xml =
-  '<xml>' +
-    '<block type="start_block" deletable="false" movable="false"></block>' +
-  '</xml>';
-Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);       */
-
-
-</script>
-
-
-
-
-
-
-
-<xml id="toolbox" style="display: none">
-  <block type="krok"></block>
-  <block type="seber_slepici"></block>
-  <block type="otoc_vlevo"></block>
-  <block type="otoc_vpravo"></block>
-  <block type="opakuj"></block>
-  <block type="opakuj_p"></block>
-  <block type="if_p"></block>
-  <block type="function_1"></block>
-  <block type="call_f1"></block>
-</xml>
-
-<xml id="startblock" style="display: none">
-  <block type="start"></block>
-</xml>
-
-<script>
-
-alert(document.getElementById('toolbox'));
-Blockly.JavaScript.addReservedWords('code');
-
-var workspace = Blockly.inject('blockly', {toolbox: document.getElementById('toolbox'), toolboxPosition: "start",  zoom:
-         {startScale: 0.8}, trashcan: "true", maxInstances:{krok:Infinity, seber_slepici:2}});
-
-var code = Blockly.JavaScript.workspaceToCode(workspace)
-
+// generování kódu
 function myUpdateFunction(event) {
-  var code = Blockly.JavaScript.workspaceToCode(workspace);
+  var code = Blockly.JavaScript.workspaceToCode(hra.workspace);
   document.getElementById('textarea').value = code;
 }
 
-workspace.addChangeListener(myUpdateFunction);
+hra.workspace.addChangeListener(myUpdateFunction);
 
-Blockly.Xml.domToWorkspace(document.getElementById('startblock'), workspace);
+// pridani hlavniho elementu
+Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
 
+
+hra.nacti_level(level);
+hra.nakresli_mapu();
 
 // Fox on run :-)
 function run() {
-  var code = Blockly.JavaScript.workspaceToCode(workspace);
-
-  hra.proved(code);
+  hra.proved(Blockly.JavaScript.workspaceToCode(hra.workspace));
 }
 </script>
 
