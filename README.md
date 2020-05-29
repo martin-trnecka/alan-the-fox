@@ -16,7 +16,6 @@ TODO:
 - přepínání na zdrojový kód
 - přidat hlášky a situace kdy se vypíší (random)
 - ikonka ke spustit
-- reset
 - zobrazování kategorií
 - generátor map
 - zpomalit pohyb
@@ -32,3 +31,4 @@ DONE:
 - zarovnání textu u slepic
 - ověření konce
 - pohyb psa
+- reset

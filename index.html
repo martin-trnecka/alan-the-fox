@@ -45,7 +45,9 @@
       </div>
 
       <div class="controls">
-        <a href="#" onclick="run();">spustit</a>
+        <a href="#" onclick="run();" id="start">spustit</a>
+        <!-- <a href="#" onclick="reset();">zkusit znovu</a> -->
+        <a href="#" onclick="stop();" id="stop">zastavit</a>
       </div>
   </main>
 
@@ -118,6 +120,7 @@
     deska_original: [],
     pohyb_pes: [],
     index_pohyb_pes: 0,
+    stop: 0,
 
     // nacti sandbox
     nacti_sandbox: function(level) {
@@ -151,7 +154,7 @@
 
     // nacitani jednotlivých levelů
     nacti_level: function(level) {
-
+      this.level = level;
       if(level>=levels.length) {
         this.nacti_sandbox(level);
         this.nakresli_mapu();
@@ -181,6 +184,25 @@
       this.instrukcni_sada = this.update_available_instructions(levels[level].instrukcni_sada);
 
       this.workspace.updateToolbox(this.instrukcni_sada);
+      this.nakresli_mapu();
+    },
+
+    reset: function() {
+      this.deska = JSON.parse(JSON.stringify(levels[this.level].mapa));
+      this.deska_original = JSON.parse(JSON.stringify(levels[this.level].mapa));
+
+      // pozice Alana
+      this.deska[levels[this.level].pozice_lisky[0]][levels[this.level].pozice_lisky[1]] = 200 + levels[this.level].pozice_lisky[2];
+
+      // pozice psa
+      this.pohyb_pes = levels[this.level].instrukce_psa;
+
+      if (this.pohyb_pes.length != 0) {
+        this.deska[levels[this.level].instrukce_psa[0][0]][levels[this.level].instrukce_psa[0][1]] = 400 + levels[this.level].instrukce_psa[0][2];
+      }
+
+      this.index_pohyb_pes = 0;
+
       this.nakresli_mapu();
     },
 
@@ -729,6 +751,7 @@
   }
 
 
+// beh hlavniho programu
 function smycka() {
     try {
         if(hra.instrukce>=hra.prikazy.length) return;
@@ -917,9 +940,10 @@ function smycka() {
       }
     }
 
-
     hra.instrukce += 1;
-    setTimeout(function(){window.requestAnimationFrame(smycka)}, 60);
+    if (!hra.stop) {
+      setTimeout(function(){window.requestAnimationFrame(smycka)}, 160);
+    }
   }
 
 var level = 1;
@@ -955,7 +979,21 @@ hra.nakresli_mapu();
 
 // Fox on run :-)
 function run() {
-  hra.proved(Blockly.JavaScript.workspaceToCode(hra.workspace));
+  document.getElementById('start').style.display = "none";
+  document.getElementById('stop').style.display = "block";
+  hra.reset();
+  setTimeout(function(){hra.proved(Blockly.JavaScript.workspaceToCode(hra.workspace))}, 100);
+}
+
+function reset() {
+  hra.reset();
+  hra.stop = 0;
+}
+
+function stop() {
+  hra.stop = 1;
+  document.getElementById('start').style.display = "block";
+  document.getElementById('stop').style.display = "none";
 }
 </script>
 
