@@ -33,6 +33,15 @@
       <div class="levels">
         <a href="#1" onclick="hra.nacti_level(1);" class="level">1</a>
         <a href="#2" onclick="hra.nacti_level(2);" class="level">2</a>
+        <a href="#3" onclick="hra.nacti_level(3);" class="level">3</a>
+        <a href="#4" onclick="hra.nacti_level(4);" class="level">4</a>
+        <a href="#5" onclick="hra.nacti_level(5);" class="level">5</a>
+        <a href="#6" onclick="hra.nacti_level(6);" class="level">6</a>
+        <a href="#7" onclick="hra.nacti_level(7);" class="level">7</a>
+        <a href="#8" onclick="hra.nacti_level(8);" class="level">8</a>
+        <a href="#9" onclick="hra.nacti_level(9);" class="level">9</a>
+        <a href="#10" onclick="hra.nacti_level(10);" class="level">10</a>
+        <a href="#11" onclick="hra.nacti_level(11);" class="level">11</a>
       </div>
 
       <div class="editor">
@@ -175,6 +184,10 @@
       }
 
       this.index_pohyb_pes = 0;
+      
+      if (this.pohyb_pes.length > 1) {
+          this.index_pohyb_pes = 1;
+      }
 
       // zmeny v UI
       document.getElementById('level-id').innerHTML = level;
@@ -202,6 +215,10 @@
       }
 
       this.index_pohyb_pes = 0;
+      
+      if (this.pohyb_pes.length > 1) {
+          this.index_pohyb_pes = 1;
+      }
 
       this.nakresli_mapu();
     },
