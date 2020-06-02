@@ -290,4 +290,29 @@ var levels =
 }, // konec levelu
 
 
+// zacatek levelu
+{
+  popis: "Mapa je krásně symetrická.",
+  kategorie: "Pokročilý",
+  mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,301,  0,  0,  0,302,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,203,  0,  0,  0,204,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]],
+  pozice_lisky: [2, 8, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 3],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 1]], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity,function_1:Infinity,function_2:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+
 ];

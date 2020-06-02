@@ -19,11 +19,10 @@ TODO:
 - zobrazování kategorií
 - generátor map
 - zpomalit pohyb
-- zarovnání textu u otočené lišky a psa (zkontrolovat, zda může být takto, nebo posunout text na druhou stranu)
-- opravit hlasky pri posunu
 - nahodne kvokani slepic
-- funkce 2
-- opravir zarovnani textu
+- funkce zkontrolovat barvy (nedat je obě zelené? - každá jiný odstín)
+- zkontrolovat funkci 2 - funkčnost
+
 
 DONE:
 -----
@@ -32,3 +31,7 @@ DONE:
 - ověření konce
 - pohyb psa
 - reset
+- zarovnání textu u otočené lišky a psa (zkontrolovat, zda může být takto, nebo posunout text na druhou stranu)
+- opravir zarovnani textu
+- opravit hlasky pri posunu
+- funkce 2 

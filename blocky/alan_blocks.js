@@ -92,6 +92,32 @@ Blockly.Blocks['call_f1'] = {
 };
 
 
+Blockly.Blocks['function_2'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("funkce 2");
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setPreviousStatement(false, null);
+    this.setNextStatement(false, null);
+    this.setColour("#19737c");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  },
+};
+
+Blockly.Blocks['call_f2'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("zavolej funkci 2");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#19737c");
+ this.setTooltip("f2");
+ this.setHelpUrl("");
+  }
+};
+
 
 Blockly.Blocks['seber_slepici'] = {
   init: function() {

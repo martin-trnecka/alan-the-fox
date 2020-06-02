@@ -60,6 +60,16 @@ Blockly.JavaScript['function_1'] = function(block) {
   code += 'END\n';
 
   return code;
+};   
+
+Blockly.JavaScript['function_2'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+
+  var code = 'F2\n';
+  code += statements_name;
+  code += 'END\n';
+
+  return code;
 };
 
 
@@ -76,4 +86,9 @@ Blockly.JavaScript['start'] = function(block) {
 // volání funkce
 Blockly.JavaScript['call_f1'] = function(block) {
   return 'F1()\n';
+}; 
+
+Blockly.JavaScript['call_f2'] = function(block) {
+  return 'F2()\n';
 };
+

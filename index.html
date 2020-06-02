@@ -176,7 +176,7 @@
         this.nacti_sandbox(level);
         this.nakresli_mapu();
         return;
-      }
+      }       
       // TODO: stringify je pomalé, bylo by lepší udělat DeepCopy jinak
       this.deska = JSON.parse(JSON.stringify(levels[level].mapa));
       this.deska_original = JSON.parse(JSON.stringify(levels[level].mapa));
@@ -196,6 +196,7 @@
       if (this.pohyb_pes.length > 1) {
           this.index_pohyb_pes = 1;
       }
+      
 
       // zmeny v UI
       document.getElementById('level-id').innerHTML = level;
@@ -268,7 +269,7 @@
         new_y = y;
       }
 
-      if(new_x < 0 || new_x>10 || new_y <0 || new_y >10) {
+      if(new_x < 0 || new_x>9 || new_y <0 || new_y >9) {
         throw "lisak pres palubu";
       }
 
@@ -673,8 +674,19 @@
     hlaseni: function(postava,smer,x, y, hlaseni) {
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
-
+     // alert([x,y,smer]);
       var scale = 0.8;
+      
+      var okraj = 5;
+      var font = 12;
+      context.font =  font +"pt arial";
+      var text_width = context.measureText(hlaseni).width;
+      var text_height= context.measureText(hlaseni).height;
+      context.fillStyle = "#fff";
+      context.strokeStyle = "#aaa"
+      context.lineWidth = 1;
+      
+      
       tile1 = document.getElementById("grass1");
       // 1 liska, 2 pes, 3 slepice
       switch(postava) {
@@ -684,19 +696,23 @@
             switch(smer) {
               case 1:
                 tile = document.getElementById("fox1");
-                posun_x = tile.width/2;
+                posun_x = (1.3*tile.width)*scale;
+                posun_y = (tile.height/1.8)*scale;
                 break;
               case 2:
+                posun_x = (tile.width/18)*scale-text_width;
+                posun_y = (tile.height/1.8)*scale;
                 tile = document.getElementById("fox2");
                 break;
               case 3:
                 tile = document.getElementById("fox3");
-                posun_y = -25;
+                posun_x = (tile.width/16)*scale-text_width;
+                posun_y = (tile.height/4)*scale;
                 break;
               case 4:
                 tile = document.getElementById("fox4");
-                posun_x = tile.width/2;
-                posun_y = -25;
+                posun_x = (1.3*tile.width)*scale;
+                posun_y = (tile.height/4)*scale;
                 break;
               default:
                 tile = document.getElementById("fox1");
@@ -708,52 +724,58 @@
             switch(smer) {
               case 1:
                 tile = document.getElementById("dog1");
-                posun_x = tile.width/2;
+                posun_x = (1.2*tile.width)*scale;
+                posun_y = (tile.height/1.8)*scale;
                 break;
               case 2:
                 tile = document.getElementById("dog2");
+                posun_x = 0-text_width;
+                posun_y = (tile.height/1.8)*scale;
                 break;
               case 3:
                 tile = document.getElementById("dog3");
-                posun_x = -10;
-                posun_y = -25;
+                posun_x = (-tile.width/16)*scale-text_width;
+                posun_y = (tile.height/6)*scale;
                 break;
               case 4:
                 tile = document.getElementById("dog4");
-                posun_x = tile.width/2;
-                posun_y = -25;
+                posun_x = (1.25*tile.width)*scale;
+                posun_y = (tile.height/6)*scale;
                 break;
               default:
                 tile = document.getElementById("dog1");
             }
             break;
           case 3:
-            tile = document.getElementById("chicken1");
-            posun_x = (tile1.width-tile.width)/2 - 5;
-            posun_y = -tile.height/2;
+            switch(smer) {
+              case 1:
+                tile = document.getElementById("chicken1");
+                posun_x = (2*tile.width)*scale;
+                posun_y = (tile.height/1.8)*scale;
+                break;
+              case 2:
+                tile = document.getElementById("chicken2");
+                posun_x = (tile.width/2)*scale-text_width;
+                posun_y = (tile.height/1.8)*scale;
+                break;
+            }
             break;
           default:
             tile = document.getElementById("grass1");
       }
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
-      var zarovnani_x = 450 + posun_x*scale;
-      var zarovnani_y = 60 + posun_y*scale;
+      var zarovnani_x = 450 + posun_x;
+      var zarovnani_y = 60 + posun_y;
       var odsazeni_x = -5*scale;
-      var okraj = 5;
-      var font = 12;
-      context.font =  font +"pt arial";
-      var text_width = context.measureText(hlaseni).width;
-      var text_height= context.measureText(hlaseni).height;
-      context.fillStyle = "#fff";
-      context.strokeStyle = "#aaa"
-      context.lineWidth = 1;
-      context.fillRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
-      context.strokeRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+        
+      
+      context.fillRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
+      context.strokeRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
       context.fillStyle = "black";
       context.textAlign = "center";
       context.textBaseline = 'middle';
-      context.fillText(hlaseni, x*(-move_x/2) + y*move_x/2 + zarovnani_x-text_width/2 + odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4);
+      context.fillText(hlaseni, x*(-move_x/2) + y*move_x/2 + zarovnani_x+text_width/2 + odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4);
     },
 
     // vykonavani herni smycky
@@ -980,11 +1002,11 @@ if(window.location.hash) {
   if(isNaN(level)) level = 1;
 }
 
-//hra.hlaseni(1,2,3,9, "tak jdeme na to");
+
 
 //hra.hlaseni(2,2,5,6, "haf");
 
-//hra.hlaseni(3,1,1,10, "kvok");
+//hra.hlaseni(3,1,1,10, "kvok");             
 
 
 hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
@@ -1003,6 +1025,11 @@ Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace)
 
 hra.nacti_level(level);
 hra.nakresli_mapu();
+hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
+hra.hlaseni(3,2,2,5, "kvokkvokkvokkvokkvok");
+
+
+
 
 // Fox on run :-)
 function run() {
