@@ -176,7 +176,7 @@
         this.nacti_sandbox(level);
         this.nakresli_mapu();
         return;
-      }       
+      }
       // TODO: stringify je pomalé, bylo by lepší udělat DeepCopy jinak
       this.deska = JSON.parse(JSON.stringify(levels[level].mapa));
       this.deska_original = JSON.parse(JSON.stringify(levels[level].mapa));
@@ -192,11 +192,11 @@
       }
 
       this.index_pohyb_pes = 0;
-      
+
       if (this.pohyb_pes.length > 1) {
           this.index_pohyb_pes = 1;
       }
-      
+
 
       // zmeny v UI
       document.getElementById('level-id').innerHTML = level;
@@ -205,7 +205,8 @@
       // dostupné instrukce
       this.instrukcni_sada = this.update_available_instructions(levels[level].instrukcni_sada);
 
-      this.workspace.updateToolbox(this.instrukcni_sada);   
+      this.init();
+      this.workspace.updateToolbox(this.instrukcni_sada);
       this.nakresli_mapu();
     },
 
@@ -224,12 +225,19 @@
       }
 
       this.index_pohyb_pes = 0;
-      
+
       if (this.pohyb_pes.length > 1) {
           this.index_pohyb_pes = 1;
       }
 
       this.nakresli_mapu();
+    },
+
+    init: function() {
+      hra.workspace.dispose();
+      hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
+               {startScale: 0.8}, trashcan: "true", maxInstances:levels[level].instrukcni_sada});
+      Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
     },
 
     update_available_instructions: function(instrukcni_sada) {
@@ -676,7 +684,7 @@
       var context = elem.getContext('2d');
      // alert([x,y,smer]);
       var scale = 0.8;
-      
+
       var okraj = 5;
       var font = 12;
       context.font =  font +"pt arial";
@@ -685,8 +693,8 @@
       context.fillStyle = "#fff";
       context.strokeStyle = "#aaa"
       context.lineWidth = 1;
-      
-      
+
+
       tile1 = document.getElementById("grass1");
       // 1 liska, 2 pes, 3 slepice
       switch(postava) {
@@ -768,8 +776,8 @@
       var zarovnani_x = 450 + posun_x;
       var zarovnani_y = 60 + posun_y;
       var odsazeni_x = -5*scale;
-        
-      
+
+
       context.fillRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
       context.strokeRect(x*(-move_x/2) + y*move_x/2 + zarovnani_x-okraj+odsazeni_x, x*move_y/2 + y*move_y/2+zarovnani_y - 3*tile.width*scale/4-font/2-okraj, text_width+2*okraj, font+2*okraj*scale);
       context.fillStyle = "black";
@@ -1006,11 +1014,11 @@ if(window.location.hash) {
 
 //hra.hlaseni(2,2,5,6, "haf");
 
-//hra.hlaseni(3,1,1,10, "kvok");             
+//hra.hlaseni(3,1,1,10, "kvok");
 
 
-hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
-         {startScale: 0.8}, trashcan: "true", maxInstances:levels[level].instrukcni_sada, CORNER_RADIUS: 0});
+
+
 
 // generování kódu
 function myUpdateFunction(event) {
@@ -1018,7 +1026,10 @@ function myUpdateFunction(event) {
   document.getElementById('textarea').value = code;
 }
 
+hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
+         {startScale: 0.8}, trashcan: "true", maxInstances:levels[level].instrukcni_sada});
 hra.workspace.addChangeListener(myUpdateFunction);
+
 
 // pridani hlavniho elementu
 Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
