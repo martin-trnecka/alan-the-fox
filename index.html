@@ -116,8 +116,11 @@
       <img id="flower2" src="./assets/flower2.svg" class="hidden">     <!-- 502 -->
       <img id="flower3" src="./assets/flower3.svg" class="hidden">     <!-- 503 -->
 
+
+
+
   <script>
-  // výchozí toolbox (vse)
+  // výchozí toolbox
   var toolbox = '<xml>' +
       '<block type="krok"></block>' +
       '<block type="seber_slepici"></block>' +
@@ -133,13 +136,14 @@
   // Alan the fox
   var hra = {
 
+    // inicializace
     deska: [],
     deska_original: [],
     pohyb_pes: [],
     index_pohyb_pes: 0,
     stop: 0,
 
-    // nacti sandbox
+    // nacti sandbox (vychozi jednoducha hra)
     nacti_sandbox: function(level) {
       // level pri chybe
 
@@ -206,7 +210,6 @@
       this.instrukcni_sada = this.update_available_instructions(levels[level].instrukcni_sada);
 
       this.init();
-      this.workspace.updateToolbox(this.instrukcni_sada);
       this.nakresli_mapu();
     },
 
@@ -234,14 +237,16 @@
     },
 
     init: function() {
-      hra.workspace.dispose();
-      hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
-               {startScale: 0.8}, trashcan: "true", maxInstances:levels[level].instrukcni_sada});
-      Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
+      if(this.workspace) {
+        this.workspace.dispose();
+      }
+      this.workspace = Blockly.inject('blockly', {toolbox: this.instrukcni_sada, toolboxPosition: "start",  zoom:
+               {startScale: 0.8}, trashcan: "true", maxInstances: this.instrukcni_sada});
+      //this.workspace.updateToolbox(this.instrukcni_sada);
+      Blockly.Xml.domToWorkspace(document.getElementById('startblock'), this.workspace);
     },
 
     update_available_instructions: function(instrukcni_sada) {
-
       var toolbox =  '<xml>';
         for (let [key, value] of Object.entries(instrukcni_sada)) {
         toolbox += '<block type="'+key+'"></block>';
@@ -806,7 +811,10 @@
   }
 
 
+
+
 // beh hlavniho programu
+// TODO: zaclenit do objektu hra
 function smycka() {
     try {
         if(hra.instrukce>=hra.prikazy.length) return;
@@ -1003,6 +1011,8 @@ function smycka() {
     }
   }
 
+
+// výchozí level
 var level = 1;
 
 if(window.location.hash) {
@@ -1012,37 +1022,28 @@ if(window.location.hash) {
 
 
 
-//hra.hlaseni(2,2,5,6, "haf");
 
-//hra.hlaseni(3,1,1,10, "kvok");
-
-
+// inicializace hry
+hra.init();
 
 
-
-// generování kódu
+// funkce pro generování kódu
 function myUpdateFunction(event) {
   var code = Blockly.JavaScript.workspaceToCode(hra.workspace);
   document.getElementById('textarea').value = code;
 }
 
-hra.workspace = Blockly.inject('blockly', {toolbox: toolbox, toolboxPosition: "start",  zoom:
-         {startScale: 0.8}, trashcan: "true", maxInstances:levels[level].instrukcni_sada});
 hra.workspace.addChangeListener(myUpdateFunction);
-
-
-// pridani hlavniho elementu
-Blockly.Xml.domToWorkspace(document.getElementById('startblock'), hra.workspace);
 
 hra.nacti_level(level);
 hra.nakresli_mapu();
+
+// hlasení
 hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
 hra.hlaseni(3,2,2,5, "kvokkvokkvokkvokkvok");
 
-
-
-
 // Fox on run :-)
+// hlavní ovládání aplikace (napojeno na API)
 function run() {
   document.getElementById('start').style.display = "none";
   document.getElementById('stop').style.display = "block";
