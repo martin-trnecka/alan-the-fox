@@ -241,7 +241,7 @@
         this.workspace.dispose();
       }
       this.workspace = Blockly.inject('blockly', {toolbox: this.instrukcni_sada, toolboxPosition: "start",  zoom:
-               {startScale: 0.8}, trashcan: "true", maxInstances: this.instrukcni_sada});
+               {startScale: 0.8}, trashcan: "true", maxInstances:levels[this.level].instrukcni_sada});
       //this.workspace.updateToolbox(this.instrukcni_sada);
       Blockly.Xml.domToWorkspace(document.getElementById('startblock'), this.workspace);
     },
@@ -1023,8 +1023,6 @@ if(window.location.hash) {
 
 
 
-// inicializace hry
-hra.init();
 
 
 // funkce pro generování kódu
@@ -1033,10 +1031,12 @@ function myUpdateFunction(event) {
   document.getElementById('textarea').value = code;
 }
 
-hra.workspace.addChangeListener(myUpdateFunction);
 
+// inicializace hry
 hra.nacti_level(level);
 hra.nakresli_mapu();
+
+hra.workspace.addChangeListener(myUpdateFunction);
 
 // hlasení
 hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
