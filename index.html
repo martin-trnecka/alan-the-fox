@@ -22,8 +22,8 @@
 
   <main>
       <div class="level-details">
-          <a href="#" class="level" id="level-id">1</a>
-          <p id="popis-levelu">Popis levelu, co se má dělat a ja k se to má dělat.</p>
+          <div class="level" id="level-id"></div>
+          <p id="popis-levelu"></p>
       </div>
 
       <div class="mapa">
@@ -73,25 +73,29 @@
 
           <div id="blockly" style="position: absolute"></div>
 
-          <textarea id="textarea" style="height: 650px; width: 600px;" class="hidden"></textarea>
+          <textarea id="textarea" class="hidden" disabled></textarea>
         </div>
       </div>
 
       <div class="controls">
+        <a href="#" onclick="toggle_code();" id="code">zobrazit kód</a>
         <a href="#" onclick="run();" id="start">spustit</a>
         <!-- <a href="#" onclick="reset();">zkusit znovu</a> -->
         <a href="#" onclick="stop();" id="stop">zastavit</a>
       </div>
+
+      <small class="authors">&copy; Lišák Alan 1.0 | Martin Trnečka a Markéta Trnečková | <a href="https://www.inf.upol.cz/">Katedra informatiky</a> | <a href="https://www.upol.cz/">Univerzita Palackého v Olomouci</a>
+      </small>
+
+      <small class="credit">založeno na <a href="https://developers.google.com/blockly" rel="external"><img src="./assets/blockly.svg"></a></small>
+
   </main>
 
   <xml id="startblock" style="display: none">
     <block type="start"></block>
   </xml>
 
-<small class="credit">&copy; Lišák Alan 1.0 | Martin Trnečka a Markéta Trnečková | <a href="https://www.inf.upol.cz/">Katedra informatiky</a> | <a href="https://www.upol.cz/">Univerzita Palackého v Olomouci</a>
 
-<span>založeno na <a href="https://developers.google.com/blockly" rel="external"><img src="./assets/blockly.svg"></a></span>
-</small>
 
       <!-- assets -->
       <img id="grass1" src="./assets/grass1.svg" class="hidden">       <!-- 1 -->
@@ -1054,12 +1058,26 @@ hra.nakresli_mapu();
 
 hra.workspace.addChangeListener(myUpdateFunction);
 
+document.getElementById('textarea').style.display = "none";
+
 // hlasení
-hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
-hra.hlaseni(3,2,2,5, "kvokkvokkvokkvokkvok");
+//hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
+//hra.hlaseni(3,2,2,5, "kvokkvokkvokkvokkvok");
 
 // Fox on run :-)
 // hlavní ovládání aplikace (napojeno na API)
+function toggle_code() {
+  if(document.getElementById('textarea').style.display == "none") {
+    document.getElementById('textarea').style.display = "block";
+    document.getElementById('blockly').style.display = "none";
+    document.getElementById('code').innerHTML = "zobrazit bloky";
+  } else {
+    document.getElementById('textarea').style.display = "none";
+    document.getElementById('blockly').style.display = "block";
+    document.getElementById('code').innerHTML = "zobrazit kód";
+  }
+}
+
 function run() {
   document.getElementById('start').style.display = "none";
   document.getElementById('stop').style.display = "block";

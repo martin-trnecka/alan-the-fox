@@ -4,10 +4,10 @@ body {
 }
 
 #deska {
-  outline: 1px solid #3FA2B2;
+  border: 1px solid #3FA2B2;
   display: block;
   margin: 0;
-
+  box-sizing: border-box;
   width: 1000px;
   height: 700px;
 
@@ -21,30 +21,45 @@ body {
   background-color: #0BAFAF;
 }
 
+#textarea {
+  height: 698px;
+  width: 598px;
+  box-sizing: border-box;
+  border: none;
+  resize: none;
+  overflow-x: scroll;
+  padding: 10px;
+  grid-area: editor;
+  
+}
+
 main {
   display: grid;
   margin: auto;
   max-width: 1600px;
-  height: 100vh;
   align-items: center;
 
   grid-template-columns: 1000px 600px;
-  grid-template-rows: 75px 700px auto;
+  grid-template-rows: auto 700px auto 80px;
+  box-sizing: border-box;
 
   grid-template-areas:
     "level ."
     "map editor"
-    "levels controls";
+    "levels controls"
+    "credit blockly";
 }
 
 #blockly {
-  height: 700px;
-  width: 600px;
+  height: 698px;
+  width: 598px;
+  box-sizing: border-box;
 }
 
 .editor {
   height: 700px;
-  outline: 1px solid #0BAFAF;
+  border: 1px solid #0BAFAF;
+  box-sizing: border-box;
   grid-area: editor;
 }
 
@@ -60,12 +75,15 @@ main {
 }
 
 .controls a {
-  display: block;
-  border: 1px dashed gray;
+  display: inline-block;
+  background-color: #E4E4E4;
+  border: 1px solid #CCC;
+  color: black;
+  min-width: 75px;
   padding: 14px;
-  width: 100px;
   text-align: center;
   margin-top: 10px;
+  margin-left: 8px;
   text-decoration: none;
 }
 
@@ -83,12 +101,14 @@ main {
   justify-content: flex-start;
   margin-left: -10px;
   grid-area: level;
+  align-self: end;
+  padding-bottom: 10px;
 }
 
 .level {
   display: block;
   background-color: #E4E4E4;
-  border: 1px solid #AAAAAA;
+  border: 1px solid #CCC;
   color: black;
   flex-basis: 44px;
   padding: 14px 0;
@@ -98,31 +118,39 @@ main {
   margin-left: 10px;
 }
 
-.level:hover {
-  background-color: #AAAAAA;  
+a.level:hover {
+  background-color: #AAAAAA;
 }
 
 .level-details p {
   margin: 0;
   padding: 14px;
   background-color: #E4E4E4;
-  border: 1px solid #AAAAAA;
+  border: 1px solid #CCC;
   display: block;
   width: 100%;
   margin-left: 10px;
   margin-top: 10px;
-  box-sizing: border-box;
 }
 
-small a {
+.authors {
+  display: block;
+  grid-area: credit;
+  align-self: center;
+}
+
+.authors a {
   color: #0BAFAF;
 }
 
-small span {
-  float: right;
+small {color: gray;}
+
+.credit {
+  grid-area: blockly;
+  justify-self: end;
 }
 
-small img {
+.credit img {
   height: 1.5rem;
   vertical-align: middle;
 }
