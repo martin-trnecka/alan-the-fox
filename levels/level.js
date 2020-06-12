@@ -23,7 +23,7 @@ var levels =
     instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity}, // jake příkazy mohou být použity
 
   }, // konec levelu
-  
+
 // zacatek levelu
 {
   popis: "Úkolem lišáka Alana je posbírat všechny slepice z mapy. <br> Umí udělat krok a sebrat slepici. Přetažením jednotlivých bloků do hlavní funkce mu řekněte, co musí udělat, aby sebral slepici.",
@@ -292,27 +292,124 @@ var levels =
 
 // zacatek levelu
 {
-  popis: "Mapa je krásně symetrická.",
+  popis: "To je slepic. Nezapomeň sivzhodně rozdělit celý problém na více se opakujících částí!",
   kategorie: "Pokročilý",
-  mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,301,  0,  0,  0,302,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,203,  0,  0,  0,204,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]],
-  pozice_lisky: [2, 8, 2],      // x,y,smer
+  mapa: [[  1,302,  1,302,  1,301,  1,302,  1,301],
+         [302,  2,302,  6,301,  1,302,  6,301,  1],
+         [  1,302,  2,302,  1,302,  1,301,  7,302],
+         [302,  1,302,  2,302,  2,302,  1,301,  1],
+         [  1,302,  2,302,  1,301,  3,301,  2,302],
+         [302,  1,301,  7,301,  2,302,  1,302,  1],
+         [  1,302,  2,302,  3,301,  3,302,  2,302],
+         [302,  1,302,  1,301,  1,302,  1,302,  1],
+         [  2,301,  6,301,  1,302,  1,301,  2,302],
+         [201,  1,301,  1,302,  1,302,  2,302,  2]],
+  pozice_lisky: [9, 0, 1],      // x,y,smer
 
   // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
-  instrukce_psa: [[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 3],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 1]], // souřadnice pohybu, může být prázné
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
 
   //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
-  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity,function_1:Infinity,function_2:Infinity}, // jake příkazy mohou být použity
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity}, // jake příkazy mohou být použity
 
 }, // konec levelu
 
+// zacatek levelu
+{
+  popis: "Kudy to bude asi nejjednodušší?",
+  kategorie: "Pokročilý",
+  mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [ 37,  2,  1,  7,  1,  2,  1,  6,  7,  0],
+         [  0,  7,  2,302,301,302,302,  1,  1,  0],
+         [  0,  3,  1,301,  7,  2,302,  2,  1,  0],
+         [  0,  3,  3,301,  1,  6,302,  1,  1,  0],
+         [  0,  7,  1,301,302,301,302,  3,  1,  0],
+         [  0,  1,  7,302,  2,  2,302,  2,  2,  0],
+         [  0,  2,  6,302,  7,  3,301,  1,  3,  0],
+         [  0,  6,  1,302,301,302,302,  7,  1,  0],
+         [  0,  2,  1,  7,  1,  2,  1,  1,  7,  0]],
+  pozice_lisky: [1, 6, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+
+// zacatek levelu
+{
+  popis: "Dalším typem opakování, je opakování dokud není splněna nějaká podmínka. V našem případě, dokud není Alan na políčku s kytičkou vybrané barvy.",
+  kategorie: "Pokročilý",
+  mapa: [[501,302,301,301,302,302,301,301,302,501],
+         [301,  7,  1,  1,  1,  2,  1,  6,  2,302],
+         [301,  2,  7,  1,  1,  1,  1,  7,  1,301],
+         [302,  1,  1, 41,  1,  1,  1, 11,  7,302],
+         [301,  2,  1,  3,  0,  0,  1,  7,  1,302],
+         [301,  1,  2,  6, 33,  0,  7,  3,  1,302],
+         [301,  1, 12,  1,  1,  1,  1,  1,  2,301],
+         [301,  1,  6,  7,  1,  7, 13,  2,  1,301],
+         [301,  2,  1,  7,  1,  2,  1,  6,  3,302],
+         [501,301,302,301,301,301,302,301,301,501]],
+  pozice_lisky: [0, 9, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [[2,4,2]], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity,opakuj_p:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+// zacatek levelu
+{
+  popis: "Podmodmínkové kytičky mohou být i jiné barvy.",
+  kategorie: "Pokročilý",
+  mapa: [[  0,502,  1,  2,  1,  1,  2,  1,  7,  1],
+         [  0,  1,  0,  0,  0,  0,  0,  0, 33,  0],
+         [  0,  7,  0,502,  3,  1,  6,  1,502,  0],
+         [  0,  1, 35,  3,  0,  0,  0,  0,  1,  0],
+         [  0,  1,  0,  1,  0,301,502,  0,  1,  0],
+         [  0,  3,  0,  1,  0, 32,  1,  0,  6,  0],
+         [  0,  2, 34,502,  1,  2,502,  0,  1,  0],
+         [  0,  1,  0,  0,  0,  0, 32,  0,  1,  0],
+         [  0,502,  1,  7,  7,  1,  1,  1,502,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]],
+  pozice_lisky: [0, 9, 3],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity,opakuj_p:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+
+// zacatek levelu
+{
+  popis: "Podmínky lze také použít tak, že se část kódu vykoná, jen pokud je podmínka splněná. Například, podle toho na jaké kytičce Alan stojí, tak se otočí.",
+  kategorie: "Pokročilý",
+  mapa: [[  0,501,  1,  1,501,  0,  0,  0,  0,  0],
+         [  0,  1,  0,  0,  1,  0, 37,  0,  0,  0],
+         [  0,  6, 32,  0,  2,  0,  0,  0,  0,  0],
+         [  0,  1,  0,  0,  1,  0,  0,501,  1,501],
+         [  0,501,502,  0,502,  7,  1,502,  0,  1],
+         [  0,  0,  1,  0,  0,  0,  0,  0,  0,  2],
+         [  0,501,502,  0,302,501,  0,502,  1,501],
+         [  0,  6,  0,  0, 32,  1,  0,  1,  0,  0],
+         [  0,501,  1,  1,  1,501,  0,  1,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  6,  0,  0]],
+  pozice_lisky: [9, 7, 4],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p", "function_1" , "function_2"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity,if_p:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
 
 ];
