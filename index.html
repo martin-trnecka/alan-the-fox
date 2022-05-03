@@ -835,7 +835,7 @@
 // TODO: zaclenit do objektu hra
 function smycka() {
     try {
-        if(hra.instrukce>=hra.prikazy.length) return;
+        if(hra.instrukce>=hra.prikazy.length) return; // nemělo by nastat
 
         if(hra.prikazy[hra.instrukce]=='PROGRAM') {
           hra.zasobnik.push(['PROGRAM']);
@@ -857,8 +857,7 @@ function smycka() {
           hra.instrukce += 2; // nasledujici instrukce
         }
 
-        if(hra.prikazy[hra.instrukce]=='IF') {
-          if (hra.prikazy[hra.instrukce+1]=='P1') {
+        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P1') {
             if(!hra.podminka_P1()) {
               hra.instrukce += 2;
             }
@@ -878,10 +877,9 @@ function smycka() {
               }
             }
           }
-        }
 
-        if(hra.prikazy[hra.instrukce]=='IF') {
-          if (hra.prikazy[hra.instrukce+1]=='P2') {
+
+        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P2') {
             if(!hra.podminka_P2()) {
               hra.instrukce += 2;
             }
@@ -901,10 +899,8 @@ function smycka() {
               }
             }
           }
-        }
 
-        if(hra.prikazy[hra.instrukce]=='IF') {
-          if (hra.prikazy[hra.instrukce+1]=='P3') {
+        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P3') {
             if(!hra.podminka_P3()) {
               hra.instrukce += 2;
             }
@@ -924,7 +920,6 @@ function smycka() {
               }
             }
           }
-        }
 
         if(hra.prikazy[hra.instrukce]=='END') {
           vrchol = hra.zasobnik.pop();
@@ -973,6 +968,7 @@ function smycka() {
           }
         }
 
+        // základní operace, které provedou překreslení mapy
         if(hra.prikazy[hra.instrukce]=='KROK') {
           hra.krok();
           hra.nakresli_mapu();
