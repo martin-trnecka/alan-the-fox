@@ -118,6 +118,10 @@ main {
   margin-left: 10px;
 }
 
+.level--solved {
+  background-color: #CCC;  
+}
+
 a.level:hover {
   background-color: #CCC;
 }
