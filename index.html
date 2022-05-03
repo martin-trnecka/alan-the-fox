@@ -33,7 +33,7 @@
         <script>
         for (let i = 1; i < levels.length; i++) {
           if(localStorage.getItem(i)=="vyreseno") {
-              document.write("<a href='#"+i+"' onclick='hra.nacti_level("+i+");' class='level level--solved' id='level_"+i+"'>"+i+"</a>");
+            document.write("<a href='#"+i+"' onclick='hra.nacti_level("+i+");' class='level level--solved' id='level_"+i+"'>"+i+"</a>");
           } else {
             document.write("<a href='#"+i+"' onclick='hra.nacti_level("+i+");' class='level' id='level_"+i+"'>"+i+"</a>");
           }
