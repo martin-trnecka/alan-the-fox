@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
   <main>
       <div class="level-details">
           <div class="level" id="level-id"></div>
@@ -88,7 +87,6 @@
       </small>
 
       <small class="credit">založeno na <a href="https://developers.google.com/blockly" rel="external"><img src="./assets/blockly.svg"></a></small>
-
   </main>
 
   <xml id="startblock" style="display: none">
@@ -995,6 +993,7 @@ function smycka() {
           hra.nakresli_mapu();
         }
     }
+
     catch (e) {
       if(e=="lisak pres palubu") {
         var [x,y] = hra.najdi_alana();
