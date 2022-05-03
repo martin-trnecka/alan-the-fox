@@ -350,7 +350,11 @@
       this.posun_psa();
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] + 1;
+      console.log(this.deska[x][y]);
       if(this.deska[x][y]==205) this.deska[x][y] = 201;
+      if(this.deska[x][y]==215) this.deska[x][y] = 211;
+      if(this.deska[x][y]==225) this.deska[x][y] = 221;
+      if(this.deska[x][y]==235) this.deska[x][y] = 231;
     },
 
     otoc_vlevo: function() {
@@ -359,6 +363,9 @@
       var [x, y] = this.najdi_alana();
       this.deska[x][y] = this.deska[x][y] - 1;
       if(this.deska[x][y]==200) this.deska[x][y] = 204;
+      if(this.deska[x][y]==210) this.deska[x][y] = 214;
+      if(this.deska[x][y]==220) this.deska[x][y] = 224;
+      if(this.deska[x][y]==230) this.deska[x][y] = 234;
     },
 
     podminka_P1: function() {
@@ -842,22 +849,58 @@ function smycka() {
           hra.instrukce += 1;
         }
 
-        if(hra.prikazy[hra.instrukce]=='F1()') {
+        else if(hra.prikazy[hra.instrukce]=='F1()') {
           hra.zasobnik.push(['FUNKCE', hra.instrukce+1]); // skok zpět na nasledujici instrukci
           hra.instrukce == hra.funkce[1] + 1; // nasledujici instrukce ve funkci f1
         }
 
-        if(hra.prikazy[hra.instrukce]=='OPAKUJ') {
-          hra.zasobnik.push(['OPAKUJ', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a cislo
-          hra.instrukce += 2; // nasledujici instrukce
+        else if(hra.prikazy[hra.instrukce]=='OPAKUJ') {
+          // pokud je opakuj 0x, preskoceni vetve
+          if(hra.instrukce+1 == 0) {
+            let counter = 1;
+            for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
+              if(hra.prikazy[i]=='WHILE' || hra.prikazy[i]=='IF' || hra.prikazy[i]=='OPAKUJ') {
+                counter += 1;
+              }
+              if(hra.prikazy[i]=='END') {
+                counter -= 1;
+              }
+              if(counter == 0) {
+                hra.instrukce = i+1;
+                break;
+              }
+            }
+          } else {
+            hra.zasobnik.push(['OPAKUJ', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a cislo
+            hra.instrukce += 2; // nasledujici instrukce
+          }
         }
 
-        if(hra.prikazy[hra.instrukce]=='WHILE') {
-          hra.zasobnik.push(['WHILE', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a typ podminky
-          hra.instrukce += 2; // nasledujici instrukce
+        else if(hra.prikazy[hra.instrukce]=='WHILE') {
+
+          if((hra.prikazy[hra.instrukce+1]=="P1" && hra.podminka_P1()) ||
+             (hra.prikazy[hra.instrukce+1]=="P2" && hra.podminka_P2()) ||
+             (hra.prikazy[hra.instrukce+1]=="P3" && hra.podminka_P3())) {
+            hra.zasobnik.push(['WHILE', hra.instrukce+2, hra.prikazy[hra.instrukce+1]]); // skok a typ podminky
+            hra.instrukce += 2; // nasledujici instrukce
+          } else {
+            let counter = 1;
+            for(let i = hra.instrukce+2; i <= hra.prikazy.length; i++) {
+              if(hra.prikazy[i]=='WHILE' || hra.prikazy[i]=='IF' || hra.prikazy[i]=='OPAKUJ') {
+                counter += 1;
+              }
+              if(hra.prikazy[i]=='END') {
+                counter -= 1;
+              }
+              if(counter == 0) {
+                hra.instrukce = i+1;
+                break;
+              }
+            }
+          }
         }
 
-        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P1') {
+        else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P1') {
             if(!hra.podminka_P1()) {
               hra.instrukce += 2;
             }
@@ -879,7 +922,7 @@ function smycka() {
           }
 
 
-        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P2') {
+        else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P2') {
             if(!hra.podminka_P2()) {
               hra.instrukce += 2;
             }
@@ -900,7 +943,7 @@ function smycka() {
             }
           }
 
-        if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P3') {
+        else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P3') {
             if(!hra.podminka_P3()) {
               hra.instrukce += 2;
             }
@@ -921,7 +964,7 @@ function smycka() {
             }
           }
 
-        if(hra.prikazy[hra.instrukce]=='END') {
+        else if(hra.prikazy[hra.instrukce]=='END') {
           vrchol = hra.zasobnik.pop();
 
           if (vrchol[0]=='PROGRAM') {
@@ -937,56 +980,62 @@ function smycka() {
               vrchol[2] -= 1;
               hra.instrukce = vrchol[1];
               hra.zasobnik.push(vrchol);
+            } else {
+              hra.instrukce += 1;
             }
           }
 
-          if (vrchol[0]=='WHILE') {
-            if(vrchol[2]=='P1') {
+          if (vrchol[0]=='WHILE' && vrchol[2]=='P1') {
               if(hra.podminka_P1()) {
                 hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
+              } else {
+                hra.instrukce += 1;
               }
             }
-          }
 
-          if (vrchol[0]=='WHILE') {
-            if(vrchol[2]=='P2') {
+          if (vrchol[0]=='WHILE' && vrchol[2]=='P2') {
               if(hra.podminka_P2()) {
                 hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
+              } else {
+                hra.instrukce += 1;
               }
             }
-          }
 
-          if (vrchol[0]=='WHILE') {
-            if(vrchol[2]=='P3') {
+          if (vrchol[0]=='WHILE' && vrchol[2]=='P3') {
               if(hra.podminka_P3()) {
                 hra.instrukce = vrchol[1];
                 hra.zasobnik.push(vrchol);
+              } else {
+                hra.instrukce += 1;
               }
             }
           }
-        }
 
         // základní operace, které provedou překreslení mapy
-        if(hra.prikazy[hra.instrukce]=='KROK') {
+        else if(hra.prikazy[hra.instrukce]=='KROK') {
           hra.krok();
           hra.nakresli_mapu();
+          hra.instrukce += 1;
         }
 
-        if(hra.prikazy[hra.instrukce]=='SEBER_SLEPICI') {
+        else if(hra.prikazy[hra.instrukce]=='SEBER_SLEPICI') {
           hra.seber_slepici();
           hra.nakresli_mapu();
+          hra.instrukce += 1;
         }
 
-        if(hra.prikazy[hra.instrukce]=='OTOC_VLEVO') {
+        else if(hra.prikazy[hra.instrukce]=='OTOC_VLEVO') {
           hra.otoc_vlevo();
           hra.nakresli_mapu();
+          hra.instrukce += 1;
         }
 
-        if(hra.prikazy[hra.instrukce]=='OTOC_VPRAVO') {
+        else if(hra.prikazy[hra.instrukce]=='OTOC_VPRAVO') {
           hra.otoc_vpravo();
           hra.nakresli_mapu();
+          hra.instrukce += 1;
         }
     }
 
@@ -1018,7 +1067,6 @@ function smycka() {
       }
     }
 
-    hra.instrukce += 1;
 
     //console.log(hra.stop);
     if (!hra.stop) {
