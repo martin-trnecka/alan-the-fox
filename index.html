@@ -26,7 +26,7 @@
       </div>
 
       <div class="mapa">
-        <canvas id="deska" width="1000" height="700"></canvas>
+        <canvas id="deska"></canvas>
       </div>
 
       <div class="levels">
@@ -454,6 +454,13 @@
       console.log('map rendering...');
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
+
+      elem.width = 2000;
+      elem.height = 1400;
+      elem.style.width = "1000px";
+      elem.style.height = "700px";
+
+      elem.getContext('2d').scale(2,2);
       var zarovnani_x = 450;
       var zarovnani_y = 60;
 
@@ -1123,7 +1130,7 @@ function toggle_code() {
 
 function run() {
   document.getElementById('start').style.display = "none";
-  document.getElementById('stop').style.display = "block";
+  document.getElementById('stop').style.display = "inline-block";
   hra.stop = 0;
   setTimeout(function(){hra.proved(Blockly.JavaScript.workspaceToCode(hra.workspace))}, 100);
 }
@@ -1136,7 +1143,7 @@ function reset() {
 function stop() {
   hra.reset();
   hra.stop = 1;
-  document.getElementById('start').style.display = "block";
+  document.getElementById('start').style.display = "inline-block";
   document.getElementById('stop').style.display = "none";
 }
 </script>
