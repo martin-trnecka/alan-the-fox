@@ -260,7 +260,7 @@
 });
 
       this.workspace = Blockly.inject('blockly', {toolbox: this.instrukcni_sada, toolboxPosition: "start",  zoom:
-               {startScale: 0.9}, maxInstances:levels[this.level].instrukcni_sada, theme: Blockly.Themes.Alan});
+               {startScale: 0.9}, sounds: false, maxInstances:levels[this.level].instrukcni_sada, theme: Blockly.Themes.Alan});
       //this.workspace.updateToolbox(this.instrukcni_sada);
       Blockly.Xml.domToWorkspace(document.getElementById('startblock'), this.workspace);
 
@@ -458,12 +458,12 @@
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
 
-      elem.width = 1800;
-      elem.height = 1200;
-      elem.style.width = "900px";
+      elem.width = 3280;
+      elem.height = 2400;
+      elem.style.width = "820px";
       elem.style.height = "600px";
 
-      elem.getContext('2d').scale(1.8,1.8);
+      elem.getContext('2d').scale(3.3,3.3);
       var zarovnani_x = 450;
       var zarovnani_y = 60;
 
