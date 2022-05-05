@@ -55,7 +55,7 @@
       </div>
 
       <div class="controls">
-        <a href="#" onclick="clear_storage();" title="Vymaže doposud vyřešené levely." id="postup" class="button">smazat postup</a>
+        <!--<a href="#" onclick="clear_storage();" title="Vymaže doposud vyřešené levely." id="postup" class="button">smazat postup</a>-->
         <!-- <a href="#" onclick="toggle_code();" id="code">zobrazit kód</a>-->
         <a href="#" onclick="run();" id="start" class="button">spustit</a>
         <!-- <a href="#" onclick="reset();">zkusit znovu</a> -->
@@ -181,8 +181,8 @@
       }
 
       for (let i = 1; i < levels.length; i++) {
-        if(i==level) document.getElementById("level_"+i).style.fontWeight = "900";
-        else document.getElementById("level_"+i).style.fontWeight = "400";
+        if(i==level) document.getElementById("level_"+i).classList.add("selected-level");
+        else document.getElementById("level_"+i).classList.remove("selected-level");
       }
 
       // TODO: stringify je pomalé, bylo by lepší udělat DeepCopy jinak
@@ -246,7 +246,7 @@
         this.workspace.dispose();
       }
       this.workspace = Blockly.inject('blockly', {toolbox: this.instrukcni_sada, toolboxPosition: "start",  zoom:
-               {startScale: 0.8}, trashcan: "true", maxInstances:levels[this.level].instrukcni_sada});
+               {startScale: 1}, trashcan: "true", maxInstances:levels[this.level].instrukcni_sada});
       //this.workspace.updateToolbox(this.instrukcni_sada);
       Blockly.Xml.domToWorkspace(document.getElementById('startblock'), this.workspace);
     },

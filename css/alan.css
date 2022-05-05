@@ -57,6 +57,13 @@ main {
   grid-area: editor;
 }
 
+.blocklySvg {
+  background-color: rgba(94, 181, 189) !important;
+  border: none;
+  border-radius: 2px;
+}
+
+
 .mapa {
   height: 700px;
   grid-area: map;
@@ -106,7 +113,11 @@ main {
 }
 
 .level--solved {
-  background-color: #CCC;
+  background-color: rgb(138, 171, 61);
+}
+
+.selected-level {
+  background-color: rgb(74, 153, 150);  
 }
 
 a.level:hover {
