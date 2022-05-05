@@ -26,7 +26,7 @@ var levels =
 
 // zacatek levelu
 {
-  popis: "Úkolem lišáka Alana je posbírat všechny slepice z mapy. <br> Umí udělat krok a sebrat slepici. Přetažením jednotlivých bloků do hlavní funkce mu řekněte, co musí udělat, aby sebral slepici.",
+  popis: "Úkolem lišáka Alana je posbírat všechny slepice z mapy. Alan umí udělat krok a sebrat slepici. Přetažením jednotlivých bloků do hlavní funkce mu řekněte, co musí udělat, aby sebral slepici.",
   kategorie: "Začátečník",
   mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
          [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
