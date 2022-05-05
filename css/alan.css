@@ -22,32 +22,29 @@ main {
   margin: auto;
   width: calc(1400px + 2vw);
   grid-template-columns: auto auto;
-  grid-template-rows: auto 645px auto 5em;
+  grid-template-rows: auto 600px auto 5em;
   box-sizing: border-box;
 
   grid-template-areas:
-    "level ."
+    "level editor"
     "map editor"
     "levels controls"
     "credit blockly";
 }
 
 #blockly {
-  height: 698px;
-  width: 498px;
+  height: 750px;
+  width: 500px;
   box-sizing: border-box;
 }
 
 .editor {
-  height: 700px;
   width: 500px;
-  margin-top: -4em;
+  margin-top: 2vw;
   grid-area: editor;
 }
 
 .blocklySvg {
-  background-color: rgba(94, 181, 189) !important;
-  border: none;
   border-radius: 2px;
 }
 
@@ -117,6 +114,7 @@ a.level:hover {
 
 #level-id {
   font-size: 2em;
+  font-weight: bold;
   color: white;
   margin-top: 2vw;
 }
@@ -131,7 +129,7 @@ a.level:hover {
   color: white;
 }
 
-small {color: white;}
+small {color: white; font-size: 1em;}
 
 .credit {
   grid-area: blockly;

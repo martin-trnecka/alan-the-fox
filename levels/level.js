@@ -146,7 +146,7 @@ var levels =
 
 // zacatek levelu
 {
-  popis: "Některé části kódu se často opakují. Místo opakování stejných částí používá cyklus, ve ktrém se zadá, co se má vykonat a také kolikrát.<br>Zkuste toto kolo vyřešit tak, že každá instrukce se použije jen jednou.",
+  popis: "Některé části kódu se často opakují. Místo opakování stejných částí se používá cyklus, ve kterém se zadá, co se má vykonat a také kolikrát. Zkuste toto kolo vyřešit tak, že každá instrukce se použije jen jednou.",
   kategorie: "Začátečník",
   mapa: [[ 12, 11, 11, 12, 12, 11, 11, 12, 12, 11],
          [ 11, 11, 11, 11, 11, 12, 12, 11, 11, 12],
@@ -157,7 +157,7 @@ var levels =
          [  1,  7,  1,  1,  2,  2,  1,  1,  7,  1],
          [ 32, 36, 31, 31, 31, 35, 31, 31, 31, 31],
          [ 31, 31, 31, 35, 31, 31, 31, 31, 33, 34],
-         [ 31, 31, 31, 31, 35, 31, 31, 33, 37, 33]],
+         [ 31, 31, 31, 31, 35, 31, 31, 33, 37, 31]],
   pozice_lisky: [4, 9, 3],      // x,y,smer
 
   // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
@@ -196,7 +196,7 @@ var levels =
 {
   popis: "Pozor na psa Gisberta. Musíte se mu při sbírání slepic vyhnout.",
   kategorie: "Začátečník",
-  mapa: [[ 13, 14,  1, 12, 11, 13, 12, 12, 11, 11],
+  mapa: [[ 14, 14,  1, 12, 11, 13, 12, 12, 11, 11],
          [  1,  1,  1,  1,  2,  1,  1,  6,  1,  2],
          [  2,  7,  1,  1,  2,  2,  1,  1,  7,  1],
          [  1,  1,  1, 11, 12, 11, 12, 11, 11,  1],

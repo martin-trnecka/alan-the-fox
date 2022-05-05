@@ -6,7 +6,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./css/alan.css">
 
@@ -167,7 +167,7 @@
               [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31],
               [ 31, 31, 31, 31,  31,  31, 31, 31, 31, 31]],
 
-      document.getElementById('level-id').innerHTML = level;
+      document.getElementById('level-id').innerHTML = "Level " + level;
       document.getElementById('popis-levelu').innerHTML = "Je nám líto, ale level " + level + " neexistuje. Zkuste jiný level z nabídky níže.";
     },
 
@@ -207,7 +207,7 @@
 
 
       // zmeny v UI
-      document.getElementById('level-id').innerHTML = level;
+      document.getElementById('level-id').innerHTML = "Level " + level;
       document.getElementById('popis-levelu').innerHTML = levels[level].popis;
 
       // dostupné instrukce
@@ -245,10 +245,26 @@
       if(this.workspace) {
         this.workspace.dispose();
       }
+
+      Blockly.Themes.Alan = Blockly.Theme.defineTheme('alan', {
+  'componentStyles': {
+    'flyoutBackgroundColour': '#0BAFAF',
+    'flyoutOpacity': 0.5,
+    'workspaceBackgroundColour': '#5eb5bd'
+  },
+
+  'fontStyle': {
+    "family": "BM Plex Sans, sans-serif",
+    "size": 12
+}
+});
+
       this.workspace = Blockly.inject('blockly', {toolbox: this.instrukcni_sada, toolboxPosition: "start",  zoom:
-               {startScale: 1}, trashcan: "true", maxInstances:levels[this.level].instrukcni_sada});
+               {startScale: 0.9}, maxInstances:levels[this.level].instrukcni_sada, theme: Blockly.Themes.Alan});
       //this.workspace.updateToolbox(this.instrukcni_sada);
       Blockly.Xml.domToWorkspace(document.getElementById('startblock'), this.workspace);
+
+
     },
 
     update_available_instructions: function(instrukcni_sada) {
