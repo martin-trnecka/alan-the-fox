@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <title>Lišák Alan | Katedra Informatiky, Univerzita Palackeho v Olomouci</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/alan.css">
 
   <!-- knihovna Blocky -->
@@ -21,7 +25,7 @@
 <body>
   <main>
       <div class="level-details">
-          <div class="level" id="level-id"></div>
+          <div id="level-id"></div>
           <p id="popis-levelu"></p>
       </div>
 
@@ -44,18 +48,18 @@
       <div class="editor">
         <div class="tabs">
 
-          <div id="blockly" style="position: absolute"></div>
+          <div id="blockly"></div>
 
           <textarea id="textarea" class="hidden" disabled></textarea>
         </div>
       </div>
 
       <div class="controls">
-        <a href="#" onclick="clear_storage();" title="Vymaže doposud vyřešené levely.">smazat postup</a>
-        <a href="#" onclick="toggle_code();" id="code">zobrazit kód</a>
-        <a href="#" onclick="run();" id="start">spustit</a>
+        <a href="#" onclick="clear_storage();" title="Vymaže doposud vyřešené levely." id="postup" class="button">smazat postup</a>
+        <!-- <a href="#" onclick="toggle_code();" id="code">zobrazit kód</a>-->
+        <a href="#" onclick="run();" id="start" class="button">spustit</a>
         <!-- <a href="#" onclick="reset();">zkusit znovu</a> -->
-        <a href="#" onclick="stop();" id="stop">zastavit</a>
+        <a href="#" onclick="stop();" id="stop" class="button">zastavit</a>
       </div>
 
       <small class="authors">&copy; Lišák Alan 1.0 | Martin Trnečka a Markéta Trnečková | <a href="https://www.inf.upol.cz/">Katedra informatiky</a> | <a href="https://www.upol.cz/">Univerzita Palackého v Olomouci</a>

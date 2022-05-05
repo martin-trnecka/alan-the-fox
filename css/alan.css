@@ -1,45 +1,40 @@
 body {
   font-size: 10pt;
-  font-family: Arial;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #0BAFAF; /* zelene pozadi */
 }
 
 #deska {
-  border: 1px solid #3FA2B2;
   display: block;
   margin: 0;
   box-sizing: border-box;
-  width: 1000px;
-  height: 700px;
-
   /* vylepsení ostrosti na retina obrazovkách */
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-
-  background-color: #8CC116; /* zelene pozadi */
   background-color: #0BAFAF;
 }
 
 #textarea {
   height: 698px;
-  width: 598px;
+  width: 498px;
   box-sizing: border-box;
   border: none;
   resize: none;
   overflow-x: scroll;
   padding: 10px;
   grid-area: editor;
-
 }
 
 main {
   display: grid;
   margin: auto;
-  max-width: 1600px;
+  gap: 0 3vw;
+  max-width: 1500px;
   align-items: center;
 
-  grid-template-columns: 1000px 600px;
+  grid-template-columns: 1000px auto;
   grid-template-rows: auto 700px auto 80px;
   box-sizing: border-box;
 
@@ -52,13 +47,12 @@ main {
 
 #blockly {
   height: 698px;
-  width: 598px;
+  width: 498px;
   box-sizing: border-box;
 }
 
 .editor {
   height: 700px;
-  border: 1px solid #0BAFAF;
   box-sizing: border-box;
   grid-area: editor;
 }
@@ -77,8 +71,6 @@ main {
 .controls a {
   display: inline-block;
   background-color: #E4E4E4;
-  border: 1px solid #CCC;
-  color: black;
   min-width: 75px;
   padding: 14px;
   text-align: center;
@@ -91,50 +83,47 @@ main {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-left: -10px;
   grid-area: levels;
-  align-self: start;
 }
 
 .level-details {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: -10px;
   grid-area: level;
-  align-self: end;
-  padding-bottom: 10px;
 }
 
 .level {
   display: block;
-  background-color: #E4E4E4;
-  border: 1px solid #CCC;
-  color: black;
-  flex-basis: 44px;
+  background-color: rgb(94, 181, 189);
+  color: white;
+  font-weight: bold;
+  flex-basis: 55px;
   padding: 14px 0;
   text-align: center;
   margin-top: 10px;
   text-decoration: none;
-  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.5em;
+  border-radius: 2px;
 }
 
 .level--solved {
-  background-color: #CCC;  
+  background-color: #CCC;
 }
 
 a.level:hover {
-  background-color: #CCC;
+  background-color: rgb(74, 153, 150);
 }
 
 .level-details p {
   margin: 0;
-  padding: 14px;
   background-color: #E4E4E4;
-  border: 1px solid #CCC;
   display: block;
   width: 100%;
-  margin-left: 10px;
-  margin-top: 10px;
+}
+
+#level-id {
+  font-size: 2em;
+  color: white;
+  margin-top: 2vw;
 }
 
 .authors {
@@ -144,10 +133,10 @@ a.level:hover {
 }
 
 .authors a {
-  color: #0BAFAF;
+  color: white;
 }
 
-small {color: gray;}
+small {color: white;}
 
 .credit {
   grid-area: blockly;
@@ -163,14 +152,27 @@ small {color: gray;}
   display: none;
 }
 
-#start, #stop {
-  background-color: #0BAFAF;
-  border: 1px solid #3FA2B2;
+.button {
+  border: none;
+  font-size: 1.5em;
   color: white;
+  border-radius: 2px;
+}
+
+#start, #stop {
+  background-color: rgb(229, 133, 55);
 }
 
 #start:hover, #stop:hover {
-  background-color: #3FA2B2;
+  background-color: rgb(186, 105, 40);
+}
+
+#postup {
+  background-color: rgb(94, 181, 189);
+}
+
+#postup:hover {
+  background-color: rgb(74, 153, 150);
 }
 
 #stop {
@@ -178,5 +180,9 @@ small {color: gray;}
 }
 
 #popis-levelu {
-
+  background-color: #0BAFAF; /* zelene pozadi */
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  margin-top: 0.5vw;
 }
