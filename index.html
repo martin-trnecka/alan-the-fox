@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Lišák Alan | Katedra Informatiky, Univerzita Palackeho v Olomouci</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -458,18 +459,21 @@
       var elem = document.getElementById('deska');
       var context = elem.getContext('2d');
 
-      elem.width = 3280;
+      elem.width = 3600;
       elem.height = 2400;
-      elem.style.width = "820px";
-      elem.style.height = "600px";
+      //elem.style.maxWidth = "900px";
+      //elem.style.maxHeight = "600px";
 
-      elem.getContext('2d').scale(3.3,3.3);
+      //elem.style.width = "68vw";
+      //elem.style.height = "45vw";
+
+      elem.getContext('2d').scale(3.6,3.6);
       var zarovnani_x = 450;
       var zarovnani_y = 60;
 
       context.clearRect(0, 0, elem.width, elem.height);
 
-      var scale = 0.8;
+      var scale = 0.81;
       tile1 = document.getElementById("grass1");
       var move_x = tile1.width*scale;
       var move_y = tile1.height*scale - 5*scale;
