@@ -24,6 +24,20 @@
 </head>
 
 <body onload="spusteni();">
+  <div class="screen" id="splashscreen">
+  <div class="screen__window">
+    <button class="button button--icon" onclick="close_screen();"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="#fff" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg></button>
+    <h1>Lišák <span class="text--orange">Alan</span></h1>
+
+    <p>Martin Trnečka a Markéta Trnečková </br>
+    Katedra informatiky Univerzity Palackého v Olomouci</p>
+    <p>Lišák Alan je jednoduchá vzdělávací aplikace pro výuku algoritmizace a základů programování. Lišák je pojmenován po zakladateli informatiky <a href="https://cs.wikipedia.org/wiki/Alan_Turing" rel="external">Alanu Turingovi</a>.</p>
+
+
+    <button class="button button--red" onclick="clear_storage();" title="Vymaže informace o vyřešení všech levelů."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#fff" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/></svg> vymazat data</button>
+  </div>
+  </div>
+
   <main>
       <div class="level-details">
           <div id="level-id"></div>
@@ -58,12 +72,12 @@
       <div class="controls">
         <!--<a href="#" onclick="clear_storage();" title="Vymaže doposud vyřešené levely." id="postup" class="button">smazat postup</a>-->
         <!-- <a href="#" onclick="toggle_code();" id="code">zobrazit kód</a>-->
-        <a href="#" onclick="run();" id="start" class="button">spustit</a>
+        <a href="#" onclick="run();" id="start" class="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"/></svg> </a>
         <!-- <a href="#" onclick="reset();">zkusit znovu</a> -->
-        <a href="#" onclick="stop();" id="stop" class="button">zastavit</a>
+        <a href="#" onclick="stop();" id="stop" class="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M384 128v255.1c0 35.35-28.65 64-64 64H64c-35.35 0-64-28.65-64-64V128c0-35.35 28.65-64 64-64H320C355.3 64 384 92.65 384 128z"/></svg></a>
       </div>
 
-      <small class="authors">&copy; Lišák Alan 1.0 | Martin Trnečka a Markéta Trnečková | <a href="https://www.inf.upol.cz/">Katedra informatiky</a> | <a href="https://www.upol.cz/">Univerzita Palackého v Olomouci</a>
+      <small class="authors"><a href="#" onclick="open_screen();">Lišák Alan 1.0</a>
       </small>
 
       <small class="credit">založeno na <a href="https://developers.google.com/blockly" rel="external"><img src="./assets/blockly.svg"></a></small>
@@ -1159,6 +1173,13 @@ function clear_storage() {
   location.reload();
 }
 
+function close_screen() {
+  document.getElementById('splashscreen').style.display = "none";
+}
+
+function open_screen() {
+  document.getElementById('splashscreen').style.display = "flex";
+}
 </script>
 
 </body>

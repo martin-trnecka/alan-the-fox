@@ -12,16 +12,16 @@ TODO:
 - obecné info / nápověda
 - obrázky: stopa, cyklus n-krát, funkce
 - přidat hlášky a situace kdy se vypíší (random)
-- ikonka ke spustit
 - zobrazování kategorií
 - generátor map
-- zpomalit pohyb
 - nahodne kvokani slepic
 - zkontrolovat funkci 2 - funkčnost
 
 
 DONE:
 -----
+- zpomalit pohyb
+- ikonka ke spustit
 - načítání levelů
 - zarovnání textu u slepic
 - ověření konce
