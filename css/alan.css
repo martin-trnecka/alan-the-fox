@@ -1,5 +1,5 @@
 body {
-  font-size: 10pt;
+  font-size: 16px;
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: #0BAFAF; /* zelene pozadi */
 }
@@ -8,24 +8,21 @@ body {
   display: block;
   margin: 0;
   box-sizing: border-box;
-  /* vylepsení ostrosti na retina obrazovkách */
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
   background-color: #0BAFAF;
-
-  width: min(65vw, 900px);
+  /* responzivní mapa */
+  /*width: min(65vw, 900px);
   height: min(44vw, 600px);
+*/
+  width: 100%;
+  height: 97%;
 }
 
 main {
   display: grid;
   gap: 0 2vw;
   margin: auto;
-  max-width: calc(1350px + 2vw);
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: fit 550px auto auto;
+  width: 1300px;
+  grid-template-columns: 2fr 1.1fr;
   box-sizing: border-box;
 
   grid-template-areas:
@@ -36,7 +33,7 @@ main {
 }
 
 #blockly {
-  height: 730px;
+  height: 700px;
   box-sizing: border-box;
 }
 
@@ -64,14 +61,14 @@ main {
   display: inline-block;
   background-color: #E4E4E4;
   min-width: 75px;
-  padding: 14px;
+  padding: 13px;
   text-align: center;
   text-decoration: none;
 }
 
 .levels {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 55px);
+  grid-template-columns: repeat(auto-fill, max(2vw, 46px));
   gap: 1em;
   grid-area: levels;
   margin-top: 1em;
@@ -86,10 +83,10 @@ main {
   background-color: rgb(94, 181, 189);
   color: white;
   font-weight: bold;
-  padding: 14px 0;
+  padding: 13px 0;
   text-align: center;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1em;
   border-radius: 2px;
 }
 
@@ -109,11 +106,10 @@ a.level:hover {
   margin: 0;
   background-color: #E4E4E4;
   display: block;
-  width: 100%;
 }
 
 #level-id {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
   color: white;
   margin-top: 1vw;
@@ -130,7 +126,7 @@ a.level:hover {
   color: white;
 }
 
-small {color: white; font-size: 1em;}
+small {color: white; font-size: 0.8em;}
 
 .credit {
   grid-area: blockly;
@@ -150,7 +146,7 @@ small {color: white; font-size: 1em;}
 
 .button {
   border: none;
-  font-size: 1.5em;
+  font-size: 1em;
   color: white;
   border-radius: 2px;
 }
@@ -179,14 +175,38 @@ small {color: white; font-size: 1em;}
   background-color: #0BAFAF; /* zelene pozadi */
   border: none;
   color: white;
-  font-size: 1.5em;
+  font-size: clamp(0.9em, 1.5vw, 1.2em);
   margin-top: 0.5vw;
+  margin-bottom: 0;
 }
 
-@media screen and (max-width: 1200px) {
+
+
+@media screen and (max-width: 1350px) {
+  main {
+    width: 100%;
+    grid-template-columns: 2fr 1.3fr;
+  }
+
+  #blockly {
+    height: 50vw;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  main {grid-template-columns: 1.3fr 1fr;}
+
+
+}
+
+
+
+/*
+  body {font-size: clamp(1em, 2vw, 9pt);}
 #deska {
-  width: min(50vw, 900px);
-  height: min(34vw, 600px);
+  width: min(56vw, 900px);
+  height: min(38vw, 600px);
 }
 main {
   grid-template-areas:
@@ -201,4 +221,4 @@ main {
 #blockly {
   height: 50vw;
 }
-}
+}*/
