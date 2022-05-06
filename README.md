@@ -7,7 +7,6 @@ TODO:
 -----
 
 - dodat levely
-- splashscreen
 - info o hře
 - obecné info / nápověda
 - obrázky: stopa, cyklus n-krát, funkce
