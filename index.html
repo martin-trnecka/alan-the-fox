@@ -23,7 +23,7 @@
   <meta name="author" content="Martin Trnecka, Marketa Trneckova">
 </head>
 
-<body>
+<body onload="spusteni();">
   <main>
       <div class="level-details">
           <div id="level-id"></div>
@@ -51,7 +51,7 @@
 
           <div id="blockly"></div>
 
-          <textarea id="textarea" class="hidden" disabled></textarea>
+          <!--<textarea id="textarea" class="hidden" disabled></textarea>-->
         </div>
       </div>
 
@@ -1103,22 +1103,19 @@ if(window.location.hash) {
 
 
 
-
+function spusteni() {
+  // inicializace hry
+hra.nacti_level(level);
+hra.nakresli_mapu();
+hra.workspace.addChangeListener(myUpdateFunction);
+//document.getElementById('textarea').style.display = "none";
+}
 
 // funkce pro generování kódu
 function myUpdateFunction(event) {
   var code = Blockly.JavaScript.workspaceToCode(hra.workspace);
   document.getElementById('textarea').value = code;
 }
-
-
-// inicializace hry
-hra.nacti_level(level);
-hra.nakresli_mapu();
-
-hra.workspace.addChangeListener(myUpdateFunction);
-
-document.getElementById('textarea').style.display = "none";
 
 // hlasení
 //hra.hlaseni(3,1,2,1, "kvokkvokkvokkvokkvok");
