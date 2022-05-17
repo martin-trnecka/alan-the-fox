@@ -1124,18 +1124,20 @@ if(window.location.hash) {
 
 
 
-function spusteni() {
-  // inicializace hry
-hra.nacti_level(level);
-hra.nakresli_mapu();
-hra.workspace.addChangeListener(myUpdateFunction);
-//document.getElementById('textarea').style.display = "none";
-}
+
 
 // funkce pro generování kódu
 function myUpdateFunction(event) {
   var code = Blockly.JavaScript.workspaceToCode(hra.workspace);
-  document.getElementById('textarea').value = code;
+  //document.getElementById('textarea').value = code;
+}
+
+function spusteni() {
+  // inicializace hry
+hra.nacti_level(level);
+hra.nakresli_mapu();
+//hra.workspace.addChangeListener(myUpdateFunction);
+//document.getElementById('textarea').style.display = "none";
 }
 
 // hlasení
