@@ -931,6 +931,7 @@ function smycka() {
         else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P1') {
             if(!hra.podminka_P1()) {
               hra.instrukce += 2;
+              hra.zasobnik.push(['IF', 'P1']);
             }
             else {
               let counter = 1;
@@ -953,6 +954,7 @@ function smycka() {
         else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P2') {
             if(!hra.podminka_P2()) {
               hra.instrukce += 2;
+              hra.zasobnik.push(['IF', 'P2']);
             }
             else {
               let counter = 1;
@@ -974,6 +976,7 @@ function smycka() {
         else if(hra.prikazy[hra.instrukce]=='IF' && hra.prikazy[hra.instrukce+1]=='P3') {
             if(!hra.podminka_P3()) {
               hra.instrukce += 2;
+              hra.zasobnik.push(['IF', 'P3']);
             }
             else {
               let counter = 1;
@@ -997,6 +1000,10 @@ function smycka() {
 
           if (vrchol[0]=='PROGRAM') {
             return;
+          }
+
+          if (vrchol[0]=='IF') {
+            hra.instrukce += 1;
           }
 
           if (vrchol[0]=='FUNKCE') {
