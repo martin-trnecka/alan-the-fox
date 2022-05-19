@@ -412,4 +412,56 @@ var levels =
 
 }, // konec levelu
 
+
+// zacatek levelu
+{
+  popis: "Slepička je blízko, ale lišák Alan zapomněl, jak se otočit vpravo. Pomocí funkce a otočení vlevo jej to opět můžete naučit.",
+  kategorie: "Pokročilý",
+
+  mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  12, 14, 12, 12, 12,  0,  0,  0],
+         [  0,  0,  13, 14, 12, 12, 12,  0,  0,  0],
+         [  0,  0,  12, 14, 13, 12, 3,  0,  0,  0],
+         [  0,  0,  1,  2,  1,  1,  1,  0,  0,  0],
+         [  0,  0,  2,  301,  2,  1,  1,  0,  0,  0],
+         [  0,  0,  1,  1,  6,  1,  2,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]],
+
+  pozice_lisky: [6, 5, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:3,seber_slepici:Infinity,function_1:1,call_f1:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+
+// zacatek levelu
+{
+  popis: "Předchozí úkol bylo možné vyřešit i bez funkce. Nyní to již nepůjde.",
+  kategorie: "Pokročilý",
+  mapa: [[ 37, 32, 11, 12, 14, 13, 12, 12, 11, 14],
+         [ 31, 35,  1,  1,  2,  1,  1,  1,  1,  2],
+         [ 32,  1,  1,  1,  2,  2,  1,  1,  7,  1],
+         [ 31,  3,  1,301,  1,  6,  1,  2,  2,  1],
+         [ 11,  1,  1,  1, 35, 31, 31,  1,  1, 32],
+         [  1,  2,  1,  2, 31, 33, 33,  2,  7, 31],
+         [ 11,  1,  1,  1, 36, 35, 31,  1,  1,  1],
+         [  1,  2,  1,302,  1,  3,  1,301,  1,  2],
+         [ 14,  2,  6,  2,  1,  1,  6,  7,  1, 32],
+         [ 12,  2,  1,  1,  7,  1, 33, 31, 32, 31]],
+  pozice_lisky: [3, 7, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:3,seber_slepici:Infinity,function_1:1,call_f1:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
 ];
