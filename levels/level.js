@@ -415,7 +415,7 @@ var levels =
 
 // zacatek levelu
 {
-  popis: "Slepička je blízko, ale lišák Alan zapomněl, jak se otočit vpravo. Pomocí funkce a otočení vlevo jej to opět můžete naučit.",
+  popis: "Slepičky jsou blízko, ale lišák Alan zapomněl, jak se otočit vpravo. Pomocí funkce a otočení vlevo jej to opět můžete naučit.",
   kategorie: "Pokročilý",
 
   mapa: [[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -423,7 +423,7 @@ var levels =
          [  0,  0,  12, 14, 12, 12, 12,  0,  0,  0],
          [  0,  0,  13, 14, 12, 12, 12,  0,  0,  0],
          [  0,  0,  12, 14, 13, 12, 3,  0,  0,  0],
-         [  0,  0,  1,  2,  1,  1,  1,  0,  0,  0],
+         [  0,  0,  1,  301,  1,  1,  1,  0,  0,  0],
          [  0,  0,  2,  301,  2,  1,  1,  0,  0,  0],
          [  0,  0,  1,  1,  6,  1,  2,  0,  0,  0],
          [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
