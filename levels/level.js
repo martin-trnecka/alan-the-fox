@@ -292,7 +292,7 @@ var levels =
 
 // zacatek levelu
 {
-  popis: "To je slepic. Nezapomeň sivzhodně rozdělit celý problém na více se opakujících částí!",
+  popis: "To je slepic. Nezapomeň si vhodně rozdělit celý problém na více se opakujících částí!",
   kategorie: "Pokročilý",
   mapa: [[  1,302,  1,302,  1,301,  1,302,  1,301],
          [302,  2,302,  6,301,  1,302,  6,301,  1],
@@ -303,7 +303,7 @@ var levels =
          [  1,302,  2,302,  3,301,  3,302,  2,302],
          [302,  1,302,  1,301,  1,302,  1,302,  1],
          [  2,301,  6,301,  1,302,  1,301,  2,302],
-         [201,  1,301,  1,302,  1,302,  2,302,  2]],
+         [302,  1,301,  1,302,  1,302,  2,302,  2]],
   pozice_lisky: [9, 0, 1],      // x,y,smer
 
   // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
