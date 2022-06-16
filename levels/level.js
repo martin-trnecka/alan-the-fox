@@ -170,6 +170,56 @@ var levels =
 
 // zacatek levelu
 {
+  popis: "Pomocí cyklu lze tento level snadno vyřešit. V kódu je možné použít instrukci krok jen dvakrát a ostatní pouze jednou.",
+  kategorie: "Pokročilý",
+  mapa: [[ 37, 32, 31, 32, 31, 31, 32, 37, 33, 32],
+         [ 31, 35,  1,  1,  2,  1, 31, 32, 31,  2],
+         [ 32,  1,  1,  1,  2,  2,  1,  1, 31,  1],
+         [ 31,  3,  1,  2,  1,  2,  1,  2, 32,  1],
+         [ 11,  1,  1,  1,301,  1,301,  1, 31,  2],
+         [ 12,  2,  1,  2,  1,  3,  1,  1, 37,  1],
+         [ 11,  1,  1,  1,302,  1,301,  1, 32, 32],
+         [ 35, 31,  1,  1,  1,  2,  1,  2, 31, 31],
+         [ 37, 31, 32,  2,  1,  1,  6,  7, 31, 31],
+         [ 31, 32, 31, 32, 31,  1,  1, 31, 32, 31]],
+  pozice_lisky: [4, 6, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
+  instrukcni_sada: {krok:2,otoc_vpravo:1,seber_slepici:1,opakuj:1}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+// zacatek levelu
+{
+  popis: "Mapa je krásně symetrická.",
+  kategorie: "Pokročilý",
+  mapa: [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
+         [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
+         [  2,  1, 32, 32, 34, 31, 31, 35,  2,  1],
+         [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
+         [ 12,  1, 31, 31,  2,  2, 31, 31,  6, 11],
+         [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
+         [ 11,  1, 36, 31, 31, 31, 31, 34,  7, 12],
+         [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
+         [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
+         [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
+  pozice_lisky: [2, 8, 2],      // x,y,smer
+
+  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
+  instrukce_psa: [[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 3],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 1]], // souřadnice pohybu, může být prázné
+
+  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
+  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity}, // jake příkazy mohou být použity
+
+}, // konec levelu
+
+
+
+// zacatek levelu
+{
   popis: "Instrukci kroku můžete použít ve svém kódu jen 4x. Využijte vhodně cyklu.",
   kategorie: "Pokročilý",
   mapa: [[ 37, 32, 11, 12, 14, 13, 12, 12, 11, 14],
@@ -259,30 +309,6 @@ var levels =
 
   // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
   instrukce_psa: [[5, 1, 1], [5, 2, 1], [5, 3, 1], [5, 4, 1], [5, 5, 1], [5, 6, 1], [5, 7, 1], [5, 8, 1], [5, 8, 2], [5, 8, 3], [5, 7, 3], [5, 6, 3], [5, 5, 3], [5, 4, 3], [5, 3, 3], [5, 2, 3], [5, 1, 3], [5, 1, 4]], // souřadnice pohybu, může být prázné
-
-  //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
-  instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity}, // jake příkazy mohou být použity
-
-}, // konec levelu
-
-// zacatek levelu
-{
-  popis: "Mapa je krásně symetrická.",
-  kategorie: "Pokročilý",
-  mapa: [[302,  1,  1, 11, 12, 11, 11,  6,  1,302],
-         [  1, 31,  1,  2,  6,  1,  1,  1, 31,  1],
-         [  2,  1, 32, 32, 34, 31, 31, 35,  2,  1],
-         [ 11,  7, 31, 31, 31, 31, 31, 35,  1, 11],
-         [ 12,  1, 31, 31,  2,  2, 31, 31,  6, 11],
-         [ 12,  3, 31, 35, 41,  7, 31, 32,  1, 12],
-         [ 11,  1, 36, 31, 31, 31, 31, 34,  7, 12],
-         [  2,  1, 31, 31, 31, 32, 31, 33,  1,  1],
-         [  1, 32,  1,  2,  7,  1,  1,  1, 33,  1],
-         [301,  1,  1, 12, 12, 12, 13,  1,  7,301]],
-  pozice_lisky: [2, 8, 2],      // x,y,smer
-
-  // pes na původní desce není. Toto pole určuje jeho postavení. Pokud je prázdné pes se nezobrazí, pokud se nemá hýbat, je jednoprvkové.
-  instrukce_psa: [[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[4, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 2],[5, 5, 3],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[5, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 4],[4, 5, 1]], // souřadnice pohybu, může být prázné
 
   //  "krok","seber_slepici","otoc_vlevo","otoc_vpravo","opakuj","opakuj_p","if_p"
   instrukcni_sada: {krok:Infinity,otoc_vlevo:Infinity,otoc_vpravo:Infinity,seber_slepici:Infinity,opakuj:Infinity}, // jake příkazy mohou být použity
